@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8e2p6vwf7xrb"]
+
+[ext_resource type="PackedScene" uid="uid://dluv0dsbkadp2" path="res://Assets/Models/terrain.fbx" id="1_g24sy"]
+[ext_resource type="Material" uid="uid://cu5fn6jma2tuc" path="res://Assets/Materials/protype_material.tres" id="2_62tj5"]
+
+[node name="terrain" instance=ExtResource("1_g24sy")]
+
+[node name="Plane" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_62tj5")
