@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://df0b08mdpd7kn"]
 
-[ext_resource type="Material" uid="uid://cu5fn6jma2tuc" path="res://Assets/Materials/protype_material.tres" id="2_62tj5"]
+[ext_resource type="Material" uid="uid://cu5fn6jma2tuc" path="res://assets/materials/protype_material.tres" id="2_62tj5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bskb1"]
 

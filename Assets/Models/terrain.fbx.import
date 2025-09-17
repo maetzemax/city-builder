@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dluv0dsbkadp2"
-path="res://.godot/imported/terrain.fbx-18dca317086376e5ca70541f747191a2.scn"
+path="res://.godot/imported/terrain.fbx-2b40c2b17b4fcc1ba05a9d54a40937d9.scn"
 
 [deps]
 
-source_file="res://Assets/Models/terrain.fbx"
-dest_files=["res://.godot/imported/terrain.fbx-18dca317086376e5ca70541f747191a2.scn"]
+source_file="res://assets/models/terrain.fbx"
+dest_files=["res://.godot/imported/terrain.fbx-2b40c2b17b4fcc1ba05a9d54a40937d9.scn"]
 
 [params]
 

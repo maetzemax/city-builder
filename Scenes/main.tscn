@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://dvd53runfr5vs"]
 
-[ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://Scenes/terrain.tscn" id="1_jjgbg"]
-[ext_resource type="Script" uid="uid://w7rwhkiuthrv" path="res://Scripts/Camera/camera_controller.gd" id="2_bo1nx"]
-[ext_resource type="Script" uid="uid://bhncwhwwcrmdm" path="res://Scripts/builder.gd" id="3_8gbba"]
-[ext_resource type="PackedScene" uid="uid://gy22nsnjpg3i" path="res://Scenes/cube.tscn" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/terrain.tscn" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://w7rwhkiuthrv" path="res://scripts/Camera/camera_controller.gd" id="2_bo1nx"]
+[ext_resource type="Script" uid="uid://bhncwhwwcrmdm" path="res://scripts/builder.gd" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://bjujy4yatmx5o" path="res://scenes/house1.tscn" id="3_jyhfs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bo1nx"]
 sky_top_color = Color(0.5990235, 0.66700757, 0.74295527, 1)
@@ -37,11 +37,11 @@ environment = SubResource("Environment_jjvhh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
 script = ExtResource("2_bo1nx")
 
-[node name="Player" type="Node3D" parent="Camera3D"]
+[node name="Builder" type="Node3D" parent="Camera3D"]
 script = ExtResource("3_8gbba")
-scene = ExtResource("4_jjvhh")
+scene = ExtResource("3_jyhfs")
 
 [node name="Terrain" parent="." instance=ExtResource("1_jjgbg")]
 
-[connection signal="clicked_element" from="Camera3D" to="Camera3D/Player" method="_on_camera_3d_clicked_element"]
-[connection signal="mouse_pos_on_terrain" from="Camera3D" to="Camera3D/Player" method="_on_camera_3d_mouse_pos_on_terrain"]
+[connection signal="clicked_element" from="Camera3D" to="Camera3D/Builder" method="_on_camera_3d_clicked_element"]
+[connection signal="mouse_pos_on_terrain" from="Camera3D" to="Camera3D/Builder" method="_on_camera_3d_mouse_pos_on_terrain"]
