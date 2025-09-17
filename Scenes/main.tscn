@@ -85,9 +85,9 @@ script = ExtResource("2_bo1nx")
 script = ExtResource("3_8gbba")
 scene = ExtResource("3_jyhfs")
 
-[node name="Terrain" parent="." instance=ExtResource("1_jjgbg")]
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera3D"]
 
-[node name="UI" type="Control" parent="."]
+[node name="UI" type="Control" parent="Camera3D/CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -95,18 +95,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-metadata/_edit_use_anchors_ = true
+mouse_filter = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="UI"]
+[node name="Safezone" type="Control" parent="Camera3D/CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -187.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Camera3D/CanvasLayer/UI"]
+z_index = 2
+z_as_relative = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -101.0
-offset_top = -55.0
-offset_right = 101.0
+offset_left = -246.0
+offset_top = -139.0
+offset_right = 246.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/margin_left = 24
@@ -114,12 +127,14 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 48
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera3D/CanvasLayer/UI/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 48
 
-[node name="Button" type="Button" parent="UI/MarginContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="Camera3D/CanvasLayer/UI/MarginContainer/HBoxContainer"]
+show_behind_parent = true
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxFlat_jyhfs")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_tbgi4")
@@ -127,14 +142,18 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_tefeu")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_o6xl0")
 text = "House1"
 
-[node name="Button2" type="Button" parent="UI/MarginContainer/HBoxContainer"]
+[node name="Button2" type="Button" parent="Camera3D/CanvasLayer/UI/MarginContainer/HBoxContainer"]
+show_behind_parent = true
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxFlat_jyhfs")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_tbgi4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tefeu")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_o6xl0")
 text = "House2"
+
+[node name="Terrain" parent="." instance=ExtResource("1_jjgbg")]
 
 [connection signal="clicked_element" from="Camera3D" to="Camera3D/Builder" method="_on_camera_3d_clicked_element"]
 [connection signal="mouse_pos_on_terrain" from="Camera3D" to="Camera3D/Builder" method="_on_camera_3d_mouse_pos_on_terrain"]
