@@ -1,5 +1,7 @@
 extends Camera3D
 
+signal clicked_element(pos: Vector3)
+
 # Kamera-Einstellungen
 @export var orbit_sensitivity: float = 0.005
 @export var zoom_sensitivity: float = 0.05
@@ -8,13 +10,11 @@ extends Camera3D
 @export var move_speed: float = 10.0
 @export var fast_move_multiplier: float = 2.0
 @export var slow_move_multiplier: float = 0.3
-
 @export var scroll_zoom_speed: float = 1.0
 
 # Input-Tracking
 var is_orbiting: bool = false
-
-var _min_height = 1
+var min_height = 10
 
 func _ready():
 	rotation_degrees = Vector3(-30, 0, 0)
@@ -27,6 +27,10 @@ func _input(event):
 
 func handle_mouse_button(event: InputEventMouseButton):
 	match event.button_index:
+		MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				shoot_ray()
+		
 		MOUSE_BUTTON_MIDDLE:
 			if event.pressed:
 				start_orbiting()
@@ -76,13 +80,13 @@ func zoom_forward():
 	# Zoom in Blickrichtung (wie im Godot Editor)
 	var forward = -transform.basis.z
 	position += forward * scroll_zoom_speed
-	position.y = clampf(position.y, _min_height, position.y)
+	position.y = clampf(position.y, min_height, position.y)
 
 func zoom_backward():
 	# Zoom zurück in Blickrichtung
 	var forward = -transform.basis.z
 	position -= forward * scroll_zoom_speed
-	position.y = clampf(position.y, _min_height, position.y)
+	position.y = clampf(position.y, min_height, position.y)
 
 func _process(delta):
 	# WASD + QE Bewegung (wie im Godot Editor)
@@ -119,4 +123,27 @@ func handle_keyboard_movement(delta):
 		input_vector = input_vector.normalized()
 		var movement = input_vector * speed * delta
 		position += movement
-		position.y = clampf(position.y, _min_height, position.y)
+		position.y = clampf(position.y, min_height, position.y)
+
+func shoot_ray():
+	var mouse_pos = get_viewport().get_mouse_position()
+	var ray_length = 1000
+	var from = project_ray_origin(mouse_pos)
+	var to = from + project_ray_normal(mouse_pos) * ray_length
+	var space = get_world_3d().direct_space_state
+	var ray_query = PhysicsRayQueryParameters3D.new()
+	ray_query.from = from
+	ray_query.to = to
+	var raycast_result = space.intersect_ray(ray_query)
+	
+	if raycast_result:
+		var pos_x = raycast_result.position.x
+		var pos_z = raycast_result.position.z
+		
+		var pos = Vector3(
+			pos_x,
+			raycast_result.position.y,
+			pos_z
+		)
+		
+		clicked_element.emit(pos)
