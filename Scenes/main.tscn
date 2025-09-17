@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvd53runfr5vs"]
+[gd_scene load_steps=12 format=3 uid="uid://dvd53runfr5vs"]
 
 [ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/terrain.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://w7rwhkiuthrv" path="res://scripts/Camera/camera_controller.gd" id="2_bo1nx"]
@@ -22,6 +22,50 @@ fog_mode = 1
 fog_density = 1.0
 adjustment_saturation = 1.43
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyhfs"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+bg_color = Color(0.08205778, 0.2987934, 0.23048458, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+bg_color = Color(0.05385025, 0.224729, 0.1719091, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+bg_color = Color(0.09548273, 0.33182544, 0.25877625, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+bg_color = Color(0.5445, 0.55, 0.54761666, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [node name="Main" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -42,6 +86,55 @@ script = ExtResource("3_8gbba")
 scene = ExtResource("3_jyhfs")
 
 [node name="Terrain" parent="." instance=ExtResource("1_jjgbg")]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -101.0
+offset_top = -55.0
+offset_right = 101.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 48
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="Button" type="Button" parent="UI/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_jyhfs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tbgi4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tefeu")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_o6xl0")
+text = "House1"
+
+[node name="Button2" type="Button" parent="UI/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_jyhfs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tbgi4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tefeu")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_o6xl0")
+text = "House2"
 
 [connection signal="clicked_element" from="Camera3D" to="Camera3D/Builder" method="_on_camera_3d_clicked_element"]
 [connection signal="mouse_pos_on_terrain" from="Camera3D" to="Camera3D/Builder" method="_on_camera_3d_mouse_pos_on_terrain"]
