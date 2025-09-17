@@ -15,6 +15,12 @@ run/main_scene="uid://dvd53runfr5vs"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
-[display]
+[physics]
 
-window/vsync/vsync_mode=0
+common/physics_ticks_per_second=244
+3d/physics_engine="Jolt Physics"
+common/physics_interpolation=true
+
+[rendering]
+
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=5

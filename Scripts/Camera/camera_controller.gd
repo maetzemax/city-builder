@@ -1,6 +1,7 @@
 extends Camera3D
 
 signal clicked_element(pos: Vector3)
+signal mouse_pos_on_terrain(pos: Vector3)
 
 # Kamera-Einstellungen
 @export var orbit_sensitivity: float = 0.005
@@ -12,9 +13,14 @@ signal clicked_element(pos: Vector3)
 @export var slow_move_multiplier: float = 0.3
 @export var scroll_zoom_speed: float = 1.0
 
+var current_mouse_pos: Vector3
+
 # Input-Tracking
 var is_orbiting: bool = false
 var min_height = 10
+
+func _physics_process(_delta: float):
+	shoot_ray()
 
 func _ready():
 	rotation_degrees = Vector3(-30, 0, 0)
@@ -28,8 +34,8 @@ func _input(event):
 func handle_mouse_button(event: InputEventMouseButton):
 	match event.button_index:
 		MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				shoot_ray()
+			if event.pressed and current_mouse_pos:
+				clicked_element.emit(current_mouse_pos)
 		
 		MOUSE_BUTTON_MIDDLE:
 			if event.pressed:
@@ -134,6 +140,7 @@ func shoot_ray():
 	var ray_query = PhysicsRayQueryParameters3D.new()
 	ray_query.from = from
 	ray_query.to = to
+	ray_query.collision_mask = 1
 	var raycast_result = space.intersect_ray(ray_query)
 	
 	if raycast_result:
@@ -146,4 +153,6 @@ func shoot_ray():
 			pos_z
 		)
 		
-		clicked_element.emit(pos)
+		mouse_pos_on_terrain.emit(pos)
+		current_mouse_pos = pos
+	

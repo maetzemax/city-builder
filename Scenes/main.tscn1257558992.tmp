@@ -18,17 +18,15 @@ sky_material = SubResource("ProceduralSkyMaterial_bo1nx")
 background_mode = 2
 sky = SubResource("Sky_8gbba")
 ssao_enabled = true
-fog_mode = 1
-fog_density = 1.0
-adjustment_saturation = 1.43
+glow_enabled = true
 
 [node name="Main" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.8660254, -0.21761557, 0.45015946, 0, 0.9003188, 0.4352311, -0.50000006, 0.37692118, -0.77969897, 0, 0, 0)
+transform = Transform3D(-0.8660254, -0.07045062, 0.4950119, 0, 0.9900237, 0.14090122, -0.50000006, 0.12202404, -0.85738564, 0, 0, 0)
 light_color = Color(1, 1, 0.98039216, 1)
 shadow_enabled = true
-shadow_blur = 0.1
+directional_shadow_max_distance = 1000.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jjvhh")
@@ -44,4 +42,3 @@ scene = ExtResource("4_jjvhh")
 [node name="Terrain" parent="." instance=ExtResource("1_jjgbg")]
 
 [connection signal="clicked_element" from="Camera3D" to="Camera3D/Player" method="_on_camera_3d_clicked_element"]
-[connection signal="mouse_pos_on_terrain" from="Camera3D" to="Camera3D/Player" method="_on_camera_3d_mouse_pos_on_terrain"]
