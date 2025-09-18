@@ -12,18 +12,18 @@ config_version=5
 
 config/name="city builder"
 run/main_scene="uid://dvd53runfr5vs"
+run/print_header=false
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager="*res://scripts/game_manager.gd"
+GameManager="*res://scripts/manager/game_manager.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_height"
 
 [editor_plugins]

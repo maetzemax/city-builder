@@ -1,5 +1,7 @@
 extends Camera3D
 
+class_name CameraController
+
 signal clicked_element(pos: Vector3)
 signal mouse_pos_on_terrain(pos: Vector3)
 

@@ -1,9 +1,36 @@
-[gd_scene load_steps=12 format=3 uid="uid://dvd53runfr5vs"]
+[gd_scene load_steps=19 format=3 uid="uid://dvd53runfr5vs"]
 
-[ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/terrain.tscn" id="1_jjgbg"]
-[ext_resource type="Script" uid="uid://w7rwhkiuthrv" path="res://scripts/Camera/camera_controller.gd" id="2_bo1nx"]
-[ext_resource type="Script" uid="uid://bhncwhwwcrmdm" path="res://scripts/builder.gd" id="3_8gbba"]
-[ext_resource type="PackedScene" uid="uid://bjujy4yatmx5o" path="res://scenes/house1.tscn" id="3_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/models/terrain.tscn" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://d1xj148c07pj0" path="res://scripts/manager/build_manager.gd" id="1_tefeu"]
+[ext_resource type="Script" uid="uid://w7rwhkiuthrv" path="res://scripts/camera/camera_controller.gd" id="2_bo1nx"]
+[ext_resource type="Script" uid="uid://bhncwhwwcrmdm" path="res://scripts/builder/builder.gd" id="3_8gbba"]
+[ext_resource type="Script" uid="uid://ilvgs5tvgwn7" path="res://scripts/ui/category_ui.gd" id="4_tefeu"]
+[ext_resource type="Texture2D" uid="uid://jpnxfy0ychl2" path="res://assets/textures/house.png" id="5_choun"]
+[ext_resource type="PackedScene" uid="uid://bjujy4yatmx5o" path="res://scenes/models/house1.tscn" id="6_eb6dy"]
+[ext_resource type="Script" uid="uid://cxvyq11fluruq" path="res://scripts/data/placeable.gd" id="6_tipki"]
+[ext_resource type="PackedScene" uid="uid://gy22nsnjpg3i" path="res://scenes/models/cube.tscn" id="6_ya4ey"]
+[ext_resource type="Resource" uid="uid://d4jgl7e67eqah" path="res://data/buildings/house1.tres" id="7_85g3d"]
+[ext_resource type="PackedScene" uid="uid://1csggrtxcfua" path="res://assets/models/House1.fbx" id="7_trceg"]
+
+[sub_resource type="Resource" id="Resource_85g3d"]
+script = ExtResource("6_tipki")
+placeable_name = "Lumber Hut"
+scene = ExtResource("6_eb6dy")
+metadata/_custom_type_script = "uid://cxvyq11fluruq"
+
+[sub_resource type="Resource" id="Resource_choun"]
+script = ExtResource("6_tipki")
+placeable_name = "Sawmill"
+scene = ExtResource("7_trceg")
+metadata/_custom_type_script = "uid://cxvyq11fluruq"
+
+[sub_resource type="Resource" id="Resource_eb6dy"]
+script = ExtResource("6_tipki")
+placeable_name = "Path"
+scene = ExtResource("6_ya4ey")
+is_path = true
+icon = ExtResource("5_choun")
+metadata/_custom_type_script = "uid://cxvyq11fluruq"
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bo1nx"]
 sky_top_color = Color(0.5990235, 0.66700757, 0.74295527, 1)
@@ -22,72 +49,30 @@ fog_mode = 1
 fog_density = 1.0
 adjustment_saturation = 1.43
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyhfs"]
-content_margin_left = 12.0
-content_margin_top = 6.0
-content_margin_right = 12.0
-content_margin_bottom = 6.0
-bg_color = Color(0.08205778, 0.2987934, 0.23048458, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
-content_margin_left = 12.0
-content_margin_top = 6.0
-content_margin_right = 12.0
-content_margin_bottom = 6.0
-bg_color = Color(0.05385025, 0.224729, 0.1719091, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
-content_margin_left = 12.0
-content_margin_top = 6.0
-content_margin_right = 12.0
-content_margin_bottom = 6.0
-bg_color = Color(0.09548273, 0.33182544, 0.25877625, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
-content_margin_left = 12.0
-content_margin_top = 6.0
-content_margin_right = 12.0
-content_margin_bottom = 6.0
-bg_color = Color(0.5445, 0.55, 0.54761666, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+[sub_resource type="NavigationMesh" id="NavigationMesh_tipki"]
 
 [node name="Main" type="Node3D"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.8660254, -0.21761557, 0.45015946, 0, 0.9003188, 0.4352311, -0.50000006, 0.37692118, -0.77969897, 0, 0, 0)
-light_color = Color(1, 1, 0.98039216, 1)
-shadow_enabled = true
-shadow_blur = 0.1
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_jjvhh")
-
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="BuildManager" type="Node3D" parent="." node_paths=PackedStringArray("camera", "builder")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
-script = ExtResource("2_bo1nx")
+script = ExtResource("1_tefeu")
+camera = NodePath("../Camera3D")
+builder = NodePath("Builder")
 
-[node name="Builder" type="Node3D" parent="Camera3D"]
+[node name="Builder" type="Node3D" parent="BuildManager" node_paths=PackedStringArray("build_manager", "environment", "preview")]
 script = ExtResource("3_8gbba")
-scene = ExtResource("3_jyhfs")
+build_manager = NodePath("..")
+environment = NodePath("../Environment")
+preview = NodePath("../Preview")
+metadata/_custom_type_script = "uid://bhncwhwwcrmdm"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Camera3D"]
+[node name="Preview" type="Node3D" parent="BuildManager"]
 
-[node name="UI" type="Control" parent="Camera3D/CanvasLayer"]
+[node name="Environment" type="Node3D" parent="BuildManager"]
+
+[node name="BuildUI" type="CanvasLayer" parent="BuildManager"]
+
+[node name="UI" type="Control" parent="BuildManager/BuildUI"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -97,7 +82,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 
-[node name="Safezone" type="Control" parent="Camera3D/CanvasLayer/UI"]
+[node name="Safezone" type="Control" parent="BuildManager/BuildUI/UI"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -108,7 +93,7 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Camera3D/CanvasLayer/UI"]
+[node name="MarginContainer" type="MarginContainer" parent="BuildManager/BuildUI/UI"]
 z_index = 2
 z_as_relative = false
 layout_mode = 1
@@ -127,33 +112,55 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 48
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Camera3D/CanvasLayer/UI/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BuildManager/BuildUI/UI/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 48
 
-[node name="Button" type="Button" parent="Camera3D/CanvasLayer/UI/MarginContainer/HBoxContainer"]
-show_behind_parent = true
+[node name="Houses" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
 layout_mode = 2
-focus_mode = 0
+theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = SubResource("StyleBoxFlat_jyhfs")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_tbgi4")
-theme_override_styles/hover = SubResource("StyleBoxFlat_tefeu")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_o6xl0")
-text = "House1"
+text = "Houses"
+script = ExtResource("4_tefeu")
+build_manager = NodePath("../../../../..")
+placeables = Array[ExtResource("6_tipki")]([ExtResource("7_85g3d")])
+metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
-[node name="Button2" type="Button" parent="Camera3D/CanvasLayer/UI/MarginContainer/HBoxContainer"]
-show_behind_parent = true
+[node name="Production" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
 layout_mode = 2
-focus_mode = 0
+theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = SubResource("StyleBoxFlat_jyhfs")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_tbgi4")
-theme_override_styles/hover = SubResource("StyleBoxFlat_tefeu")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_o6xl0")
-text = "House2"
+text = "Production"
+script = ExtResource("4_tefeu")
+build_manager = NodePath("../../../../..")
+placeables = Array[ExtResource("6_tipki")]([SubResource("Resource_85g3d"), SubResource("Resource_choun")])
+metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
+
+[node name="Roads" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
+layout_mode = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 48
+text = "Roads"
+script = ExtResource("4_tefeu")
+build_manager = NodePath("../../../../..")
+placeables = Array[ExtResource("6_tipki")]([SubResource("Resource_eb6dy")])
+metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.21761557, 0.45015946, 0, 0.9003188, 0.4352311, -0.50000006, 0.37692118, -0.77969897, 0, 0, 0)
+light_color = Color(1, 1, 0.98039216, 1)
+shadow_enabled = true
+shadow_blur = 0.1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jjvhh")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
+script = ExtResource("2_bo1nx")
 
 [node name="Terrain" parent="." instance=ExtResource("1_jjgbg")]
 
-[connection signal="clicked_element" from="Camera3D" to="Camera3D/Builder" method="_on_camera_3d_clicked_element"]
-[connection signal="mouse_pos_on_terrain" from="Camera3D" to="Camera3D/Builder" method="_on_camera_3d_mouse_pos_on_terrain"]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_tipki")
