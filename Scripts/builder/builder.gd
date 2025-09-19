@@ -18,10 +18,16 @@ func _process(_delta: float):
 		_color_preview_mesh()
 		_preview_instance.global_rotation.y = _rotation
 		
-	if Input.is_action_just_pressed("rotate_building"):
-		_rotate_preview()
-	
 	_check_preview()
+	
+func _input(event):
+	if event is InputEventMouse and event.ctrl_pressed and event.is_pressed():
+		match event.button_index:
+			MOUSE_BUTTON_WHEEL_UP:
+				_rotation += deg_to_rad(5)
+			
+			MOUSE_BUTTON_WHEEL_DOWN:
+				_rotation -= deg_to_rad(5)
 
 func _color_preview_mesh():
 	if _preview_instance:
@@ -35,10 +41,6 @@ func _color_preview_mesh():
 			for child in _preview_instance.get_children():
 				if child is MeshInstance3D:
 					child.material_override = red_material
-					
-func _rotate_preview():
-	if _preview_instance:
-		_rotation += deg_to_rad(45)
 					
 func _check_preview():
 	if (not build_manager.is_building_state or build_manager.is_mouse_over_safe_area) and _preview_instance:
