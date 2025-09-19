@@ -18,16 +18,16 @@
 [sub_resource type="NavigationMesh" id="NavigationMesh_tipki"]
 
 [sub_resource type="Gradient" id="Gradient_a8y0u"]
-offsets = PackedFloat32Array(0, 0.1, 0.5, 0.9, 1)
-colors = PackedColorArray(0.86768293, 0.73972756, 0.7881959, 1, 0.6710475, 0.7802559, 1, 1, 0.7626626, 0.8280803, 0.26931617, 1, 0.67058825, 0.78039217, 1, 1, 0.8666667, 0.7411765, 0.7882353, 1)
+offsets = PackedFloat32Array(0, 0.1, 0.9, 1)
+colors = PackedColorArray(0.8666667, 0.7137255, 0.7882353, 1, 0.6710475, 0.7802559, 1, 1, 0.67058825, 0.78039217, 1, 1, 0.8666667, 0.7411765, 0.7882353, 1)
 metadata/_snap_enabled = true
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_jkv2x"]
 gradient = SubResource("Gradient_a8y0u")
 
 [sub_resource type="Gradient" id="Gradient_jbj1t"]
-offsets = PackedFloat32Array(0, 0.033333335, 0.5, 0.96666664, 1)
-colors = PackedColorArray(0.86768293, 0.73972756, 0.7881959, 1, 0.00031548503, 0.023605017, 0.22268069, 1, 8.747463e-05, 0.006543887, 0.10770344, 1, 0, 0.023529412, 0.22352941, 1, 0.8666667, 0.7411765, 0.7882353, 1)
+offsets = PackedFloat32Array(0, 0.06666667, 0.5, 0.93333334, 1)
+colors = PackedColorArray(0.86768293, 0.73972756, 0.7881959, 1, 0, 0.032000046, 0.32, 1, 0, 0.032000046, 0.32, 1, 0, 0.03137255, 0.32156864, 1, 0.8666667, 0.7411765, 0.7882353, 1)
 metadata/_snap_enabled = true
 metadata/_snap_count = 30
 
@@ -156,12 +156,14 @@ navigation_mesh = SubResource("NavigationMesh_tipki")
 
 [node name="DayAndNightCycle" type="Node3D" parent="." node_paths=PackedStringArray("sun_light", "world_environment", "day_timer", "night_timer")]
 script = ExtResource("14_a8y0u")
-day_colors = SubResource("GradientTexture2D_jkv2x")
-night_colors = SubResource("GradientTexture2D_muem4")
 sun_light = NodePath("Sun")
 world_environment = NodePath("WorldEnvironment")
 day_timer = NodePath("DayTimer")
+day_colors = SubResource("GradientTexture2D_jkv2x")
+day_length = 0.3
 night_timer = NodePath("NightTimer")
+night_colors = SubResource("GradientTexture2D_muem4")
+night_length = 0.1
 metadata/_custom_type_script = "uid://ci778ubcpw8b0"
 
 [node name="Sun" type="DirectionalLight3D" parent="DayAndNightCycle"]
@@ -169,6 +171,7 @@ transform = Transform3D(-0.8660254, 0, 0.50000006, 0, 1, 0, -0.50000006, 0, -0.8
 light_color = Color(1, 1, 0.98039216, 1)
 shadow_enabled = true
 shadow_reverse_cull_face = true
+shadow_blur = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="DayAndNightCycle"]
 environment = SubResource("Environment_jjvhh")
