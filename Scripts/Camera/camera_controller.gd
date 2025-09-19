@@ -46,10 +46,12 @@ func handle_mouse_button(event: InputEventMouseButton):
 				stop_camera_movement()
 		
 		MOUSE_BUTTON_WHEEL_UP:
-			zoom_forward()
+			if not Input.is_key_pressed(KEY_CTRL):
+				zoom_forward()
 		
 		MOUSE_BUTTON_WHEEL_DOWN:
-			zoom_backward()
+			if not Input.is_key_pressed(KEY_CTRL):
+				zoom_backward()
 		
 		MOUSE_BUTTON_RIGHT:
 			if event.pressed:
@@ -119,12 +121,6 @@ func handle_keyboard_movement(delta):
 		input_vector -= transform.basis.x
 	if Input.is_key_pressed(KEY_D):
 		input_vector += transform.basis.x
-	
-	# Auf/Ab mit Q/E (globale Y-Achse für City Builder)
-	if Input.is_key_pressed(KEY_Q):
-		input_vector.y -= 1.0
-	if Input.is_key_pressed(KEY_E):
-		input_vector.y += 1.0
 	
 	# Bewegung anwenden
 	if input_vector.length() > 0:
