@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dvd53runfr5vs"]
+[gd_scene load_steps=21 format=3 uid="uid://dvd53runfr5vs"]
 
 [ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/models/terrain.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://d1xj148c07pj0" path="res://scripts/manager/build_manager.gd" id="1_tefeu"]
@@ -13,6 +13,18 @@
 [ext_resource type="Resource" uid="uid://dwu2dympgfd" path="res://data/buildings/houseE.tres" id="9_dp3eg"]
 [ext_resource type="Resource" uid="uid://c02p5v4vrifwu" path="res://data/buildings/houseF.tres" id="10_0ld40"]
 [ext_resource type="Resource" uid="uid://d2x4oqgie5ds6" path="res://data/buildings/houseG.tres" id="11_gqmmt"]
+[ext_resource type="Script" uid="uid://ci778ubcpw8b0" path="res://scenes/day_and_night_cycle.gd" id="14_a8y0u"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_tipki"]
+
+[sub_resource type="Gradient" id="Gradient_a8y0u"]
+offsets = PackedFloat32Array(0, 0.05, 0.5, 0.55, 0.6, 0.95, 1)
+colors = PackedColorArray(0.99215686, 0.8156863, 0.6431373, 1, 0.705, 0.864, 0.977, 1, 0.7058824, 0.8627451, 0.9764706, 1, 0.9908095, 0.8160429, 0.6445813, 1, 0.015686275, 0.10980392, 0.16862746, 1, 0.015686275, 0.10980392, 0.16862746, 1, 0.99215686, 0.8156863, 0.6431373, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jkv2x"]
+gradient = SubResource("Gradient_a8y0u")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bo1nx"]
 sky_top_color = Color(0.5990235, 0.66700757, 0.74295527, 1)
@@ -30,8 +42,6 @@ ssao_enabled = true
 fog_mode = 1
 fog_density = 1.0
 adjustment_saturation = 1.43
-
-[sub_resource type="NavigationMesh" id="NavigationMesh_tipki"]
 
 [node name="Main" type="Node3D"]
 
@@ -127,15 +137,6 @@ script = ExtResource("4_tefeu")
 build_manager = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.8660254, -0.21761557, 0.45015946, 0, 0.9003188, 0.4352311, -0.50000006, 0.37692118, -0.77969897, 0, 0, 0)
-light_color = Color(1, 1, 0.98039216, 1)
-shadow_enabled = true
-shadow_blur = 0.1
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_jjvhh")
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
 script = ExtResource("2_bo1nx")
@@ -144,3 +145,24 @@ script = ExtResource("2_bo1nx")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_tipki")
+
+[node name="DayAndNightCycle" type="Node3D" parent="." node_paths=PackedStringArray("sun_light", "world_environment", "timer")]
+script = ExtResource("14_a8y0u")
+sky_colors = SubResource("GradientTexture2D_jkv2x")
+sun_light = NodePath("Sun")
+world_environment = NodePath("WorldEnvironment")
+timer = NodePath("Timer")
+day_length = 1.0
+metadata/_custom_type_script = "uid://ci778ubcpw8b0"
+
+[node name="Sun" type="DirectionalLight3D" parent="DayAndNightCycle"]
+transform = Transform3D(-0.8660254, 0, 0.50000006, 0, 1, 0, -0.50000006, 0, -0.8660254, 0, 0, 0)
+light_color = Color(1, 1, 0.98039216, 1)
+shadow_enabled = true
+shadow_blur = 0.1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="DayAndNightCycle"]
+environment = SubResource("Environment_jjvhh")
+
+[node name="Timer" type="Timer" parent="DayAndNightCycle"]
+process_callback = 0
