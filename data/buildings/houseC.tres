@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Placeable" load_steps=3 format=3 uid="uid://b6i3cn1gae0yr"]
+
+[ext_resource type="PackedScene" uid="uid://do8h4bw0feraq" path="res://scenes/models/town/building_c.tscn" id="2_0m8rm"]
+[ext_resource type="Script" uid="uid://cxvyq11fluruq" path="res://scripts/data/placeable.gd" id="3_ofj12"]
+
+[resource]
+script = ExtResource("3_ofj12")
+id = 2
+placeable_name = "House C"
+scene = ExtResource("2_0m8rm")
+metadata/_custom_type_script = "uid://cxvyq11fluruq"

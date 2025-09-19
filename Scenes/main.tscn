@@ -1,36 +1,18 @@
-[gd_scene load_steps=19 format=3 uid="uid://dvd53runfr5vs"]
+[gd_scene load_steps=18 format=3 uid="uid://dvd53runfr5vs"]
 
 [ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/models/terrain.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://d1xj148c07pj0" path="res://scripts/manager/build_manager.gd" id="1_tefeu"]
 [ext_resource type="Script" uid="uid://w7rwhkiuthrv" path="res://scripts/camera/camera_controller.gd" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://bhncwhwwcrmdm" path="res://scripts/builder/builder.gd" id="3_8gbba"]
 [ext_resource type="Script" uid="uid://ilvgs5tvgwn7" path="res://scripts/ui/category_ui.gd" id="4_tefeu"]
-[ext_resource type="Texture2D" uid="uid://jpnxfy0ychl2" path="res://assets/textures/house.png" id="5_choun"]
-[ext_resource type="PackedScene" uid="uid://bjujy4yatmx5o" path="res://scenes/models/house1.tscn" id="6_eb6dy"]
+[ext_resource type="Resource" uid="uid://54bjf5bbjwjo" path="res://data/buildings/houseB.tres" id="6_jkv2x"]
 [ext_resource type="Script" uid="uid://cxvyq11fluruq" path="res://scripts/data/placeable.gd" id="6_tipki"]
-[ext_resource type="PackedScene" uid="uid://gy22nsnjpg3i" path="res://scenes/models/cube.tscn" id="6_ya4ey"]
-[ext_resource type="Resource" uid="uid://d4jgl7e67eqah" path="res://data/buildings/house1.tres" id="7_85g3d"]
-[ext_resource type="PackedScene" uid="uid://1csggrtxcfua" path="res://assets/models/House1.fbx" id="7_trceg"]
-
-[sub_resource type="Resource" id="Resource_85g3d"]
-script = ExtResource("6_tipki")
-placeable_name = "Lumber Hut"
-scene = ExtResource("6_eb6dy")
-metadata/_custom_type_script = "uid://cxvyq11fluruq"
-
-[sub_resource type="Resource" id="Resource_choun"]
-script = ExtResource("6_tipki")
-placeable_name = "Sawmill"
-scene = ExtResource("7_trceg")
-metadata/_custom_type_script = "uid://cxvyq11fluruq"
-
-[sub_resource type="Resource" id="Resource_eb6dy"]
-script = ExtResource("6_tipki")
-placeable_name = "Path"
-scene = ExtResource("6_ya4ey")
-is_path = true
-icon = ExtResource("5_choun")
-metadata/_custom_type_script = "uid://cxvyq11fluruq"
+[ext_resource type="Resource" uid="uid://d4jgl7e67eqah" path="res://data/buildings/houseA.tres" id="7_85g3d"]
+[ext_resource type="Resource" uid="uid://b6i3cn1gae0yr" path="res://data/buildings/houseC.tres" id="7_jbj1t"]
+[ext_resource type="Resource" uid="uid://blqed1cbkedf7" path="res://data/buildings/houseD.tres" id="8_muem4"]
+[ext_resource type="Resource" uid="uid://dwu2dympgfd" path="res://data/buildings/houseE.tres" id="9_dp3eg"]
+[ext_resource type="Resource" uid="uid://c02p5v4vrifwu" path="res://data/buildings/houseF.tres" id="10_0ld40"]
+[ext_resource type="Resource" uid="uid://d2x4oqgie5ds6" path="res://data/buildings/houseG.tres" id="11_gqmmt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bo1nx"]
 sky_top_color = Color(0.5990235, 0.66700757, 0.74295527, 1)
@@ -124,7 +106,7 @@ theme_override_font_sizes/font_size = 48
 text = "Houses"
 script = ExtResource("4_tefeu")
 build_manager = NodePath("../../../../..")
-placeables = Array[ExtResource("6_tipki")]([ExtResource("7_85g3d")])
+placeables = Array[ExtResource("6_tipki")]([ExtResource("7_85g3d"), ExtResource("6_jkv2x"), ExtResource("7_jbj1t"), ExtResource("8_muem4"), ExtResource("9_dp3eg"), ExtResource("10_0ld40"), ExtResource("11_gqmmt")])
 metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
 [node name="Production" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
@@ -134,7 +116,6 @@ theme_override_font_sizes/font_size = 48
 text = "Production"
 script = ExtResource("4_tefeu")
 build_manager = NodePath("../../../../..")
-placeables = Array[ExtResource("6_tipki")]([SubResource("Resource_85g3d"), SubResource("Resource_choun")])
 metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
 [node name="Roads" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
@@ -144,7 +125,6 @@ theme_override_font_sizes/font_size = 48
 text = "Roads"
 script = ExtResource("4_tefeu")
 build_manager = NodePath("../../../../..")
-placeables = Array[ExtResource("6_tipki")]([SubResource("Resource_eb6dy")])
 metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

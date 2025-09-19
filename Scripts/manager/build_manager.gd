@@ -23,6 +23,6 @@ func _process(_delta: float):
 
 	var mouse_y = get_viewport().get_mouse_position().y
 	var viewport_size = get_viewport().size
-	var safe_area_height = viewport_size.y - viewport_size.y * 0.25
+	var safe_area_height = viewport_size.y - viewport_size.y * 0.15
 	
 	is_mouse_over_safe_area = mouse_y > safe_area_height

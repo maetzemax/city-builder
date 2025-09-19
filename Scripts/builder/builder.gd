@@ -10,10 +10,16 @@ var scene: PackedScene
 var _preview_instance
 var _can_place: bool
 
+var _rotation: float
+
 func _process(_delta: float):
 	if _preview_instance:
 		_can_place = not _preview_instance.has_overlapping_areas()
 		_color_preview_mesh()
+		_preview_instance.global_rotation.y = _rotation
+		
+	if Input.is_action_just_pressed("rotate_building"):
+		_rotate_preview()
 	
 	_check_preview()
 
@@ -30,6 +36,10 @@ func _color_preview_mesh():
 				if child is MeshInstance3D:
 					child.material_override = red_material
 					
+func _rotate_preview():
+	if _preview_instance:
+		_rotation += deg_to_rad(45)
+					
 func _check_preview():
 	if (not build_manager.is_building_state or build_manager.is_mouse_over_safe_area) and _preview_instance:
 		_preview_instance.queue_free()
@@ -39,6 +49,7 @@ func _on_camera_3d_clicked_element(pos: Vector3) -> void:
 		var instance = scene.instantiate()
 		environment.add_child(instance)
 		instance.global_position = pos
+		instance.rotate_y(_rotation)
 
 func _on_camera_3d_mouse_pos_on_terrain(pos: Vector3) -> void:
 	if scene and not _preview_instance:
