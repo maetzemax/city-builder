@@ -1,4 +1,6 @@
-[gd_scene load_steps=21 format=4 uid="uid://bn2j568mwjyxb"]
+[gd_scene load_steps=24 format=4 uid="uid://bn2j568mwjyxb"]
+
+[ext_resource type="Script" uid="uid://cpxe5t8wo7akl" path="res://scenes/models/residential/light_activator.gd" id="1_jl12f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhj3v"]
 
@@ -114,6 +116,7 @@ shadow_mesh = SubResource("ArrayMesh_5wesj")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gttws"]
 albedo_color = Color(1, 0.8666667, 0.5372549, 1)
+metallic_specular = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k4llc"]
 
@@ -185,6 +188,13 @@ shadow_mesh = SubResource("ArrayMesh_brmqo")
 [sub_resource type="BoxShape3D" id="BoxShape3D_wrggc"]
 size = Vector3(2.3515625, 3.2365723, 2.6552734)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xoao0"]
+albedo_color = Color(1, 0.9626667, 0.44, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jl12f"]
+material = SubResource("StandardMaterial3D_xoao0")
+size = Vector3(0.3, 0.2, 0.1)
+
 [node name="House1" type="Area3D"]
 
 [node name="Door" type="MeshInstance3D" parent="."]
@@ -220,3 +230,15 @@ surface_material_override/0 = SubResource("StandardMaterial3D_forep")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 1.3343505, 0)
 shape = SubResource("BoxShape3D_wrggc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014154434, 1.3, 0.97676325)
+mesh = SubResource("BoxMesh_jl12f")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.06967819)
+light_energy = 0.5
+shadow_enabled = true
+shadow_bias = 1.0
+shadow_blur = 0.0
+script = ExtResource("1_jl12f")

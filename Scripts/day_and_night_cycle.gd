@@ -39,6 +39,7 @@ func _process(_delta):
 	var night_progress_decimal = 1 - night_progress / 100
 	
 	var is_day = !day_timer.is_stopped()
+	GameManager.is_day = is_day
 	sun_light.light_energy = day_light_energy if is_day else night_light_energy
 	
 	var sky_color = day_colors.gradient.sample(day_progress_decimal) if is_day else night_colors.gradient.sample(night_progress_decimal)

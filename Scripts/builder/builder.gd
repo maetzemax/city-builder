@@ -7,9 +7,9 @@ class_name Builder
 @export var preview: Node3D
 
 var placeable: Placeable
+
 var _preview_instance
 var _can_place: bool
-
 var _rotation: float
 
 func _process(_delta: float):
@@ -24,13 +24,17 @@ func _process(_delta: float):
 	_check_preview()
 	
 func _input(event):
-	if event is InputEventMouse and event.ctrl_pressed and event.is_pressed():
-		match event.button_index:
-			MOUSE_BUTTON_WHEEL_UP:
-				_rotation += deg_to_rad(5)
-			
-			MOUSE_BUTTON_WHEEL_DOWN:
-				_rotation -= deg_to_rad(5)
+	if _preview_instance:
+		if event is InputEventMouse and event.ctrl_pressed and event.is_pressed():
+			match event.button_index:
+				MOUSE_BUTTON_WHEEL_UP:
+					_rotation += deg_to_rad(5)
+				
+				MOUSE_BUTTON_WHEEL_DOWN:
+					_rotation -= deg_to_rad(5)
+		
+		if Input.is_action_just_pressed("rotate_building"):
+			_rotation += deg_to_rad(90)
 
 func _color_preview_mesh():
 	if _preview_instance:

@@ -6,7 +6,9 @@ enum GameState {
 	PAUSED
 }
 
-var current_game_state = GameState.RUNNING
+static var current_game_state = GameState.RUNNING
+
+static var is_day: bool = true
 
 func _input(event: InputEvent):
 	if event is InputEventKey:

@@ -1,20 +1,25 @@
-[gd_scene load_steps=24 format=3 uid="uid://dvd53runfr5vs"]
+[gd_scene load_steps=21 format=3 uid="uid://dvd53runfr5vs"]
 
 [ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/models/terrain.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://d1xj148c07pj0" path="res://scripts/manager/build_manager.gd" id="1_tefeu"]
 [ext_resource type="Script" uid="uid://w7rwhkiuthrv" path="res://scripts/camera/camera_controller.gd" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://bhncwhwwcrmdm" path="res://scripts/builder/builder.gd" id="3_8gbba"]
+[ext_resource type="Script" uid="uid://cxvyq11fluruq" path="res://scripts/data/placeable/placeable.gd" id="4_85g3d"]
 [ext_resource type="Script" uid="uid://ilvgs5tvgwn7" path="res://scripts/ui/category_ui.gd" id="4_tefeu"]
-[ext_resource type="Resource" uid="uid://54bjf5bbjwjo" path="res://data/buildings/houseB.tres" id="6_jkv2x"]
-[ext_resource type="Script" uid="uid://cxvyq11fluruq" path="res://scripts/data/placeable.gd" id="6_tipki"]
-[ext_resource type="Resource" uid="uid://d4jgl7e67eqah" path="res://data/buildings/houseA.tres" id="7_85g3d"]
-[ext_resource type="Resource" uid="uid://b6i3cn1gae0yr" path="res://data/buildings/houseC.tres" id="7_jbj1t"]
-[ext_resource type="Resource" uid="uid://blqed1cbkedf7" path="res://data/buildings/houseD.tres" id="8_muem4"]
-[ext_resource type="Resource" uid="uid://dwu2dympgfd" path="res://data/buildings/houseE.tres" id="9_dp3eg"]
-[ext_resource type="Resource" uid="uid://c02p5v4vrifwu" path="res://data/buildings/houseF.tres" id="10_0ld40"]
-[ext_resource type="Resource" uid="uid://d2x4oqgie5ds6" path="res://data/buildings/houseG.tres" id="11_gqmmt"]
+[ext_resource type="Script" uid="uid://cok5c1le5q4lm" path="res://scripts/data/placeable/residential.gd" id="5_choun"]
+[ext_resource type="Texture2D" uid="uid://jpnxfy0ychl2" path="res://assets/textures/house.png" id="5_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://bn2j568mwjyxb" path="res://scenes/models/residential/residential_placeholder.tscn" id="6_ya4ey"]
 [ext_resource type="Script" uid="uid://cyu4clyieh3ni" path="res://scripts/manager/economy_manager.gd" id="12_jkv2x"]
-[ext_resource type="Script" uid="uid://ci778ubcpw8b0" path="res://scenes/day_and_night_cycle.gd" id="14_a8y0u"]
+[ext_resource type="Script" uid="uid://ci778ubcpw8b0" path="res://scripts/day_and_night_cycle.gd" id="14_a8y0u"]
+
+[sub_resource type="Resource" id="Resource_ya4ey"]
+script = ExtResource("5_choun")
+capacity = 10
+scene = ExtResource("6_ya4ey")
+cost = 10.5
+label = "House"
+icon = ExtResource("5_jbj1t")
+metadata/_custom_type_script = "uid://cok5c1le5q4lm"
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_tipki"]
 
@@ -46,10 +51,7 @@ sky_material = SubResource("ProceduralSkyMaterial_bo1nx")
 [sub_resource type="Environment" id="Environment_jjvhh"]
 background_mode = 2
 sky = SubResource("Sky_8gbba")
-ssao_enabled = true
-fog_mode = 1
-fog_density = 1.0
-adjustment_saturation = 1.43
+adjustment_enabled = true
 
 [node name="Main" type="Node3D"]
 
@@ -117,17 +119,18 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 48
 
-[node name="Houses" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
+[node name="Residential" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
 layout_mode = 2
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 48
-text = "Houses"
+text = "Residential"
 script = ExtResource("4_tefeu")
 build_manager = NodePath("../../../../..")
-placeables = Array[ExtResource("6_tipki")]([ExtResource("7_85g3d"), ExtResource("6_jkv2x"), ExtResource("7_jbj1t"), ExtResource("8_muem4"), ExtResource("9_dp3eg"), ExtResource("10_0ld40"), ExtResource("11_gqmmt")])
+placeables = Array[ExtResource("4_85g3d")]([SubResource("Resource_ya4ey")])
 metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
 [node name="Production" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
+visible = false
 layout_mode = 2
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 48
@@ -137,6 +140,7 @@ build_manager = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
 [node name="Roads" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
+visible = false
 layout_mode = 2
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 48
