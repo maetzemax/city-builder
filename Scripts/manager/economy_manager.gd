@@ -17,4 +17,4 @@ func _ready():
 	return
 
 func _process(_delta):
-	label.text = "%2.2f" % money + " €"
+	label.text = "%2.2f €" % money

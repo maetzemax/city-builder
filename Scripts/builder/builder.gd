@@ -15,9 +15,12 @@ var _rotation: float
 func _process(_delta: float):
 	if _preview_instance:
 		_can_place = not _preview_instance.has_overlapping_areas()
-		_color_preview_mesh()
 		_preview_instance.global_rotation.y = _rotation
 		
+	if placeable and EconomyManager.money < placeable.cost:
+		_can_place = false
+		
+	_color_preview_mesh()
 	_check_preview()
 	
 func _input(event):
@@ -45,9 +48,10 @@ func _color_preview_mesh():
 func _check_preview():
 	if (not build_manager.is_building_state or build_manager.is_mouse_over_safe_area) and _preview_instance:
 		_preview_instance.queue_free()
+		return
 
 func _on_camera_3d_clicked_element(pos: Vector3) -> void:
-	if _can_place and _preview_instance:
+	if _can_place and _preview_instance and placeable:
 		var instance = placeable.scene.instantiate()
 		environment.add_child(instance)
 		instance.global_position = pos
