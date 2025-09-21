@@ -11,7 +11,7 @@ var is_building_state: bool
 var is_mouse_over_safe_area: bool
 
 func update_selected_placeable(placeable: Placeable):
-	builder.scene = placeable.scene
+	builder.placeable = placeable
 
 func _ready():
 	camera.clicked_element.connect(builder._on_camera_3d_clicked_element)

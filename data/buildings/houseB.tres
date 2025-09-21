@@ -8,4 +8,5 @@ script = ExtResource("3_ypmm3")
 id = 1
 placeable_name = "House B"
 scene = ExtResource("2_u3ku0")
+cost = 7.5
 metadata/_custom_type_script = "uid://cxvyq11fluruq"

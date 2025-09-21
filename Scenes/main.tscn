@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dvd53runfr5vs"]
+[gd_scene load_steps=24 format=3 uid="uid://dvd53runfr5vs"]
 
 [ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/models/terrain.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://d1xj148c07pj0" path="res://scripts/manager/build_manager.gd" id="1_tefeu"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://dwu2dympgfd" path="res://data/buildings/houseE.tres" id="9_dp3eg"]
 [ext_resource type="Resource" uid="uid://c02p5v4vrifwu" path="res://data/buildings/houseF.tres" id="10_0ld40"]
 [ext_resource type="Resource" uid="uid://d2x4oqgie5ds6" path="res://data/buildings/houseG.tres" id="11_gqmmt"]
+[ext_resource type="Script" uid="uid://cyu4clyieh3ni" path="res://scripts/manager/economy_manager.gd" id="12_jkv2x"]
 [ext_resource type="Script" uid="uid://ci778ubcpw8b0" path="res://scenes/day_and_night_cycle.gd" id="14_a8y0u"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_tipki"]
@@ -144,6 +145,18 @@ script = ExtResource("4_tefeu")
 build_manager = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
+[node name="EconomyManager" type="Node" parent="." node_paths=PackedStringArray("label")]
+script = ExtResource("12_jkv2x")
+label = NodePath("CanvasLayer/Label")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="EconomyManager"]
+
+[node name="Label" type="Label" parent="EconomyManager/CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 48
+text = "100.00 €"
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
 script = ExtResource("2_bo1nx")
@@ -165,7 +178,7 @@ night_light_energy = 0.5
 metadata/_custom_type_script = "uid://ci778ubcpw8b0"
 
 [node name="Sun" type="DirectionalLight3D" parent="DayAndNightCycle"]
-transform = Transform3D(-0.8660254, 0, 0.50000006, 0, 1, 0, -0.50000006, 0, -0.8660254, 0, 0, 0)
+transform = Transform3D(-0.8660254, -0.23857942, 0.4394086, 0, 0.8788171, 0.47715878, -0.50000006, 0.4132316, -0.7610779, 0, 0, 0)
 light_color = Color(1, 1, 0.98039216, 1)
 shadow_enabled = true
 shadow_reverse_cull_face = true

@@ -6,7 +6,7 @@ class_name Builder
 @export var environment: Node3D
 @export var preview: Node3D
 
-var scene: PackedScene
+var placeable: Placeable
 var _preview_instance
 var _can_place: bool
 
@@ -48,14 +48,15 @@ func _check_preview():
 
 func _on_camera_3d_clicked_element(pos: Vector3) -> void:
 	if _can_place and _preview_instance:
-		var instance = scene.instantiate()
+		var instance = placeable.scene.instantiate()
 		environment.add_child(instance)
 		instance.global_position = pos
 		instance.rotate_y(_rotation)
+		EconomyManager.reduce_money(placeable.cost)
 
 func _on_camera_3d_mouse_pos_on_terrain(pos: Vector3) -> void:
-	if scene and not _preview_instance:
-		_preview_instance = scene.instantiate()
+	if placeable and not _preview_instance:
+		_preview_instance = placeable.scene.instantiate()
 		preview.add_child(_preview_instance)
 		_preview_instance.global_position = pos
 		_preview_instance.name = "Preview"
