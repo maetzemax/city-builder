@@ -1,16 +1,19 @@
-[gd_scene load_steps=21 format=3 uid="uid://dvd53runfr5vs"]
+[gd_scene load_steps=24 format=3 uid="uid://dvd53runfr5vs"]
 
 [ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/models/terrain.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://d1xj148c07pj0" path="res://scripts/manager/build_manager.gd" id="1_tefeu"]
 [ext_resource type="Script" uid="uid://w7rwhkiuthrv" path="res://scripts/camera/camera_controller.gd" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://bhncwhwwcrmdm" path="res://scripts/builder/builder.gd" id="3_8gbba"]
-[ext_resource type="Script" uid="uid://cxvyq11fluruq" path="res://scripts/data/placeable/placeable.gd" id="4_85g3d"]
+[ext_resource type="Script" uid="uid://cxvyq11fluruq" path="res://scripts/data/placeable/placeable_data.gd" id="4_85g3d"]
 [ext_resource type="Script" uid="uid://ilvgs5tvgwn7" path="res://scripts/ui/category_ui.gd" id="4_tefeu"]
-[ext_resource type="Script" uid="uid://cok5c1le5q4lm" path="res://scripts/data/placeable/residential.gd" id="5_choun"]
+[ext_resource type="Script" uid="uid://cok5c1le5q4lm" path="res://scripts/data/placeable/residential_data.gd" id="5_choun"]
 [ext_resource type="Texture2D" uid="uid://jpnxfy0ychl2" path="res://assets/textures/house.png" id="5_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://bn2j568mwjyxb" path="res://scenes/models/residential/residential_placeholder.tscn" id="6_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://ctkmsa3cpy45s" path="res://assets/models/cabin1.fbx" id="12_eb6dy"]
 [ext_resource type="Script" uid="uid://cyu4clyieh3ni" path="res://scripts/manager/economy_manager.gd" id="12_jkv2x"]
-[ext_resource type="Script" uid="uid://ci778ubcpw8b0" path="res://scripts/day_and_night_cycle.gd" id="14_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://bmglwbl6r4ao7" path="res://scenes/models/environment/tree1.tscn" id="13_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://cd0ot4jpb1004" path="res://scenes/working_radius.tscn" id="13_trceg"]
+[ext_resource type="Script" uid="uid://ci778ubcpw8b0" path="res://scripts/environment/day_and_night_cycle.gd" id="14_a8y0u"]
 
 [sub_resource type="Resource" id="Resource_ya4ey"]
 script = ExtResource("5_choun")
@@ -42,8 +45,7 @@ gradient = SubResource("Gradient_jbj1t")
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bo1nx"]
 sky_top_color = Color(0.5990235, 0.66700757, 0.74295527, 1)
 sky_horizon_color = Color(0.69806564, 0.71506166, 0.7340486, 1)
-ground_bottom_color = Color(0, 0, 0, 1)
-ground_horizon_color = Color(0.69806564, 0.71506166, 0.7340486, 1)
+sun_angle_max = 15.0
 
 [sub_resource type="Sky" id="Sky_8gbba"]
 sky_material = SubResource("ProceduralSkyMaterial_bo1nx")
@@ -51,7 +53,6 @@ sky_material = SubResource("ProceduralSkyMaterial_bo1nx")
 [sub_resource type="Environment" id="Environment_jjvhh"]
 background_mode = 2
 sky = SubResource("Sky_8gbba")
-adjustment_enabled = true
 
 [node name="Main" type="Node3D"]
 
@@ -196,3 +197,147 @@ process_callback = 0
 
 [node name="NightTimer" type="Timer" parent="DayAndNightCycle"]
 process_callback = 0
+
+[node name="cabin1" parent="." instance=ExtResource("12_eb6dy")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 51.719578, 11.982941, 13.5233555)
+
+[node name="L_1" parent="cabin1" index="0"]
+transform = Transform3D(3.448883e-07, 7.636944e-06, 844.7249, -97.94882, 20.150232, -1.0145548e-05, -20.150232, -97.94882, 6.377496e-05, 0, 0, 6)
+
+[node name="L_2" parent="cabin1" index="1"]
+transform = Transform3D(-1.5184219e-05, -1.0979918e-06, 844.7249, -83.03407, -55.72561, -0.0001116721, 55.725605, -83.03408, 6.377496e-05, 0, 1.7763716, 6)
+
+[node name="L_3" parent="cabin1" index="2"]
+transform = Transform3D(1.2293746e-05, 3.0235631e-05, 844.72504, -99.408875, 10.857162, 7.55044e-05, -10.857162, -99.408875, 0.0002651731, 0, 3.3934312, 6)
+
+[node name="L_4" parent="cabin1" index="3"]
+transform = Transform3D(1.0908551e-05, 1.1826975e-05, 844.7249, -94.363594, -33.09852, 0.000120020675, 33.09852, -94.363594, 6.377496e-05, 0, 5.052867, 6)
+
+[node name="L_5" parent="cabin1" index="4"]
+transform = Transform3D(1.197234e-05, 6.57579e-06, 844.72485, -99.65276, 8.326126, 9.615724e-05, -8.326126, -99.65276, 6.3774954e-05, 0, 6.7777042, 6)
+
+[node name="L_6" parent="cabin1" index="5"]
+transform = Transform3D(9.3454355e-06, 3.7760817e-06, 937.01154, -89.48988, 44.62692, 6.257428e-05, -44.62692, -89.48988, 7.0742404e-05, 0, 8.335428, 6)
+
+[node name="R_6" parent="cabin1" index="6"]
+transform = Transform3D(1.2501017e-07, 7.5629778e-06, 937.01166, -99.69714, 7.777278, -4.343629e-06, -7.7772775, -99.69715, 7.074241e-05, 0, 8.335428, -6)
+
+[node name="F_5" parent="cabin1" index="7"]
+transform = Transform3D(-44.626923, -89.48989, 0.000112477035, -89.48989, 44.626923, 8.083361e-05, -1.6449545e-05, -8.669872e-06, -744.90173, 7, 8.335428, 0)
+
+[node name="F_4" parent="cabin1" index="8"]
+transform = Transform3D(-46.587635, -88.48499, 0.00010770114, -88.48499, 46.587635, 7.598934e-05, -1.6461392e-05, -8.397592e-06, -713.2724, 7, 6.535428, 0)
+
+[node name="F_3" parent="cabin1" index="9"]
+transform = Transform3D(-61.97505, -78.47992, 3.5832596e-05, -78.47993, 61.975048, 2.179678e-05, -1.6566351e-05, -6.157734e-06, -237.30856, 7, 4.535428, 4.7258544)
+
+[node name="F_10" parent="cabin1" index="10"]
+transform = Transform3D(-61.97505, -78.47992, 3.5832596e-05, -78.47993, 61.975048, 2.179678e-05, -1.6566351e-05, -6.157734e-06, -237.30856, 7, 4.535428, -4.7258544)
+
+[node name="F_11" parent="cabin1" index="11"]
+transform = Transform3D(-47.934944, -87.76244, 3.583259e-05, -87.76244, 47.934944, 2.4961344e-05, -1.6469286e-05, -8.209713e-06, -237.3085, 7, 2.535428, -4.7258544)
+
+[node name="F_2" parent="cabin1" index="12"]
+transform = Transform3D(-79.97155, -60.03796, 3.583259e-05, -60.03796, 79.97155, 1.8636685e-05, -1.6790365e-05, -2.7850283e-06, -237.3085, 7, 2.535428, 4.7258544)
+
+[node name="F_12" parent="cabin1" index="13"]
+transform = Transform3D(-99.0177, -13.982116, 3.583259e-05, -13.982116, 99.0177, -1.022197e-05, -1.4348983e-05, -6.376389e-06, -237.3085, 7, 0.53542805, -4.7258544)
+
+[node name="F_1" parent="cabin1" index="14"]
+transform = Transform3D(-25.384491, -96.7245, 0.19523197, -96.724396, 25.3843, -0.45313558, 0.16381006, -0.12804572, -237.30777, 7, 0.53542805, 4.7258544)
+
+[node name="B_4" parent="cabin1" index="15"]
+transform = Transform3D(-87.35474, -48.673965, 0.00010770114, -48.673965, 87.35474, -2.0606594e-05, -1.1783997e-05, -9.873262e-06, -713.2724, -7.0338593, 6.1290655, 0)
+
+[node name="B_5" parent="cabin1" index="16"]
+transform = Transform3D(-26.896208, -96.31509, 6.512138e-05, -96.31509, 26.896208, 0.0001182047, -1.7635097e-05, -4.152109e-06, -744.90173, -7.0338593, 8.098383, 0)
+
+[node name="B_3" parent="cabin1" index="17"]
+transform = Transform3D(-49.600075, -86.83222, 0.00010770114, -86.83222, 49.600075, 7.384356e-05, -1.6478956e-05, -7.976311e-06, -713.2724, -7.0338593, 4.2379384, 0)
+
+[node name="B_2" parent="cabin1" index="18"]
+transform = Transform3D(-78.513794, -61.932133, 0.00010770114, -61.932133, 78.513794, -1.0147461e-05, -1.0974168e-05, -1.0468479e-05, -713.2724, -7.0338593, 2.3363478, 0)
+
+[node name="B_1" parent="cabin1" index="19"]
+transform = Transform3D(-96.27652, -27.033934, 0.00010770114, -27.033934, 96.27652, -2.8933087e-05, -1.344075e-05, -7.987359e-06, -713.2724, -7.0338593, 0.5077161, 0)
+
+[node name="R_7" parent="cabin1" index="20"]
+transform = Transform3D(1.2501017e-07, 7.5629778e-06, 937.01166, -99.69714, 7.777278, -4.343629e-06, -7.7772775, -99.69715, 7.074241e-05, 0, 11.31233, -4.3783503)
+
+[node name="L_7" parent="cabin1" index="21"]
+transform = Transform3D(9.3454355e-06, 3.7760817e-06, 937.01154, -89.48988, 44.62692, 6.257428e-05, -44.62692, -89.48988, 7.0742404e-05, 0, 11.335428, 4.5)
+
+[node name="T" parent="cabin1" index="22"]
+transform = Transform3D(9.3454355e-06, 3.7760817e-06, 937.01154, -89.48988, 44.62692, 6.257428e-05, -44.62692, -89.48988, 7.0742404e-05, 0, 14.335428, 0)
+
+[node name="F_6" parent="cabin1" index="23"]
+transform = Transform3D(14.45636, -98.94957, -0.00010035913, -98.94956, -14.456361, 3.9138635e-05, -8.009615e-06, 1.4089689e-05, -664.6485, 7, 10.051625, 0)
+
+[node name="F_7" parent="cabin1" index="24"]
+transform = Transform3D(-25.387474, -96.72372, 5.100292e-05, -96.72372, 25.387474, 9.241252e-05, -1.7540662e-05, -4.4344324e-06, -583.4054, 7, 11.807507, 0)
+
+[node name="F_8" parent="cabin1" index="25"]
+transform = Transform3D(-57.957676, -81.491776, 7.525689e-05, -81.49178, 57.957672, 4.7592355e-05, -1.6532978e-05, -6.770564e-06, -498.40384, 7, 13.527355, 0)
+
+[node name="F_9" parent="cabin1" index="26"]
+transform = Transform3D(-68.58058, -72.778465, 4.0308885e-05, -72.778465, 68.58058, 1.2146476e-06, -1.0686524e-05, -1.06771995e-05, -266.95367, 7, 15.152217, 0)
+
+[node name="B_9" parent="cabin1" index="27"]
+transform = Transform3D(-68.58058, -72.778465, 4.0308885e-05, -72.778465, 68.58058, 1.2146476e-06, -1.0686524e-05, -1.06771995e-05, -266.95367, -7.053551, 15.152217, 0)
+
+[node name="B_8" parent="cabin1" index="28"]
+transform = Transform3D(-57.957676, -81.491776, 7.525689e-05, -81.49178, 57.957672, 4.7592355e-05, -1.6532978e-05, -6.770564e-06, -498.40384, -7.053551, 13.527355, 0)
+
+[node name="B_7" parent="cabin1" index="29"]
+transform = Transform3D(-25.387474, -96.72372, 5.100292e-05, -96.72372, 25.387474, 9.241252e-05, -1.7540662e-05, -4.4344324e-06, -583.4054, -7.0872364, 11.807507, 0)
+
+[node name="B_6" parent="cabin1" index="30"]
+transform = Transform3D(14.45636, -98.94957, -0.00010035913, -98.94956, -14.456361, 3.9138635e-05, -8.009615e-06, 1.4089689e-05, -664.6485, -7.0872364, 10.051625, 0)
+
+[node name="E_1" parent="cabin1" index="31"]
+transform = Transform3D(109.56023, 0, 0, 0, -1.1706269e-05, 35.331387, 0, -267.80823, -1.544384e-06, 7.00197, 5.5609965, 0)
+
+[node name="E_2" parent="cabin1" index="32"]
+transform = Transform3D(102.22202, -2.5204252e-05, 1.6725622e-06, -8.936533e-06, -288.30298, -2.888834e-06, 8.936535e-06, 4.3532535e-05, -19.131882, 7.00197, 2.4047549, 2.3450892)
+
+[node name="Roof_R" parent="cabin1" index="33"]
+transform = Transform3D(-992.2234, -1.039145e-05, -0.00016842567, 0, 22.237696, -519.004, 0.00038638603, -26.684814, -432.51016, 3.8866567e-16, 12.491737, -4.0562315)
+
+[node name="Roof_L" parent="cabin1" index="34"]
+transform = Transform3D(992.2234, 4.5463244e-16, -1.1734638e-14, -2.1553395e-14, 22.237686, -519.00415, 1.0568099e-15, 26.684818, 432.51, 3.8866567e-16, 12.491737, 4.0643816)
+
+[node name="E_3" parent="cabin1" index="35"]
+transform = Transform3D(102.22202, -2.5204252e-05, 1.6725622e-06, -8.936533e-06, -288.30298, -2.888834e-06, 8.936535e-06, 4.3532535e-05, -19.131882, 7.00197, 2.4047549, -2.3833208)
+
+[node name="Floor" parent="cabin1" index="36"]
+transform = Transform3D(791.12866, 0, 0, 0, -2.844951e-05, 25.19573, 0, -650.84894, -1.1013403e-06, 0, -0.4632655, 0)
+
+[node name="R_5" parent="cabin1" index="37"]
+transform = Transform3D(1.197234e-05, 6.57579e-06, 844.72485, -99.65276, 8.326126, 9.615724e-05, -8.326126, -99.65276, 6.3774954e-05, 0, 6.7777042, -6)
+
+[node name="R_4" parent="cabin1" index="38"]
+transform = Transform3D(1.0908551e-05, 1.1826975e-05, 844.7249, -94.363594, -33.09852, 0.000120020675, 33.09852, -94.363594, 6.377496e-05, 0, 5.052867, -6)
+
+[node name="R_3" parent="cabin1" index="39"]
+transform = Transform3D(1.2293746e-05, 3.0235631e-05, 844.72504, -99.408875, 10.857162, 7.55044e-05, -10.857162, -99.408875, 0.0002651731, 0, 3.3934312, -6)
+
+[node name="R_2" parent="cabin1" index="40"]
+transform = Transform3D(-1.5184219e-05, -1.0979918e-06, 844.7249, -83.03407, -55.72561, -0.0001116721, 55.725605, -83.03408, 6.377496e-05, 0, 1.7763716, -6)
+
+[node name="R_1" parent="cabin1" index="41"]
+transform = Transform3D(3.448883e-07, 7.636944e-06, 844.7249, -97.94882, 20.150232, -1.0145548e-05, -20.150232, -97.94882, 6.377496e-05, 0, 0, -6)
+
+[node name="WorkingRadius" parent="cabin1" instance=ExtResource("13_trceg")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+radius = 28.84
+
+[node name="Tree1" parent="." instance=ExtResource("13_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.2386, 11.577564, 28.613848)
+
+[node name="Tree2" parent="." instance=ExtResource("13_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.03768, 11.6844425, 28.789536)
+
+[node name="Tree3" parent="." instance=ExtResource("13_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.047386, 11.973823, 18.005445)
+
+[editable path="cabin1"]
