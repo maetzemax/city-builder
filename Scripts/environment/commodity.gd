@@ -2,7 +2,7 @@ extends Area3D
 
 class_name Commodity
 
-@export var commodity: CommodityData
+@export var data: CommodityData
 
 var _harvested_total: int = 0
 
@@ -13,12 +13,12 @@ func harvest(amount: int):
 		return
 	
 	_harvested_total += amount
-	print("Harvested ", amount, "x of ",  commodity.get_type_name(), ", " , commodity.capacity - _harvested_total, " remaining.")
+	print("Harvested ", amount, "x of ",  data.get_type_name(), ", " , data.capacity - _harvested_total, " remaining.")
 	print("----------")
 	
-	EconomyManager.add_money(10)
+	EconomyManager.add_money(5)
 	
-	if _harvested_total >= commodity.capacity:
+	if _harvested_total >= data.capacity:
 		queue_free()
 	
 	# TODO: Add the harvested account in production storage

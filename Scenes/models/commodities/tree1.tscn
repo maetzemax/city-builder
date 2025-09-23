@@ -52,7 +52,7 @@ height = 3.9312134
 [node name="Tree1" type="Area3D" groups=["Commodity"]]
 collision_layer = 5
 script = ExtResource("1_wtjj2")
-commodity = ExtResource("2_o8mjk")
+data = ExtResource("2_o8mjk")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.377826, 0, 0, 0, 6.7560556e-08, 0.37782598, 0, -0.37782598, 6.7560556e-08, 0, 0, 0)

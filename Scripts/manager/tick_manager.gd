@@ -3,9 +3,10 @@ extends Node
 signal new_tick
 
 var timer: Timer
+
+## How many seconds need to passed unti new tick
 var tick_time: float = 5.0
 
-##How many seconds need to passed unti new tick
 func _ready():
 	timer = Timer.new()
 	add_child(timer)

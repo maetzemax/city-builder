@@ -57,7 +57,7 @@ func _check_preview():
 func _on_camera_3d_clicked_element(pos: Vector3) -> void:
 	if _can_place and _preview_instance and placeable:
 		var instance = placeable.scene.instantiate()
-		if instance is Commodity:
+		if instance is Commodity or instance is Harvest:
 			instance.is_active = true
 		environment.add_child(instance)
 		instance.global_position = pos

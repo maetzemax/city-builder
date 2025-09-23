@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlaceableData" load_steps=3 format=3 uid="uid://bc7pda3k4h0ac"]
+
+[ext_resource type="PackedScene" uid="uid://bn2j568mwjyxb" path="res://scenes/models/residential/residential_placeholder.tscn" id="1_rxs6m"]
+[ext_resource type="Script" uid="uid://cxvyq11fluruq" path="res://scripts/data/placeable/placeable_data.gd" id="1_wbr06"]
+
+[resource]
+script = ExtResource("1_wbr06")
+scene = ExtResource("1_rxs6m")
+cost = 100.0
+label = "House 1"
+metadata/_custom_type_script = "uid://cxvyq11fluruq"

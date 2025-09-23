@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dvd53runfr5vs"]
+[gd_scene load_steps=20 format=3 uid="uid://dvd53runfr5vs"]
 
 [ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/models/environment/terrain.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://d1xj148c07pj0" path="res://scripts/manager/build_manager.gd" id="1_tefeu"]
@@ -6,21 +6,11 @@
 [ext_resource type="Script" uid="uid://bhncwhwwcrmdm" path="res://scripts/builder/builder.gd" id="3_8gbba"]
 [ext_resource type="Script" uid="uid://cxvyq11fluruq" path="res://scripts/data/placeable/placeable_data.gd" id="4_85g3d"]
 [ext_resource type="Script" uid="uid://ilvgs5tvgwn7" path="res://scripts/ui/category_ui.gd" id="4_tefeu"]
-[ext_resource type="Script" uid="uid://cok5c1le5q4lm" path="res://scripts/data/placeable/residential_data.gd" id="5_choun"]
-[ext_resource type="Texture2D" uid="uid://jpnxfy0ychl2" path="res://assets/textures/house.png" id="5_jbj1t"]
-[ext_resource type="PackedScene" uid="uid://bn2j568mwjyxb" path="res://scenes/models/residential/residential_placeholder.tscn" id="6_ya4ey"]
+[ext_resource type="Resource" uid="uid://bc7pda3k4h0ac" path="res://data/placeables/residential/house1.tres" id="5_ya4ey"]
+[ext_resource type="Resource" uid="uid://8thk8fdmsqpx" path="res://data/placeables/harvest/lumber_cabin.tres" id="6_eb6dy"]
 [ext_resource type="Resource" uid="uid://bp0b5s0skyvo7" path="res://data/placeables/environment/tree1_env.tres" id="8_jkv2x"]
 [ext_resource type="Script" uid="uid://cyu4clyieh3ni" path="res://scripts/manager/economy_manager.gd" id="12_jkv2x"]
 [ext_resource type="Script" uid="uid://ci778ubcpw8b0" path="res://scripts/environment/day_and_night_cycle.gd" id="14_a8y0u"]
-
-[sub_resource type="Resource" id="Resource_ya4ey"]
-script = ExtResource("5_choun")
-capacity = 10
-scene = ExtResource("6_ya4ey")
-cost = 10.5
-label = "House"
-icon = ExtResource("5_jbj1t")
-metadata/_custom_type_script = "uid://cok5c1le5q4lm"
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_tipki"]
 
@@ -125,17 +115,17 @@ theme_override_font_sizes/font_size = 48
 text = "Residential"
 script = ExtResource("4_tefeu")
 build_manager = NodePath("../../../../..")
-placeables = Array[ExtResource("4_85g3d")]([SubResource("Resource_ya4ey")])
+placeables = Array[ExtResource("4_85g3d")]([ExtResource("5_ya4ey")])
 metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
 [node name="Production" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
-visible = false
 layout_mode = 2
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 48
 text = "Production"
 script = ExtResource("4_tefeu")
 build_manager = NodePath("../../../../..")
+placeables = Array[ExtResource("4_85g3d")]([ExtResource("6_eb6dy")])
 metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
 [node name="Environment" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
