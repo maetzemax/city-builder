@@ -1,0 +1,18 @@
+extends Node
+
+signal new_tick
+
+var timer: Timer
+
+## How many seconds need to passed unti new tick
+var tick_time: float = 5.0
+
+func _ready():
+	timer = Timer.new()
+	add_child(timer)
+	timer.timeout.connect(_on_timer_timeout)
+	timer.start(tick_time)
+	
+func _on_timer_timeout():
+	new_tick.emit()
+	timer.start(tick_time)

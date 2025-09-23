@@ -3,12 +3,13 @@ extends MenuButton
 class_name CategoryUI
 
 @export var build_manager: BuildManager
-@export var placeables: Array[Placeable]
+@export var placeables: Array[PlaceableData]
 
 func _ready() -> void:
 	var popup = get_popup()
 	for placeable in placeables:
-		popup.add_icon_item(placeable.icon, placeable.placeable_name)
+		var cost_str = " %2.2f €" % placeable.cost
+		popup.add_icon_item(placeable.icon, placeable.label + cost_str)
 
 	popup.index_pressed.connect(_on_index_pressed)
 

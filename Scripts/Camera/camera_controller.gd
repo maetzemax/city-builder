@@ -19,7 +19,6 @@ var current_mouse_pos: Vector3
 
 # Input-Tracking
 var is_orbiting: bool = false
-var min_height = 10
 
 func _physics_process(_delta: float):
 	shoot_ray()
@@ -90,13 +89,11 @@ func zoom_forward():
 	# Zoom in Blickrichtung (wie im Godot Editor)
 	var forward = -transform.basis.z
 	position += forward * scroll_zoom_speed
-	position.y = clampf(position.y, min_height, position.y)
 
 func zoom_backward():
 	# Zoom zurück in Blickrichtung
 	var forward = -transform.basis.z
 	position -= forward * scroll_zoom_speed
-	position.y = clampf(position.y, min_height, position.y)
 
 func _process(delta):
 	# WASD + QE Bewegung (wie im Godot Editor)
@@ -127,7 +124,6 @@ func handle_keyboard_movement(delta):
 		input_vector = input_vector.normalized()
 		var movement = input_vector * speed * delta
 		position += movement
-		position.y = clampf(position.y, min_height, position.y)
 
 func shoot_ray():
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -135,22 +131,19 @@ func shoot_ray():
 	var from = project_ray_origin(mouse_pos)
 	var to = from + project_ray_normal(mouse_pos) * ray_length
 	var space = get_world_3d().direct_space_state
+	
 	var ray_query = PhysicsRayQueryParameters3D.new()
 	ray_query.from = from
 	ray_query.to = to
 	ray_query.collision_mask = 1
-	var raycast_result = space.intersect_ray(ray_query)
 	
+	var raycast_result = space.intersect_ray(ray_query)
 	if raycast_result:
-		var pos_x = raycast_result.position.x
-		var pos_z = raycast_result.position.z
-		
 		var pos = Vector3(
-			pos_x,
+			raycast_result.position.x,
 			raycast_result.position.y,
-			pos_z
+			raycast_result.position.z
 		)
 		
 		mouse_pos_on_terrain.emit(pos)
 		current_mouse_pos = pos
-	

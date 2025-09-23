@@ -6,28 +6,34 @@ class_name Builder
 @export var environment: Node3D
 @export var preview: Node3D
 
-var scene: PackedScene
+var placeable: PlaceableData
+
 var _preview_instance
 var _can_place: bool
-
 var _rotation: float
 
 func _process(_delta: float):
 	if _preview_instance:
 		_can_place = not _preview_instance.has_overlapping_areas()
-		_color_preview_mesh()
 		_preview_instance.global_rotation.y = _rotation
 		
+	if placeable and EconomyManager.money < placeable.cost:
+		_can_place = false
+		
+	# Rotation
+	if Input.is_action_just_pressed("rotate_precise_right"):
+		_rotation += deg_to_rad(5)
+	elif Input.is_action_just_pressed("rotate_precise_left"):
+		_rotation -= deg_to_rad(5)
+	elif Input.is_action_just_pressed("rotate_building"):
+		_rotation += deg_to_rad(90)
+	elif Input.is_action_pressed("rotate_precise_right"):
+		_rotation += deg_to_rad(5)
+	elif Input.is_action_pressed("rotate_precise_left"):
+		_rotation -= deg_to_rad(5)
+		
+	_color_preview_mesh()
 	_check_preview()
-	
-func _input(event):
-	if event is InputEventMouse and event.ctrl_pressed and event.is_pressed():
-		match event.button_index:
-			MOUSE_BUTTON_WHEEL_UP:
-				_rotation += deg_to_rad(5)
-			
-			MOUSE_BUTTON_WHEEL_DOWN:
-				_rotation -= deg_to_rad(5)
 
 func _color_preview_mesh():
 	if _preview_instance:
@@ -45,17 +51,21 @@ func _color_preview_mesh():
 func _check_preview():
 	if (not build_manager.is_building_state or build_manager.is_mouse_over_safe_area) and _preview_instance:
 		_preview_instance.queue_free()
+		return
 
 func _on_camera_3d_clicked_element(pos: Vector3) -> void:
-	if _can_place and _preview_instance:
-		var instance = scene.instantiate()
+	if _can_place and _preview_instance and placeable:
+		var instance = placeable.scene.instantiate()
+		if instance is Commodity or instance is Harvest:
+			instance.is_active = true
 		environment.add_child(instance)
 		instance.global_position = pos
 		instance.rotate_y(_rotation)
+		EconomyManager.reduce_money(placeable.cost)
 
 func _on_camera_3d_mouse_pos_on_terrain(pos: Vector3) -> void:
-	if scene and not _preview_instance:
-		_preview_instance = scene.instantiate()
+	if placeable and not _preview_instance:
+		_preview_instance = placeable.scene.instantiate()
 		preview.add_child(_preview_instance)
 		_preview_instance.global_position = pos
 		_preview_instance.name = "Preview"

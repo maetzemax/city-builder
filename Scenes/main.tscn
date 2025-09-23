@@ -1,19 +1,16 @@
-[gd_scene load_steps=23 format=3 uid="uid://dvd53runfr5vs"]
+[gd_scene load_steps=20 format=3 uid="uid://dvd53runfr5vs"]
 
-[ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/models/terrain.tscn" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/models/environment/terrain.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://d1xj148c07pj0" path="res://scripts/manager/build_manager.gd" id="1_tefeu"]
 [ext_resource type="Script" uid="uid://w7rwhkiuthrv" path="res://scripts/camera/camera_controller.gd" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://bhncwhwwcrmdm" path="res://scripts/builder/builder.gd" id="3_8gbba"]
+[ext_resource type="Script" uid="uid://cxvyq11fluruq" path="res://scripts/data/placeable/placeable_data.gd" id="4_85g3d"]
 [ext_resource type="Script" uid="uid://ilvgs5tvgwn7" path="res://scripts/ui/category_ui.gd" id="4_tefeu"]
-[ext_resource type="Resource" uid="uid://54bjf5bbjwjo" path="res://data/buildings/houseB.tres" id="6_jkv2x"]
-[ext_resource type="Script" uid="uid://cxvyq11fluruq" path="res://scripts/data/placeable.gd" id="6_tipki"]
-[ext_resource type="Resource" uid="uid://d4jgl7e67eqah" path="res://data/buildings/houseA.tres" id="7_85g3d"]
-[ext_resource type="Resource" uid="uid://b6i3cn1gae0yr" path="res://data/buildings/houseC.tres" id="7_jbj1t"]
-[ext_resource type="Resource" uid="uid://blqed1cbkedf7" path="res://data/buildings/houseD.tres" id="8_muem4"]
-[ext_resource type="Resource" uid="uid://dwu2dympgfd" path="res://data/buildings/houseE.tres" id="9_dp3eg"]
-[ext_resource type="Resource" uid="uid://c02p5v4vrifwu" path="res://data/buildings/houseF.tres" id="10_0ld40"]
-[ext_resource type="Resource" uid="uid://d2x4oqgie5ds6" path="res://data/buildings/houseG.tres" id="11_gqmmt"]
-[ext_resource type="Script" uid="uid://ci778ubcpw8b0" path="res://scenes/day_and_night_cycle.gd" id="14_a8y0u"]
+[ext_resource type="Resource" uid="uid://bc7pda3k4h0ac" path="res://data/placeables/residential/house1.tres" id="5_ya4ey"]
+[ext_resource type="Resource" uid="uid://8thk8fdmsqpx" path="res://data/placeables/harvest/lumber_cabin.tres" id="6_eb6dy"]
+[ext_resource type="Resource" uid="uid://bp0b5s0skyvo7" path="res://data/placeables/environment/tree1_env.tres" id="8_jkv2x"]
+[ext_resource type="Script" uid="uid://cyu4clyieh3ni" path="res://scripts/manager/economy_manager.gd" id="12_jkv2x"]
+[ext_resource type="Script" uid="uid://ci778ubcpw8b0" path="res://scripts/environment/day_and_night_cycle.gd" id="14_a8y0u"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_tipki"]
 
@@ -27,7 +24,7 @@ gradient = SubResource("Gradient_a8y0u")
 
 [sub_resource type="Gradient" id="Gradient_jbj1t"]
 offsets = PackedFloat32Array(0, 0.2, 0.5, 0.8, 1)
-colors = PackedColorArray(0.86768293, 0.73972756, 0.7881959, 1, 0, 0.032000046, 0.32, 1, 0, 0.032000046, 0.32, 1, 0, 0.03137255, 0.32156864, 1, 0.8666667, 0.7411765, 0.7882353, 1)
+colors = PackedColorArray(0.86768293, 0.73972756, 0.7881959, 1, 0, 0.060000088, 0.6, 1, 0, 0.032000046, 0.32, 1, 0, 0.060000088, 0.6, 1, 0.8666667, 0.7411765, 0.7882353, 1)
 metadata/_snap_enabled = true
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_muem4"]
@@ -36,8 +33,7 @@ gradient = SubResource("Gradient_jbj1t")
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bo1nx"]
 sky_top_color = Color(0.5990235, 0.66700757, 0.74295527, 1)
 sky_horizon_color = Color(0.69806564, 0.71506166, 0.7340486, 1)
-ground_bottom_color = Color(0, 0, 0, 1)
-ground_horizon_color = Color(0.69806564, 0.71506166, 0.7340486, 1)
+sun_angle_max = 15.0
 
 [sub_resource type="Sky" id="Sky_8gbba"]
 sky_material = SubResource("ProceduralSkyMaterial_bo1nx")
@@ -45,10 +41,8 @@ sky_material = SubResource("ProceduralSkyMaterial_bo1nx")
 [sub_resource type="Environment" id="Environment_jjvhh"]
 background_mode = 2
 sky = SubResource("Sky_8gbba")
-ssao_enabled = true
-fog_mode = 1
-fog_density = 1.0
-adjustment_saturation = 1.43
+tonemap_mode = 3
+tonemap_exposure = 0.5
 
 [node name="Main" type="Node3D"]
 
@@ -116,14 +110,14 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 48
 
-[node name="Houses" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
+[node name="Residential" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
 layout_mode = 2
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 48
-text = "Houses"
+text = "Residential"
 script = ExtResource("4_tefeu")
 build_manager = NodePath("../../../../..")
-placeables = Array[ExtResource("6_tipki")]([ExtResource("7_85g3d"), ExtResource("6_jkv2x"), ExtResource("7_jbj1t"), ExtResource("8_muem4"), ExtResource("9_dp3eg"), ExtResource("10_0ld40"), ExtResource("11_gqmmt")])
+placeables = Array[ExtResource("4_85g3d")]([ExtResource("5_ya4ey")])
 metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
 [node name="Production" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
@@ -133,16 +127,37 @@ theme_override_font_sizes/font_size = 48
 text = "Production"
 script = ExtResource("4_tefeu")
 build_manager = NodePath("../../../../..")
+placeables = Array[ExtResource("4_85g3d")]([ExtResource("6_eb6dy")])
 metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
-[node name="Roads" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
+[node name="Environment" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
 layout_mode = 2
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 48
-text = "Roads"
+text = "Environment"
 script = ExtResource("4_tefeu")
 build_manager = NodePath("../../../../..")
+placeables = Array[ExtResource("4_85g3d")]([ExtResource("8_jkv2x")])
 metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
+
+[node name="EconomyManager" type="Node" parent="." node_paths=PackedStringArray("label")]
+script = ExtResource("12_jkv2x")
+label = NodePath("CanvasLayer/MarginContainer/Label")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="EconomyManager"]
+
+[node name="MarginContainer" type="MarginContainer" parent="EconomyManager/CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 12
+
+[node name="Label" type="Label" parent="EconomyManager/CanvasLayer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "100.00 €"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
@@ -165,7 +180,7 @@ night_light_energy = 0.5
 metadata/_custom_type_script = "uid://ci778ubcpw8b0"
 
 [node name="Sun" type="DirectionalLight3D" parent="DayAndNightCycle"]
-transform = Transform3D(-0.8660254, 0, 0.50000006, 0, 1, 0, -0.50000006, 0, -0.8660254, 0, 0, 0)
+transform = Transform3D(-0.8660254, -0.23857942, 0.4394086, 0, 0.8788171, 0.47715878, -0.50000006, 0.4132316, -0.7610779, 0, 0, 0)
 light_color = Color(1, 1, 0.98039216, 1)
 shadow_enabled = true
 shadow_reverse_cull_face = true

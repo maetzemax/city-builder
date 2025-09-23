@@ -6,7 +6,9 @@ enum GameState {
 	PAUSED
 }
 
-var current_game_state = GameState.RUNNING
+static var current_game_state = GameState.RUNNING
+
+static var is_day: bool = true
 
 func _input(event: InputEvent):
 	if event is InputEventKey:
@@ -15,3 +17,9 @@ func _input(event: InputEvent):
 				current_game_state = GameState.BUILDING
 			else:
 				current_game_state = GameState.RUNNING
+		
+		if event.keycode == KEY_PLUS and event.is_pressed():
+			EconomyManager.add_money(10)
+			
+		if event.keycode == KEY_MINUS and event.is_pressed():
+			EconomyManager.reduce_money(10)

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlaceableData" load_steps=3 format=3 uid="uid://8thk8fdmsqpx"]
+
+[ext_resource type="PackedScene" uid="uid://hhklrjn23qwg" path="res://scenes/models/harvest/lumber_cabin.tscn" id="1_4syis"]
+[ext_resource type="Script" uid="uid://cxvyq11fluruq" path="res://scripts/data/placeable/placeable_data.gd" id="2_7wnym"]
+
+[resource]
+script = ExtResource("2_7wnym")
+scene = ExtResource("1_4syis")
+cost = 200.0
+label = "Lumber Cabin"
+metadata/_custom_type_script = "uid://cxvyq11fluruq"
