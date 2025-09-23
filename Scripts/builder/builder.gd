@@ -8,6 +8,9 @@ class_name Builder
 
 var placeable: PlaceableData
 
+
+var _grid_enabled := false
+
 var _preview_instance
 var _can_place: bool
 var _rotation: float
@@ -19,6 +22,9 @@ func _process(_delta: float):
 		
 	if placeable and EconomyManager.money < placeable.cost:
 		_can_place = false
+		
+	if Input.is_action_just_pressed("toggle_grid"): # "g" in InputMap definiert
+		_grid_enabled = !_grid_enabled
 		
 	# Rotation
 	if Input.is_action_just_pressed("rotate_precise_right"):
@@ -59,7 +65,7 @@ func _on_camera_3d_clicked_element(pos: Vector3) -> void:
 		if instance is Commodity or instance is Harvest:
 			instance.is_active = true
 		environment.add_child(instance)
-		instance.global_position = pos
+		instance.global_position = snap_to_grid(pos)
 		instance.rotate_y(_rotation)
 		EconomyManager.reduce_money(placeable.cost)
 
@@ -67,7 +73,17 @@ func _on_camera_3d_mouse_pos_on_terrain(pos: Vector3) -> void:
 	if placeable and not _preview_instance:
 		_preview_instance = placeable.scene.instantiate()
 		preview.add_child(_preview_instance)
-		_preview_instance.global_position = pos
+		_preview_instance.global_position = snap_to_grid(pos)
 		_preview_instance.name = "Preview"
 	elif _preview_instance:
-		_preview_instance.global_position = pos
+		_preview_instance.global_position = snap_to_grid(pos)
+
+func snap_to_grid(pos: Vector3) -> Vector3:
+	if not _grid_enabled:
+		return pos
+	
+	return Vector3(
+		round(pos.x),
+		pos.y,
+		round(pos.z)
+	)
