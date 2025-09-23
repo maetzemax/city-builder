@@ -21,20 +21,19 @@ func _process(_delta: float):
 		_can_place = false
 		
 	# Rotation
-	if Input.is_action_pressed("rotate_precise_right"):
+	if Input.is_action_just_pressed("rotate_precise_right"):
 		_rotation += deg_to_rad(5)
+	elif Input.is_action_just_pressed("rotate_precise_left"):
+		_rotation -= deg_to_rad(5)
 	elif Input.is_action_just_pressed("rotate_building"):
 		_rotation += deg_to_rad(90)
+	elif Input.is_action_pressed("rotate_precise_right"):
+		_rotation += deg_to_rad(5)
+	elif Input.is_action_pressed("rotate_precise_left"):
+		_rotation -= deg_to_rad(5)
 		
 	_color_preview_mesh()
 	_check_preview()
-	
-func _input(event):
-	if _preview_instance:
-		if event is InputEventMouse and event.ctrl_pressed and event.is_pressed():
-			match event.button_index:
-				MOUSE_BUTTON_WHEEL_DOWN:
-					_rotation -= deg_to_rad(5)
 
 func _color_preview_mesh():
 	if _preview_instance:
