@@ -182,10 +182,8 @@ sun_light = NodePath("Sun")
 world_environment = NodePath("WorldEnvironment")
 day_timer = NodePath("DayTimer")
 day_colors = SubResource("GradientTexture2D_jkv2x")
-day_length = 0.2
 night_timer = NodePath("NightTimer")
 night_colors = SubResource("GradientTexture2D_muem4")
-night_length = 5.0
 night_light_energy = 0.5
 metadata/_custom_type_script = "uid://ci778ubcpw8b0"
 

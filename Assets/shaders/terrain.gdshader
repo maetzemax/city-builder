@@ -1,8 +1,8 @@
 shader_type spatial;
 
 // Height range uniforms
-uniform float min_height : hint_range(-100.0, 100.0) = 0.0;
-uniform float max_height : hint_range(-100.0, 100.0) = 20.0;
+uniform float min_height : hint_range(-1, 1) = 0.0;
+uniform float max_height : hint_range(-1, 1) = 1;
 
 // Color uniforms for different height zones
 uniform vec4 low_color : source_color = vec4(0.1, 0.3, 0.1, 1.0);      // Deep valleys - dark green
@@ -12,7 +12,7 @@ uniform vec4 high_color : source_color = vec4(0.9, 0.9, 1.0, 1.0);     // Snow p
 
 // Height thresholds (0.0 to 1.0 range)
 uniform float threshold_1 : hint_range(0.0, 1.0) = 0.25;  // Low to mid-low
-uniform float threshold_2 : hint_range(0.0, 1.0) = 0.5;   // Mid-low to mid-high  
+uniform float threshold_2 : hint_range(0.0, 1.0) = 0.5;   // Mid-low to mid-high
 uniform float threshold_3 : hint_range(0.0, 1.0) = 0.75;  // Mid-high to high
 
 // Transition smoothness
@@ -38,7 +38,7 @@ float noise(vec2 p) {
     vec2 i = floor(p);
     vec2 f = fract(p);
     f = f * f * (3.0 - 2.0 * f);
-    
+
     return mix(
         mix(hash(i + vec2(0.0, 0.0)), hash(i + vec2(1.0, 0.0)), f.x),
         mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), f.x),
@@ -53,12 +53,12 @@ void vertex() {
 void fragment() {
     // Get the world Y position (height) of the current fragment
     float current_height = world_pos.z;
-    
+
     // Normalize height to 0.0-1.0 range based on min/max height uniforms
     float normalized_height = clamp((current_height - min_height) / (max_height - min_height), 0.0, 1.0);
-    
+
     vec4 final_color;
-    
+
     // Blend colors based on height thresholds
     if (normalized_height < threshold_1) {
         // Below first threshold - use low color
@@ -76,7 +76,7 @@ void fragment() {
         float t = smoothstep(threshold_3 - blend_sharpness, threshold_3 + blend_sharpness, normalized_height);
         final_color = mix(mid_high_color, high_color, t);
     }
-    
+
     //// Optional: Add slope-based coloring
     //if (use_slope_coloring) {
         //float slope = 1.0 - dot(NORMAL, vec3(0.0, 1.0, 0.0));
@@ -85,13 +85,13 @@ void fragment() {
             //final_color = mix(final_color, steep_slope_color, slope_factor * 0.6);
         //}
     //}
-    
+
     // Optional: Add subtle color variation
     if (color_variation_strength > 0.0) {
         float variation = (noise(world_pos.xz * variation_scale) - 0.5) * 2.0;
         final_color.rgb += variation * color_variation_strength * 0.2;
     }
-    
+
     ALBEDO = final_color.rgb;
     ROUGHNESS = 0.8;
     METALLIC = 0.0;
