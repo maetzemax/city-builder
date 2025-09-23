@@ -31,6 +31,10 @@ window/stretch/aspect="keep_height"
 
 enabled=PackedStringArray("res://addons/PathMesh3D/plugin.cfg")
 
+[global_group]
+
+Commodity=""
+
 [input]
 
 rotate_building={

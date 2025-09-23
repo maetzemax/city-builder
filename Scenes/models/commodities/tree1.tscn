@@ -1,22 +1,13 @@
-[gd_scene load_steps=9 format=4 uid="uid://bmglwbl6r4ao7"]
+[gd_scene load_steps=8 format=4 uid="uid://bmglwbl6r4ao7"]
 
-[ext_resource type="Texture2D" uid="uid://lb4hnvuake4s" path="res://assets/forest/color_1024x1024.jpg" id="1_3ijdc"]
-[ext_resource type="Script" uid="uid://d3cymgvuk6rtn" path="res://scripts/environment/commodity.gd" id="1_jh3rp"]
-[ext_resource type="Script" uid="uid://p7iai4qa7moh" path="res://scripts/data/placeable/commodity_data.gd" id="2_b50ks"]
-
-[sub_resource type="Resource" id="Resource_brrpb"]
-script = ExtResource("2_b50ks")
-capacity = 500
-type = 0
-scene = null
-cost = 50.0
-label = "Tree"
-metadata/_custom_type_script = "uid://p7iai4qa7moh"
+[ext_resource type="Script" uid="uid://d3cymgvuk6rtn" path="res://scripts/environment/commodity.gd" id="1_wtjj2"]
+[ext_resource type="Resource" uid="uid://cayx6fwgmvj08" path="res://data/placeables/commodity/tree1.tres" id="2_o8mjk"]
+[ext_resource type="Texture2D" uid="uid://lb4hnvuake4s" path="res://assets/forest/color_1024x1024.jpg" id="3_1msaj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rsxby"]
 resource_name = "tree_color"
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_3ijdc")
+albedo_texture = ExtResource("3_1msaj")
 emission_enabled = true
 emission_energy_multiplier = 0.0
 
@@ -58,11 +49,10 @@ shadow_mesh = SubResource("ArrayMesh_jh3rp")
 radius = 0.6801758
 height = 3.9312134
 
-[node name="Tree1" type="StaticBody3D"]
-collision_layer = 4
-collision_mask = 0
-script = ExtResource("1_jh3rp")
-commodity = SubResource("Resource_brrpb")
+[node name="Tree1" type="Area3D" groups=["Commodity"]]
+collision_layer = 5
+script = ExtResource("1_wtjj2")
+commodity = ExtResource("2_o8mjk")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.377826, 0, 0, 0, 6.7560556e-08, 0.37782598, 0, -0.37782598, 6.7560556e-08, 0, 0, 0)

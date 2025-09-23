@@ -1,6 +1,6 @@
 extends Resource
 
-class_name Placeable
+class_name PlaceableData
 
 @export var id: int
 @export var scene: PackedScene

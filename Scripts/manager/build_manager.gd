@@ -10,7 +10,7 @@ class_name BuildManager
 var is_building_state: bool
 var is_mouse_over_safe_area: bool
 
-func update_selected_placeable(placeable: Placeable):
+func update_selected_placeable(placeable: PlaceableData):
 	builder.placeable = placeable
 
 func _ready():

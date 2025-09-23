@@ -6,7 +6,7 @@ class_name Builder
 @export var environment: Node3D
 @export var preview: Node3D
 
-var placeable: Placeable
+var placeable: PlaceableData
 
 var _preview_instance
 var _can_place: bool
@@ -57,6 +57,8 @@ func _check_preview():
 func _on_camera_3d_clicked_element(pos: Vector3) -> void:
 	if _can_place and _preview_instance and placeable:
 		var instance = placeable.scene.instantiate()
+		if instance is Commodity:
+			instance.is_active = true
 		environment.add_child(instance)
 		instance.global_position = pos
 		instance.rotate_y(_rotation)

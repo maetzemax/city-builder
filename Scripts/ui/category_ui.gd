@@ -3,7 +3,7 @@ extends MenuButton
 class_name CategoryUI
 
 @export var build_manager: BuildManager
-@export var placeables: Array[Placeable]
+@export var placeables: Array[PlaceableData]
 
 func _ready() -> void:
 	var popup = get_popup()

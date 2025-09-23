@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CommodityData" load_steps=2 format=3 uid="uid://cayx6fwgmvj08"]
+
+[ext_resource type="Script" uid="uid://p7iai4qa7moh" path="res://scripts/data/placeable/commodity_data.gd" id="1_imi23"]
+
+[resource]
+script = ExtResource("1_imi23")
+label = "Tree"
+capacity = 25
+type = 0
+metadata/_custom_type_script = "uid://p7iai4qa7moh"

@@ -1,10 +1,12 @@
-extends Placeable
+extends Resource
 
-class_name Commodity
+class_name CommodityData
 
+@export var id: int
+@export var label: String
 ## Amount of how much items can be gained
 @export var capacity: int
-
+## Which type of commodity
 @export_enum("Wood", "Stone", "Food") var type
 
 func get_type_name() -> String:

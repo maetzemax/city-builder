@@ -7,7 +7,9 @@ extends Area3D
 
 @export var radius: float
 
-func _ready():
+func _ready(): 
+	collision_shape.shape = collision_shape.shape.duplicate()
+	mesh_instance.mesh = mesh_instance.mesh.duplicate()
 	if collision_shape.shape as SphereShape3D:
 		collision_shape.shape.radius = radius
 	
@@ -27,6 +29,6 @@ func _process(_delta):
 			mesh_instance.mesh.height = radius * 2
 
 func _on_new_tick():
-	if has_overlapping_bodies():
-		for commodity in get_overlapping_bodies():
+	if has_overlapping_areas():
+		for commodity in get_overlapping_areas():
 			commodity.harvest(5)
