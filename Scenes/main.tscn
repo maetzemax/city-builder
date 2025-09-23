@@ -34,7 +34,7 @@ gradient = SubResource("Gradient_a8y0u")
 
 [sub_resource type="Gradient" id="Gradient_jbj1t"]
 offsets = PackedFloat32Array(0, 0.2, 0.5, 0.8, 1)
-colors = PackedColorArray(0.86768293, 0.73972756, 0.7881959, 1, 0, 0.032000046, 0.32, 1, 0, 0.032000046, 0.32, 1, 0, 0.03137255, 0.32156864, 1, 0.8666667, 0.7411765, 0.7882353, 1)
+colors = PackedColorArray(0.86768293, 0.73972756, 0.7881959, 1, 0, 0.060000088, 0.6, 1, 0, 0.032000046, 0.32, 1, 0, 0.060000088, 0.6, 1, 0.8666667, 0.7411765, 0.7882353, 1)
 metadata/_snap_enabled = true
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_muem4"]
@@ -150,13 +150,20 @@ metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
 [node name="EconomyManager" type="Node" parent="." node_paths=PackedStringArray("label")]
 script = ExtResource("12_jkv2x")
-label = NodePath("CanvasLayer/Label")
+label = NodePath("CanvasLayer/MarginContainer/Label")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="EconomyManager"]
 
-[node name="Label" type="Label" parent="EconomyManager/CanvasLayer"]
+[node name="MarginContainer" type="MarginContainer" parent="EconomyManager/CanvasLayer"]
 offset_right = 40.0
-offset_bottom = 23.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 12
+
+[node name="Label" type="Label" parent="EconomyManager/CanvasLayer/MarginContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "100.00 €"
 
@@ -175,8 +182,10 @@ sun_light = NodePath("Sun")
 world_environment = NodePath("WorldEnvironment")
 day_timer = NodePath("DayTimer")
 day_colors = SubResource("GradientTexture2D_jkv2x")
+day_length = 0.2
 night_timer = NodePath("NightTimer")
 night_colors = SubResource("GradientTexture2D_muem4")
+night_length = 5.0
 night_light_energy = 0.5
 metadata/_custom_type_script = "uid://ci778ubcpw8b0"
 

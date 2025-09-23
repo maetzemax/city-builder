@@ -1,6 +1,24 @@
-[gd_scene load_steps=6 format=4 uid="uid://df0b08mdpd7kn"]
+[gd_scene load_steps=7 format=4 uid="uid://df0b08mdpd7kn"]
 
-[ext_resource type="Material" uid="uid://cu5fn6jma2tuc" path="res://assets/materials/protype_material.tres" id="2_62tj5"]
+[ext_resource type="Shader" uid="uid://dc375d3djbnsm" path="res://assets/shaders/terrain.gdshader" id="1_k5ro8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_58k10"]
+render_priority = 0
+shader = ExtResource("1_k5ro8")
+shader_parameter/min_height = 0.05000475237500268
+shader_parameter/max_height = 0.1800047585499982
+shader_parameter/low_color = Color(0.1399844, 0.39105898, 0.14013153, 1)
+shader_parameter/mid_low_color = Color(0.3, 0.6, 0.2, 1)
+shader_parameter/mid_high_color = Color(0.5, 0.44058335, 0.385, 1)
+shader_parameter/high_color = Color(0.9, 0.9, 1, 1)
+shader_parameter/threshold_1 = 0.414000019665
+shader_parameter/threshold_2 = 0.61200002907
+shader_parameter/threshold_3 = 0.6970000331075
+shader_parameter/blend_sharpness = 0.1
+shader_parameter/steep_slope_color = Color(0.32, 0.32, 0.32, 1)
+shader_parameter/slope_threshold = 0.7
+shader_parameter/color_variation_strength = 0.1
+shader_parameter/variation_scale = 0.10000000149012
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bskb1"]
 
@@ -43,10 +61,11 @@ data = PackedVector3Array(0.96879995, 1, 0.0919, 1, 1, 0.091299996, 1, 0.9687999
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, -1.4210855e-14, 0, 1.4210855e-14, 1.0000001, 0, 0, 0)
-material_override = ExtResource("2_62tj5")
+transform = Transform3D(1.0000004, 0, 0, 0, 1.0000004, -2.842171e-14, 0, 2.842171e-14, 1.0000004, 0, 7.4428255e-09, -0.062434938)
+material_override = SubResource("ShaderMaterial_58k10")
 mesh = SubResource("ArrayMesh_8lnwa")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.0000002, 0, 0, 0, 1.0000002, -2.842171e-14, 0, 2.842171e-14, 1.0000002, 0, 7.4428255e-09, -0.062434938)
 shape = SubResource("ConcavePolygonShape3D_g24sy")
