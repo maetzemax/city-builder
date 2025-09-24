@@ -14,6 +14,9 @@ func _ready():
 	add_child(working_area)
 
 func _process(delta):
+	if GameManager.current_game_state == GameManager.GameState.PAUSED:
+		return
+		
 	super._process(delta)
 	call_deferred("find_nearby_resources")
 
