@@ -11,10 +11,14 @@ config_version=5
 [application]
 
 config/name="city builder"
-run/main_scene="uid://dvd53runfr5vs"
+run/main_scene="uid://ble25xwm6dllu"
 run/print_header=false
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://assets/icons/icon.svg"
+
+[autoload]
+
+GameData="*res://scripts/game_data.gd"
 
 [display]
 
