@@ -4,6 +4,10 @@ class_name GameManager
 
 @export var save_manager: SaveManager
 
+@export var pause_ui: CanvasLayer
+@export var build_ui: CanvasLayer
+@export var hud: CanvasLayer
+
 enum GameState {
 	RUNNING,
 	BUILDING,
@@ -13,17 +17,35 @@ enum GameState {
 static var current_game_state = GameState.RUNNING
 
 static var is_day: bool = true
+static var day_progress: float = 0.0
 
 func _ready():
 	if GameData.should_load_save_file:
 		save_manager.load_game()
 
 func _process(_delta: float):
-	if Input.is_action_just_pressed("save_game"):
-		save_manager.save_game()
+	if Input.is_action_just_pressed("ui_cancel"):
+		match current_game_state:
+			GameState.RUNNING:
+				current_game_state = GameState.PAUSED
+			GameState.BUILDING:
+				current_game_state = GameState.PAUSED
+			GameState.PAUSED:
+				current_game_state = GameState.RUNNING
 	
-	if Input.is_action_just_pressed("load_game"):
-		save_manager.load_game()
+	match current_game_state:
+		GameState.RUNNING:
+			hud.visible = true
+			build_ui.visible = false
+			pause_ui.visible = false
+		GameState.BUILDING:
+			hud.visible = true
+			build_ui.visible = true
+			pause_ui.visible = false
+		GameState.PAUSED:
+			hud.visible = false
+			build_ui.visible = false
+			pause_ui.visible = true
 
 func _input(event: InputEvent):
 	if event is InputEventKey:

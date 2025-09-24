@@ -18,15 +18,24 @@ var current_mouse_pos: Vector3
 var is_orbiting: bool = false
 
 func _physics_process(_delta: float):
+	if GameManager.current_game_state == GameManager.GameState.PAUSED:
+		return
+	
 	shoot_ray()
 
 func _input(event):
+	if GameManager.current_game_state == GameManager.GameState.PAUSED:
+		return
+	
 	if event is InputEventMouseButton:
 		handle_mouse_button(event)
 	elif event is InputEventMouseMotion:
 		handle_mouse_motion(event)
 
 func handle_mouse_button(event: InputEventMouseButton):
+	if GameManager.current_game_state == GameManager.GameState.PAUSED:
+		return
+
 	match event.button_index:
 		MOUSE_BUTTON_LEFT:
 			if event.pressed and current_mouse_pos:
@@ -85,6 +94,9 @@ func zoom_backward():
 	position -= forward * scroll_zoom_speed
 
 func _process(delta):
+	if GameManager.current_game_state == GameManager.GameState.PAUSED:
+		return
+
 	handle_keyboard_movement(delta)
 
 func handle_keyboard_movement(delta):
