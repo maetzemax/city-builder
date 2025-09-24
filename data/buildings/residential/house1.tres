@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ResidentialBuildingData" load_steps=2 format=3 uid="uid://d4jgl7e67eqah"]
+
+[ext_resource type="Script" uid="uid://b5pak37pvkolo" path="res://scripts/models/buildings/residential_building_data.gd" id="1_v0wfn"]
+
+[resource]
+script = ExtResource("1_v0wfn")
+construction_cost = 100.0
+display_name = "House"
+metadata/_custom_type_script = "uid://b5pak37pvkolo"

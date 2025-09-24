@@ -1,14 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://dvd53runfr5vs"]
+[gd_scene load_steps=16 format=3 uid="uid://dvd53runfr5vs"]
 
 [ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/models/environment/terrain.tscn" id="1_jjgbg"]
-[ext_resource type="Script" uid="uid://d1xj148c07pj0" path="res://scripts/manager/build_manager.gd" id="1_tefeu"]
+[ext_resource type="Script" uid="uid://d1xj148c07pj0" path="res://scripts/build_manager.gd" id="1_tefeu"]
 [ext_resource type="Script" uid="uid://w7rwhkiuthrv" path="res://camera_controller.gd" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://bhncwhwwcrmdm" path="res://scripts/builder.gd" id="3_8gbba"]
 [ext_resource type="Script" uid="uid://ilvgs5tvgwn7" path="res://scripts/category_ui.gd" id="4_tefeu"]
-[ext_resource type="Script" uid="uid://cxvyq11fluruq" path="res://scripts/models/buildings/building_data.gd" id="4_tipki"]
-[ext_resource type="Resource" uid="uid://d4jgl7e67eqah" path="res://data/buildings/residential/house1.tres" id="5_85g3d"]
-[ext_resource type="Resource" uid="uid://cpowfg6sqlul2" path="res://data/buildings/production/saw_mill.tres" id="6_choun"]
-[ext_resource type="Script" uid="uid://cyu4clyieh3ni" path="res://scripts/manager/economy_manager.gd" id="12_jkv2x"]
+[ext_resource type="Script" uid="uid://cyu4clyieh3ni" path="res://scripts/economy_manager.gd" id="12_jkv2x"]
 [ext_resource type="Script" uid="uid://ci778ubcpw8b0" path="res://scripts/day_and_night_cycle.gd" id="14_a8y0u"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_tipki"]
@@ -45,14 +42,13 @@ tonemap_exposure = 0.5
 
 [node name="Main" type="Node3D"]
 
-[node name="BuildManager" type="Node" parent="." node_paths=PackedStringArray("camera", "builder")]
+[node name="BuildManager" type="Node3D" parent="." node_paths=PackedStringArray("camera", "builder")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
 script = ExtResource("1_tefeu")
 camera = NodePath("../Camera3D")
 builder = NodePath("Builder")
-metadata/_custom_type_script = "uid://d1xj148c07pj0"
 
 [node name="Builder" type="Node3D" parent="BuildManager" node_paths=PackedStringArray("build_manager", "environment", "preview")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
 script = ExtResource("3_8gbba")
 build_manager = NodePath("..")
 environment = NodePath("../Environment")
@@ -60,10 +56,8 @@ preview = NodePath("../Preview")
 metadata/_custom_type_script = "uid://bhncwhwwcrmdm"
 
 [node name="Preview" type="Node3D" parent="BuildManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
 
 [node name="Environment" type="Node3D" parent="BuildManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
 
 [node name="BuildUI" type="CanvasLayer" parent="BuildManager"]
 
@@ -119,7 +113,6 @@ theme_override_font_sizes/font_size = 48
 text = "Residential"
 script = ExtResource("4_tefeu")
 build_manager = NodePath("../../../../..")
-buildings = Array[ExtResource("4_tipki")]([ExtResource("5_85g3d")])
 metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
 [node name="Production" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
@@ -129,16 +122,15 @@ theme_override_font_sizes/font_size = 48
 text = "Production"
 script = ExtResource("4_tefeu")
 build_manager = NodePath("../../../../..")
-buildings = Array[ExtResource("4_tipki")]([ExtResource("6_choun")])
 metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
-[node name="Environment" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer"]
-visible = false
+[node name="Environment" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
 layout_mode = 2
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 48
 text = "Environment"
 script = ExtResource("4_tefeu")
+build_manager = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
 [node name="EconomyManager" type="Node" parent="." node_paths=PackedStringArray("label")]
