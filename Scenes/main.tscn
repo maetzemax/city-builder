@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dvd53runfr5vs"]
+[gd_scene load_steps=36 format=3 uid="uid://dvd53runfr5vs"]
 
 [ext_resource type="Script" uid="uid://l8a4rxtmphwk" path="res://scripts/manager/save_manager.gd" id="1_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/models/environment/terrain.tscn" id="1_jjgbg"]
@@ -11,6 +11,10 @@
 [ext_resource type="Resource" uid="uid://d4jgl7e67eqah" path="res://data/buildings/residential/house1.tres" id="5_85g3d"]
 [ext_resource type="Resource" uid="uid://cpowfg6sqlul2" path="res://data/buildings/production/saw_mill.tres" id="6_choun"]
 [ext_resource type="Resource" uid="uid://o1nmy41ve7lk" path="res://data/buildings/resources/tree.tres" id="7_ya4ey"]
+[ext_resource type="Script" uid="uid://v2ueybxvska3" path="res://scripts/ui/resume_button.gd" id="10_0ld40"]
+[ext_resource type="PackedScene" uid="uid://dy5vhkqjiai5c" path="res://scenes/ui/save_load_button.tscn" id="10_dp3eg"]
+[ext_resource type="FontFile" uid="uid://chv1w8s37w8t7" path="res://assets/fonts/Jersey15-Regular.ttf" id="10_muem4"]
+[ext_resource type="Script" uid="uid://bvd3ryegodarr" path="res://scripts/ui/exit_button.gd" id="11_dp3eg"]
 [ext_resource type="Script" uid="uid://cyu4clyieh3ni" path="res://scripts/manager/economy_manager.gd" id="12_jkv2x"]
 [ext_resource type="Script" uid="uid://ci778ubcpw8b0" path="res://scripts/environment/day_and_night_cycle.gd" id="14_a8y0u"]
 
@@ -47,11 +51,175 @@ tonemap_mode = 3
 tonemap_exposure = 0.5
 ssao_enabled = true
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2y53f"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.22520697, 0.20444673, 0.22192162, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_khj17"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.2784314, 0.25490198, 0.27450982, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfb7x"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.2784314, 0.25490198, 0.27450982, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ad5bu"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.7, 0.7, 0.7, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o4evi"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.22520697, 0.20444673, 0.22192162, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ld40"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.22520697, 0.20444673, 0.22192162, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqmmt"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.2784314, 0.25490198, 0.27450982, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yc10j"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.2784314, 0.25490198, 0.27450982, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jscy8"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.7, 0.7, 0.7, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pm3ni"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.22520697, 0.20444673, 0.22192162, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
 [node name="Main" type="Node3D"]
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("save_manager")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("save_manager", "pause_ui", "build_ui", "hud")]
 script = ExtResource("1_trceg")
 save_manager = NodePath("../SaveManager")
+pause_ui = NodePath("../User Interface/Pause UI")
+build_ui = NodePath("../User Interface/Build UI")
+hud = NodePath("../User Interface/Hud")
 metadata/_custom_type_script = "uid://cx7qf74acxtp4"
 
 [node name="SaveManager" type="Node" parent="." node_paths=PackedStringArray("build_manager")]
@@ -59,10 +227,11 @@ script = ExtResource("1_eb6dy")
 build_manager = NodePath("../BuildManager")
 metadata/_custom_type_script = "uid://l8a4rxtmphwk"
 
-[node name="BuildManager" type="Node" parent="." node_paths=PackedStringArray("camera", "builder")]
+[node name="BuildManager" type="Node" parent="." node_paths=PackedStringArray("camera", "builder", "build_ui")]
 script = ExtResource("1_tefeu")
 camera = NodePath("../Camera3D")
 builder = NodePath("Builder")
+build_ui = NodePath("../User Interface/Build UI")
 metadata/_custom_type_script = "uid://d1xj148c07pj0"
 
 [node name="Builder" type="Node3D" parent="BuildManager" node_paths=PackedStringArray("build_manager", "environment", "preview")]
@@ -79,9 +248,127 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
 [node name="Environment" type="Node3D" parent="BuildManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
 
-[node name="BuildUI" type="CanvasLayer" parent="BuildManager"]
+[node name="EconomyManager" type="Node" parent="." node_paths=PackedStringArray("label")]
+script = ExtResource("12_jkv2x")
+label = NodePath("../User Interface/Hud/MarginContainer/Label")
+metadata/_custom_type_script = "uid://cyu4clyieh3ni"
 
-[node name="UI" type="Control" parent="BuildManager/BuildUI"]
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
+script = ExtResource("2_bo1nx")
+
+[node name="Terrain" parent="." instance=ExtResource("1_jjgbg")]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_tipki")
+
+[node name="DayAndNightCycle" type="Node3D" parent="." node_paths=PackedStringArray("sun_light", "world_environment")]
+script = ExtResource("14_a8y0u")
+sun_light = NodePath("Sun")
+world_environment = NodePath("WorldEnvironment")
+day_colors = SubResource("GradientTexture2D_jkv2x")
+night_colors = SubResource("GradientTexture2D_muem4")
+night_light_energy = 0.5
+show_debug_time = true
+metadata/_custom_type_script = "uid://ci778ubcpw8b0"
+
+[node name="Sun" type="DirectionalLight3D" parent="DayAndNightCycle"]
+transform = Transform3D(-0.8660254, -0.23857942, 0.4394086, 0, 0.8788171, 0.47715878, -0.50000006, 0.4132316, -0.7610779, 0, 0, 0)
+light_color = Color(1, 1, 0.98039216, 1)
+shadow_enabled = true
+shadow_reverse_cull_face = true
+shadow_blur = 0.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="DayAndNightCycle"]
+environment = SubResource("Environment_jjvhh")
+
+[node name="DayTimer" type="Timer" parent="DayAndNightCycle"]
+process_callback = 0
+
+[node name="NightTimer" type="Timer" parent="DayAndNightCycle"]
+process_callback = 0
+
+[node name="User Interface" type="Node" parent="."]
+
+[node name="Pause UI" type="CanvasLayer" parent="User Interface"]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="User Interface/Pause UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -418.0
+offset_top = -209.5
+offset_right = 418.0
+offset_bottom = 209.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 48
+
+[node name="Resume" type="MarginContainer" parent="User Interface/Pause UI/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 256
+theme_override_constants/margin_right = 256
+
+[node name="Button" type="Button" parent="User Interface/Pause UI/VBoxContainer/Resume"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_muem4")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_2y53f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_khj17")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rfb7x")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ad5bu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4evi")
+text = "Resume"
+script = ExtResource("10_0ld40")
+
+[node name="Save Game" type="MarginContainer" parent="User Interface/Pause UI/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button" parent="User Interface/Pause UI/VBoxContainer/Save Game" node_paths=PackedStringArray("save_manager") instance=ExtResource("10_dp3eg")]
+layout_mode = 2
+save_manager = NodePath("../../../../../SaveManager")
+
+[node name="Load Game" type="MarginContainer" parent="User Interface/Pause UI/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button" parent="User Interface/Pause UI/VBoxContainer/Load Game" node_paths=PackedStringArray("save_manager") instance=ExtResource("10_dp3eg")]
+layout_mode = 2
+text = "Load"
+action_type = 1
+save_manager = NodePath("../../../../../SaveManager")
+
+[node name="Exit" type="MarginContainer" parent="User Interface/Pause UI/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="User Interface/Pause UI/VBoxContainer/Exit" node_paths=PackedStringArray("save_manager")]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_muem4")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_0ld40")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gqmmt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yc10j")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_jscy8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pm3ni")
+text = "Save & Exit"
+script = ExtResource("11_dp3eg")
+should_navigate_to_main_menu = true
+save_manager = NodePath("../../../../../SaveManager")
+
+[node name="Build UI" type="CanvasLayer" parent="User Interface"]
+visible = false
+
+[node name="UI" type="Control" parent="User Interface/Build UI"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -91,18 +378,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 
-[node name="Safezone" type="Control" parent="BuildManager/BuildUI/UI"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -187.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="BuildManager/BuildUI/UI"]
+[node name="MarginContainer" type="MarginContainer" parent="User Interface/Build UI/UI"]
 z_index = 2
 z_as_relative = false
 layout_mode = 1
@@ -121,49 +397,44 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 48
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BuildManager/BuildUI/UI/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="User Interface/Build UI/UI/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 48
 
-[node name="Residential" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
+[node name="Residential" type="MenuButton" parent="User Interface/Build UI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
 layout_mode = 2
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 48
 text = "Residential"
 script = ExtResource("4_tefeu")
-build_manager = NodePath("../../../../..")
+build_manager = NodePath("../../../../../../BuildManager")
 buildings = Array[ExtResource("4_tipki")]([ExtResource("5_85g3d")])
 metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
-[node name="Production" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
+[node name="Production" type="MenuButton" parent="User Interface/Build UI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
 layout_mode = 2
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 48
 text = "Production"
 script = ExtResource("4_tefeu")
-build_manager = NodePath("../../../../..")
+build_manager = NodePath("../../../../../../BuildManager")
 buildings = Array[ExtResource("4_tipki")]([ExtResource("6_choun")])
 metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
-[node name="Environment" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
+[node name="Environment" type="MenuButton" parent="User Interface/Build UI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
 layout_mode = 2
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 48
 text = "Environment"
 script = ExtResource("4_tefeu")
-build_manager = NodePath("../../../../..")
+build_manager = NodePath("../../../../../../BuildManager")
 buildings = Array[ExtResource("4_tipki")]([ExtResource("7_ya4ey")])
 metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
-[node name="EconomyManager" type="Node" parent="." node_paths=PackedStringArray("label")]
-script = ExtResource("12_jkv2x")
-label = NodePath("CanvasLayer/MarginContainer/Label")
-metadata/_custom_type_script = "uid://cyu4clyieh3ni"
+[node name="Hud" type="CanvasLayer" parent="User Interface"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="EconomyManager"]
-
-[node name="MarginContainer" type="MarginContainer" parent="EconomyManager/CanvasLayer"]
+[node name="MarginContainer" type="MarginContainer" parent="User Interface/Hud"]
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 24
@@ -171,43 +442,7 @@ theme_override_constants/margin_top = 48
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 12
 
-[node name="Label" type="Label" parent="EconomyManager/CanvasLayer/MarginContainer"]
+[node name="Label" type="Label" parent="User Interface/Hud/MarginContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "100.00 €"
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
-script = ExtResource("2_bo1nx")
-
-[node name="Terrain" parent="." instance=ExtResource("1_jjgbg")]
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-navigation_mesh = SubResource("NavigationMesh_tipki")
-
-[node name="DayAndNightCycle" type="Node3D" parent="." node_paths=PackedStringArray("sun_light", "world_environment", "day_timer", "night_timer")]
-script = ExtResource("14_a8y0u")
-sun_light = NodePath("Sun")
-world_environment = NodePath("WorldEnvironment")
-day_timer = NodePath("DayTimer")
-day_colors = SubResource("GradientTexture2D_jkv2x")
-night_timer = NodePath("NightTimer")
-night_colors = SubResource("GradientTexture2D_muem4")
-night_light_energy = 0.5
-metadata/_custom_type_script = "uid://ci778ubcpw8b0"
-
-[node name="Sun" type="DirectionalLight3D" parent="DayAndNightCycle"]
-transform = Transform3D(-0.8660254, -0.23857942, 0.4394086, 0, 0.8788171, 0.47715878, -0.50000006, 0.4132316, -0.7610779, 0, 0, 0)
-light_color = Color(1, 1, 0.98039216, 1)
-shadow_enabled = true
-shadow_reverse_cull_face = true
-shadow_blur = 0.0
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="DayAndNightCycle"]
-environment = SubResource("Environment_jjvhh")
-
-[node name="DayTimer" type="Timer" parent="DayAndNightCycle"]
-process_callback = 0
-
-[node name="NightTimer" type="Timer" parent="DayAndNightCycle"]
-process_callback = 0

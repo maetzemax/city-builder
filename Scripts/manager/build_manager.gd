@@ -4,14 +4,13 @@ class_name BuildManager
 
 @export var camera: CameraController
 @export var builder: Builder
+@export var build_ui: CanvasLayer
 
 var buildings: Dictionary = {
 	0: "res://scenes/models/buildings/residential_placeholder.tscn",
 	1: "res://scenes/models/buildings/saw_mill.tscn",
 	2: "res://scenes/models/buildings/tree1.tscn"
 }
-
-@onready var build_ui: CanvasLayer = $BuildUI
 
 var is_grid_enabled = false
 var is_building_state: bool
@@ -26,7 +25,6 @@ func _ready():
 
 func _process(_delta: float):
 	is_building_state = GameManager.current_game_state == GameManager.GameState.BUILDING
-	build_ui.visible = is_building_state
 
 	var mouse_y = get_viewport().get_mouse_position().y
 	var viewport_size = get_viewport().size
