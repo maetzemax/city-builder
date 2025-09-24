@@ -1,7 +1,7 @@
 [gd_scene load_steps=28 format=4 uid="uid://bn2j568mwjyxb"]
 
 [ext_resource type="Script" uid="uid://cefqsrj3f1y8j" path="res://scripts/buildings/building.gd" id="1_j5sa2"]
-[ext_resource type="Script" uid="uid://cpxe5t8wo7akl" path="res://scripts/light_activator.gd" id="1_jl12f"]
+[ext_resource type="Script" uid="uid://cpxe5t8wo7akl" path="res://scripts/environment/light_activator.gd" id="1_jl12f"]
 [ext_resource type="Resource" uid="uid://d4jgl7e67eqah" path="res://data/buildings/residential/house1.tres" id="2_j5sa2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhj3v"]

@@ -5,11 +5,9 @@ class_name CameraController
 signal clicked_element(pos: Vector3)
 signal mouse_pos_on_terrain(pos: Vector3)
 
-# Kamera-Einstellungen
 @export var orbit_sensitivity: float = 0.005
 @export var zoom_sensitivity: float = 0.05
 
-# Bewegungsgeschwindigkeiten
 @export var move_speed: float = 10.0
 @export var fast_move_multiplier: float = 2.0
 @export var slow_move_multiplier: float = 0.3
@@ -17,7 +15,6 @@ signal mouse_pos_on_terrain(pos: Vector3)
 
 var current_mouse_pos: Vector3
 
-# Input-Tracking
 var is_orbiting: bool = false
 
 func _physics_process(_delta: float):
@@ -71,14 +68,11 @@ func stop_camera_movement():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func orbit_camera(mouse_delta: Vector2):
-	# Horizontale Rotation (Yaw - um globale Y-Achse)
 	var yaw = -mouse_delta.x * orbit_sensitivity
 	rotate_y(yaw)
 	
-	# Vertikale Rotation (Pitch - um lokale X-Achse)
 	var pitch = -mouse_delta.y * orbit_sensitivity
 	
-	# Begrenze Pitch um Überschlagen zu verhindern
 	var current_pitch = rotation.x
 	var new_pitch = current_pitch + pitch
 	new_pitch = clamp(new_pitch, deg_to_rad(-89), deg_to_rad(89))
@@ -86,30 +80,25 @@ func orbit_camera(mouse_delta: Vector2):
 	rotation.x = new_pitch
 
 func zoom_forward():
-	# Zoom in Blickrichtung (wie im Godot Editor)
 	var forward = -transform.basis.z
 	position += forward * scroll_zoom_speed
 
 func zoom_backward():
-	# Zoom zurück in Blickrichtung
 	var forward = -transform.basis.z
 	position -= forward * scroll_zoom_speed
 
 func _process(delta):
-	# WASD + QE Bewegung (wie im Godot Editor)
 	handle_keyboard_movement(delta)
 
 func handle_keyboard_movement(delta):
 	var input_vector = Vector3()
 	var speed = move_speed
 	
-	# Geschwindigkeits-Modifikatoren
 	if Input.is_key_pressed(KEY_SHIFT):
 		speed *= fast_move_multiplier
 	elif Input.is_key_pressed(KEY_ALT):
 		speed *= slow_move_multiplier
 	
-	# WASD Input (relativ zur Kamera-Orientierung)
 	if Input.is_key_pressed(KEY_W):
 		input_vector -= transform.basis.z
 	if Input.is_key_pressed(KEY_S):
@@ -119,7 +108,6 @@ func handle_keyboard_movement(delta):
 	if Input.is_key_pressed(KEY_D):
 		input_vector += transform.basis.x
 	
-	# Bewegung anwenden
 	if input_vector.length() > 0:
 		input_vector = input_vector.normalized()
 		var movement = input_vector * speed * delta

@@ -51,17 +51,24 @@ func _color_preview_mesh():
 func _check_preview():
 	if (not build_manager.is_building_state or build_manager.is_mouse_over_safe_area) and _preview_instance:
 		_preview_instance.queue_free()
-		return
+		_preview_instance = null
 
 func _on_camera_3d_clicked_element(pos: Vector3) -> void:
 	if _can_place and _preview_instance and selected_building:
 		var scene = load(build_manager.buildings[selected_building.building_id])
 		var instance = scene.instantiate()
 		environment.add_child(instance)
+
 		instance.is_active = true
+		instance.is_preview = false
+
 		instance.global_position = snap_to_grid(pos)
 		instance.rotate_y(_rotation)
 		EconomyManager.reduce_money(selected_building.construction_cost)
+
+		_preview_instance.queue_free()
+		_preview_instance = null
+
 
 func _on_camera_3d_mouse_pos_on_terrain(pos: Vector3) -> void:
 	if selected_building and not _preview_instance and build_manager.is_building_state:
@@ -69,6 +76,7 @@ func _on_camera_3d_mouse_pos_on_terrain(pos: Vector3) -> void:
 		_preview_instance = scene.instantiate()
 		preview.add_child(_preview_instance)
 		_preview_instance.is_active = false
+		_preview_instance.is_preview = true
 		_preview_instance.global_position = snap_to_grid(pos)
 		_preview_instance.name = "Preview"
 	elif _preview_instance:

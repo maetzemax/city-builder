@@ -16,10 +16,6 @@ run/print_header=false
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://assets/icons/icon.svg"
 
-[autoload]
-
-GameManager="*res://scripts/manager/game_manager.gd"
-
 [display]
 
 window/size/viewport_width=1920

@@ -10,6 +10,7 @@ signal resource_depleted
 signal resource_respawned
 
 func _ready():
+	super._ready()
 	current_amount = building_data.max_amount
 	add_to_group("resource_nodes")
 
@@ -43,3 +44,18 @@ func respawn_resource():
 	current_amount = building_data.max_amount
 	visible = true
 	resource_respawned.emit()
+
+func get_save_data() -> Dictionary:
+	var data = super.get_save_data()
+	data.merge({
+		"current_amount": current_amount,
+		"respawn_timer": respawn_timer,
+		"is_depleted": is_depleted
+	})
+	return data
+
+func load_from_data(data: Dictionary):
+	super.load_from_data(data)
+	current_amount = data.get("current_amount")
+	respawn_timer = data.get("respawn_timer", 0.0)
+	is_depleted = data.get("is_depleted", false)

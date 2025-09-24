@@ -1,16 +1,18 @@
-[gd_scene load_steps=20 format=3 uid="uid://dvd53runfr5vs"]
+[gd_scene load_steps=22 format=3 uid="uid://dvd53runfr5vs"]
 
+[ext_resource type="Script" uid="uid://l8a4rxtmphwk" path="res://scripts/manager/save_manager.gd" id="1_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/models/environment/terrain.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://d1xj148c07pj0" path="res://scripts/manager/build_manager.gd" id="1_tefeu"]
-[ext_resource type="Script" uid="uid://w7rwhkiuthrv" path="res://camera_controller.gd" id="2_bo1nx"]
-[ext_resource type="Script" uid="uid://bhncwhwwcrmdm" path="res://scripts/builder.gd" id="3_8gbba"]
-[ext_resource type="Script" uid="uid://ilvgs5tvgwn7" path="res://scripts/category_ui.gd" id="4_tefeu"]
+[ext_resource type="Script" uid="uid://cx7qf74acxtp4" path="res://scripts/manager/game_manager.gd" id="1_trceg"]
+[ext_resource type="Script" uid="uid://w7rwhkiuthrv" path="res://scripts/controller/camera_controller.gd" id="2_bo1nx"]
+[ext_resource type="Script" uid="uid://bhncwhwwcrmdm" path="res://scripts/buildings/builder.gd" id="3_8gbba"]
+[ext_resource type="Script" uid="uid://ilvgs5tvgwn7" path="res://scripts/ui/category_ui.gd" id="4_tefeu"]
 [ext_resource type="Script" uid="uid://cxvyq11fluruq" path="res://scripts/models/buildings/building_data.gd" id="4_tipki"]
 [ext_resource type="Resource" uid="uid://d4jgl7e67eqah" path="res://data/buildings/residential/house1.tres" id="5_85g3d"]
 [ext_resource type="Resource" uid="uid://cpowfg6sqlul2" path="res://data/buildings/production/saw_mill.tres" id="6_choun"]
 [ext_resource type="Resource" uid="uid://o1nmy41ve7lk" path="res://data/buildings/resources/tree.tres" id="7_ya4ey"]
 [ext_resource type="Script" uid="uid://cyu4clyieh3ni" path="res://scripts/manager/economy_manager.gd" id="12_jkv2x"]
-[ext_resource type="Script" uid="uid://ci778ubcpw8b0" path="res://scripts/day_and_night_cycle.gd" id="14_a8y0u"]
+[ext_resource type="Script" uid="uid://ci778ubcpw8b0" path="res://scripts/environment/day_and_night_cycle.gd" id="14_a8y0u"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_tipki"]
 
@@ -45,6 +47,16 @@ tonemap_mode = 3
 tonemap_exposure = 0.5
 
 [node name="Main" type="Node3D"]
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("save_manager")]
+script = ExtResource("1_trceg")
+save_manager = NodePath("../SaveManager")
+metadata/_custom_type_script = "uid://cx7qf74acxtp4"
+
+[node name="SaveManager" type="Node" parent="." node_paths=PackedStringArray("build_manager")]
+script = ExtResource("1_eb6dy")
+build_manager = NodePath("../BuildManager")
+metadata/_custom_type_script = "uid://l8a4rxtmphwk"
 
 [node name="BuildManager" type="Node" parent="." node_paths=PackedStringArray("camera", "builder")]
 script = ExtResource("1_tefeu")
@@ -146,6 +158,7 @@ metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 [node name="EconomyManager" type="Node" parent="." node_paths=PackedStringArray("label")]
 script = ExtResource("12_jkv2x")
 label = NodePath("CanvasLayer/MarginContainer/Label")
+metadata/_custom_type_script = "uid://cyu4clyieh3ni"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="EconomyManager"]
 

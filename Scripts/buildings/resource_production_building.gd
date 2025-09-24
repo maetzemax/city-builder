@@ -25,13 +25,11 @@ func find_nearby_resources():
 			connected_resource_nodes.append(node)
 
 func can_produce() -> bool:
-	# Entferne erschöpfte Ressourcen
 	connected_resource_nodes = connected_resource_nodes.filter(func(node): return node != null and node.current_amount > 0)
 	
 	if connected_resource_nodes.is_empty():
 		return false
 	
-	# Prüfe ob genug Platz im Lager
 	var current_amount = stored_resources.get(building_data.resource_type, 0)
 	return current_amount < building_data.storage_capacity
 
@@ -39,7 +37,6 @@ func start_production():
 	if connected_resource_nodes.is_empty():
 		return
 	
-	# Sammle von einem zufälligen Node
 	var node = connected_resource_nodes[randi() % connected_resource_nodes.size()]
 	var extracted = node.extract_resource(building_data.extraction_rate)
 	

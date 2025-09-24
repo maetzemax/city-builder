@@ -26,14 +26,12 @@ func _process(delta):
 			complete_production()
 
 func can_produce() -> bool:
-	# Prüfe Input-Ressourcen
 	for resource in building_data.input_resources:
 		var required = building_data.input_resources[resource]
 		var available = stored_resources.get(resource, 0)
 		if available < required:
 			return false
 	
-	# Prüfe Output-Platz
 	for resource in building_data.output_resources:
 		var output_amount = building_data.output_resources[resource]
 		var current_amount = stored_resources.get(resource, 0)
@@ -43,7 +41,6 @@ func can_produce() -> bool:
 	return true
 
 func start_production():
-	# Verbrauche Input-Ressourcen
 	for resource in building_data.input_resources:
 		var required = building_data.input_resources[resource]
 		remove_resource(resource, required)
@@ -52,7 +49,6 @@ func start_production():
 	production_timer = 0.0
 
 func complete_production():
-	# Füge Output-Ressourcen hinzu
 	for resource in building_data.output_resources:
 		var amount = building_data.output_resources[resource]
 		add_resource(resource, amount)
@@ -77,17 +73,17 @@ func remove_resource(resource: ProductionBuildingData.ResourceType, amount: int)
 	storage_changed.emit(resource, stored_resources[resource])
 	return actual_removed
 
-#func get_save_data() -> Dictionary:
-	#var data = super.get_save_data()
-	#data.merge({
-		#"stored_resources": stored_resources,
-		#"production_timer": production_timer,
-		#"is_producing": is_producing
-	#})
-	#return data
-#
-#func load_from_data(data: Dictionary):
-	#super.load_from_data(data)
-	#stored_resources = data.get("stored_resources", {})
-	#production_timer = data.get("production_timer", 0.0)
-	#is_producing = data.get("is_producing", false)
+func get_save_data() -> Dictionary:
+	var data = super.get_save_data()
+	data.merge({
+		"stored_resources": stored_resources,
+		"production_timer": production_timer,
+		"is_producing": is_producing
+	})
+	return data
+
+func load_from_data(data: Dictionary):
+	super.load_from_data(data)
+	stored_resources = data.get("stored_resources", {})
+	production_timer = data.get("production_timer", 0.0)
+	is_producing = data.get("is_producing", false)
