@@ -1,4 +1,4 @@
-extends Building
+extends BuildingData
 
 class_name ResourceNodeData
 

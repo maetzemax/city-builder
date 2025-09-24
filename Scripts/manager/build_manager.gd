@@ -7,7 +7,8 @@ class_name BuildManager
 
 var buildings: Dictionary = {
 	0: "res://scenes/models/buildings/residential_placeholder.tscn",
-	1: "res://scenes/models/buildings/saw_mill.tscn"
+	1: "res://scenes/models/buildings/saw_mill.tscn",
+	2: "res://scenes/models/buildings/tree1.tscn"
 }
 
 @onready var build_ui: CanvasLayer = $BuildUI

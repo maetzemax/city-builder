@@ -1,4 +1,7 @@
-[gd_scene load_steps=91 format=4 uid="uid://cdw4atnef81ew"]
+[gd_scene load_steps=93 format=4 uid="uid://cdw4atnef81ew"]
+
+[ext_resource type="Script" uid="uid://dpkjvnhpycei2" path="res://scripts/buildings/resource_production_building.gd" id="1_7wyx2"]
+[ext_resource type="Resource" uid="uid://cpowfg6sqlul2" path="res://data/buildings/production/saw_mill.tres" id="2_vjf57"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_55uai"]
 resource_name = "Log_D.BROWN"
@@ -1997,218 +2000,217 @@ shadow_mesh = SubResource("ArrayMesh_0h2sn")
 [sub_resource type="BoxShape3D" id="BoxShape3D_ymnl4"]
 size = Vector3(3.0478516, 2.9032898, 2.642334)
 
-[node name="LumberCabin" type="Area3D"]
+[node name="SawMill" type="Area3D"]
+script = ExtResource("1_7wyx2")
+building_data = ExtResource("2_vjf57")
 
-[node name="cabin1" type="Node3D" parent="."]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
-
-[node name="L_1" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(3.448883e-07, 7.636944e-06, 844.7249, -97.94882, 20.150232, -1.0145548e-05, -20.150232, -97.94882, 6.377496e-05, 0, 0, 6)
+[node name="L_1" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.1733245e-08, 1.1455417e-06, 126.70874, -14.692324, 3.022535, -1.5218322e-06, -3.022535, -14.692324, 9.566244e-06, 0, 0, 0.90000004)
 mesh = SubResource("ArrayMesh_8kin2")
 skeleton = NodePath("")
 
-[node name="L_2" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(-1.5184219e-05, -1.0979918e-06, 844.7249, -83.03407, -55.72561, -0.0001116721, 55.725605, -83.03408, 6.377496e-05, 0, 1.7763716, 6)
+[node name="L_2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.2776328e-06, -1.6469878e-07, 126.70874, -12.4551115, -8.358842, -1.6750817e-05, 8.358841, -12.455112, 9.566244e-06, 0, 0.26645574, 0.90000004)
 mesh = SubResource("ArrayMesh_e1x85")
 skeleton = NodePath("")
 
-[node name="L_3" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(1.2293746e-05, 3.0235631e-05, 844.72504, -99.408875, 10.857162, 7.55044e-05, -10.857162, -99.408875, 0.0002651731, 0, 3.3934312, 6)
+[node name="L_3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.844062e-06, 4.535345e-06, 126.70876, -14.911332, 1.6285745, 1.1325661e-05, -1.6285745, -14.911332, 3.9775965e-05, 0, 0.5090147, 0.90000004)
 mesh = SubResource("ArrayMesh_svgrs")
 skeleton = NodePath("")
 
-[node name="L_4" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(1.0908551e-05, 1.1826975e-05, 844.7249, -94.363594, -33.09852, 0.000120020675, 33.09852, -94.363594, 6.377496e-05, 0, 5.052867, 6)
+[node name="L_4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.6362827e-06, 1.7740464e-06, 126.70874, -14.15454, -4.964778, 1.8003102e-05, 4.964778, -14.15454, 9.566244e-06, 0, 0.7579301, 0.90000004)
 mesh = SubResource("ArrayMesh_hypk6")
 skeleton = NodePath("")
 
-[node name="L_5" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(1.197234e-05, 6.57579e-06, 844.72485, -99.65276, 8.326126, 9.615724e-05, -8.326126, -99.65276, 6.3774954e-05, 0, 6.7777042, 6)
+[node name="L_5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.7958511e-06, 9.863685e-07, 126.70873, -14.947915, 1.248919, 1.4423586e-05, -1.248919, -14.947915, 9.5662435e-06, 0, 1.0166557, 0.90000004)
 mesh = SubResource("ArrayMesh_hsfp6")
 skeleton = NodePath("")
 
-[node name="L_6" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(9.3454355e-06, 3.7760817e-06, 937.01154, -89.48988, 44.62692, 6.257428e-05, -44.62692, -89.48988, 7.0742404e-05, 0, 8.335428, 6)
+[node name="L_6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.4018153e-06, 5.6641227e-07, 140.55174, -13.423483, 6.694038, 9.386143e-06, -6.694038, -13.423483, 1.0611361e-05, 0, 1.2503142, 0.90000004)
 mesh = SubResource("ArrayMesh_ygs1n")
 skeleton = NodePath("")
 
-[node name="R_6" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(1.2501017e-07, 7.5629778e-06, 937.01166, -99.69714, 7.777278, -4.343629e-06, -7.7772775, -99.69715, 7.074241e-05, 0, 8.335428, -6)
+[node name="R_6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.8751527e-08, 1.1344467e-06, 140.55176, -14.954572, 1.1665918, -6.515444e-07, -1.1665916, -14.954574, 1.0611362e-05, 0, 1.2503142, -0.90000004)
 mesh = SubResource("ArrayMesh_spjop")
 skeleton = NodePath("")
 
-[node name="F_5" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(-44.626923, -89.48989, 0.000112477035, -89.48989, 44.626923, 8.083361e-05, -1.6449545e-05, -8.669872e-06, -744.90173, 7, 8.335428, 0)
+[node name="F_5" type="MeshInstance3D" parent="."]
+transform = Transform3D(-6.694039, -13.423484, 1.6871556e-05, -13.423484, 6.694039, 1.2125042e-05, -2.4674318e-06, -1.3004808e-06, -111.73527, 1.0500001, 1.2503142, 0)
 mesh = SubResource("ArrayMesh_6mv17")
 skeleton = NodePath("")
 
-[node name="F_4" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(-46.587635, -88.48499, 0.00010770114, -88.48499, 46.587635, 7.598934e-05, -1.6461392e-05, -8.397592e-06, -713.2724, 7, 6.535428, 0)
+[node name="F_4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-6.9881454, -13.27275, 1.6155172e-05, -13.27275, 6.9881454, 1.1398401e-05, -2.469209e-06, -1.2596388e-06, -106.99087, 1.0500001, 0.98031425, 0)
 mesh = SubResource("ArrayMesh_cmgwb")
 skeleton = NodePath("")
 
-[node name="F_3" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(-61.97505, -78.47992, 3.5832596e-05, -78.47993, 61.975048, 2.179678e-05, -1.6566351e-05, -6.157734e-06, -237.30856, 7, 4.535428, 4.7258544)
+[node name="F_3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-9.296258, -11.771988, 5.3748895e-06, -11.77199, 9.296258, 3.2695173e-06, -2.4849528e-06, -9.2366014e-07, -35.596287, 1.0500001, 0.68031424, 0.70887816)
 mesh = SubResource("ArrayMesh_2frtg")
 skeleton = NodePath("")
 
-[node name="F_10" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(-61.97505, -78.47992, 3.5832596e-05, -78.47993, 61.975048, 2.179678e-05, -1.6566351e-05, -6.157734e-06, -237.30856, 7, 4.535428, -4.7258544)
+[node name="F_10" type="MeshInstance3D" parent="."]
+transform = Transform3D(-9.296258, -11.771988, 5.3748895e-06, -11.77199, 9.296258, 3.2695173e-06, -2.4849528e-06, -9.2366014e-07, -35.596287, 1.0500001, 0.68031424, -0.70887816)
 mesh = SubResource("ArrayMesh_ra206")
 skeleton = NodePath("")
 
-[node name="F_11" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(-47.934944, -87.76244, 3.583259e-05, -87.76244, 47.934944, 2.4961344e-05, -1.6469286e-05, -8.209713e-06, -237.3085, 7, 2.535428, -4.7258544)
+[node name="F_11" type="MeshInstance3D" parent="."]
+transform = Transform3D(-7.190242, -13.164367, 5.3748886e-06, -13.164367, 7.190242, 3.7442016e-06, -2.4703932e-06, -1.231457e-06, -35.596275, 1.0500001, 0.38031423, -0.70887816)
 mesh = SubResource("ArrayMesh_355gg")
 skeleton = NodePath("")
 
-[node name="F_2" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(-79.97155, -60.03796, 3.583259e-05, -60.03796, 79.97155, 1.8636685e-05, -1.6790365e-05, -2.7850283e-06, -237.3085, 7, 2.535428, 4.7258544)
+[node name="F_2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-11.995733, -9.005694, 5.3748886e-06, -9.005694, 11.995733, 2.795503e-06, -2.518555e-06, -4.1775425e-07, -35.596275, 1.0500001, 0.38031423, 0.70887816)
 mesh = SubResource("ArrayMesh_hq08v")
 skeleton = NodePath("")
 
-[node name="F_12" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(-99.0177, -13.982116, 3.583259e-05, -13.982116, 99.0177, -1.022197e-05, -1.4348983e-05, -6.376389e-06, -237.3085, 7, 0.53542805, -4.7258544)
+[node name="F_12" type="MeshInstance3D" parent="."]
+transform = Transform3D(-14.852655, -2.0973175, 5.3748886e-06, -2.0973175, 14.852655, -1.5332956e-06, -2.1523476e-06, -9.564584e-07, -35.596275, 1.0500001, 0.08031421, -0.70887816)
 mesh = SubResource("ArrayMesh_8g10g")
 skeleton = NodePath("")
 
-[node name="F_1" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(-25.384491, -96.7245, 0.19523197, -96.724396, 25.3843, -0.45313558, 0.16381006, -0.12804572, -237.30777, 7, 0.53542805, 4.7258544)
+[node name="F_1" type="MeshInstance3D" parent="."]
+transform = Transform3D(-3.8076737, -14.508676, 0.029284798, -14.50866, 3.807645, -0.06797034, 0.02457151, -0.01920686, -35.59617, 1.0500001, 0.08031421, 0.70887816)
 mesh = SubResource("ArrayMesh_dimub")
 skeleton = NodePath("")
 
-[node name="B_4" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(-87.35474, -48.673965, 0.00010770114, -48.673965, 87.35474, -2.0606594e-05, -1.1783997e-05, -9.873262e-06, -713.2724, -7.0338593, 6.1290655, 0)
+[node name="B_4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-13.103211, -7.301095, 1.6155172e-05, -7.301095, 13.103211, -3.0909894e-06, -1.7675997e-06, -1.4809893e-06, -106.99087, -1.055079, 0.91935986, 0)
 mesh = SubResource("ArrayMesh_gjlys")
 skeleton = NodePath("")
 
-[node name="B_5" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(-26.896208, -96.31509, -0.000112477035, -96.31509, 26.896208, 0.0001182047, -1.1222541e-05, 1.8811197e-05, -744.90173, -7.0338593, 8.098383, 0)
+[node name="B_5" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.0344315, -14.447264, -1.6871556e-05, -14.447264, 4.0344315, 1.7730705e-05, -1.6833811e-06, 2.8216796e-06, -111.73527, -1.055079, 1.2147574, 0)
 mesh = SubResource("ArrayMesh_xvb47")
 skeleton = NodePath("")
 
-[node name="B_3" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(-49.600075, -86.83222, 0.00010770114, -86.83222, 49.600075, 7.384356e-05, -1.6478956e-05, -7.976311e-06, -713.2724, -7.0338593, 4.2379384, 0)
+[node name="B_3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-7.4400115, -13.024834, 1.6155172e-05, -13.024834, 7.4400115, 1.1076535e-05, -2.4718436e-06, -1.1964468e-06, -106.99087, -1.055079, 0.6356908, 0)
 mesh = SubResource("ArrayMesh_vjgpg")
 skeleton = NodePath("")
 
-[node name="B_2" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(-78.513794, -61.932133, 0.00010770114, -61.932133, 78.513794, -1.0147461e-05, -1.0974168e-05, -1.0468479e-05, -713.2724, -7.0338593, 2.3363478, 0)
+[node name="B_2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-11.777069, -9.289821, 1.6155172e-05, -9.289821, 11.777069, -1.5221192e-06, -1.6461253e-06, -1.5702718e-06, -106.99087, -1.055079, 0.35045218, 0)
 mesh = SubResource("ArrayMesh_clgew")
 skeleton = NodePath("")
 
-[node name="B_1" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(-96.27652, -27.033934, 0.00010770114, -27.033934, 96.27652, -2.8933087e-05, -1.344075e-05, -7.987359e-06, -713.2724, -7.0338593, 0.5077161, 0)
+[node name="B_1" type="MeshInstance3D" parent="."]
+transform = Transform3D(-14.441479, -4.0550904, 1.6155172e-05, -4.0550904, 14.441479, -4.339963e-06, -2.0161126e-06, -1.1981039e-06, -106.99087, -1.055079, 0.07615742, 0)
 mesh = SubResource("ArrayMesh_kw68x")
 skeleton = NodePath("")
 
-[node name="R_7" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(1.2501017e-07, 7.5629778e-06, 937.01166, -99.69714, 7.777278, -4.343629e-06, -7.7772775, -99.69715, 7.074241e-05, 0, 11.31233, -4.3783503)
+[node name="R_7" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.8751527e-08, 1.1344467e-06, 140.55176, -14.954572, 1.1665918, -6.515444e-07, -1.1665916, -14.954574, 1.0611362e-05, 0, 1.6968496, -0.6567526)
 mesh = SubResource("ArrayMesh_2q213")
 skeleton = NodePath("")
 
-[node name="L_7" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(9.3454355e-06, 3.7760817e-06, 937.01154, -89.48988, 44.62692, 6.257428e-05, -44.62692, -89.48988, 7.0742404e-05, 0, 11.335428, 4.5)
+[node name="L_7" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.4018153e-06, 5.6641227e-07, 140.55174, -13.423483, 6.694038, 9.386143e-06, -6.694038, -13.423483, 1.0611361e-05, 0, 1.7003143, 0.675)
 mesh = SubResource("ArrayMesh_ii12x")
 skeleton = NodePath("")
 
-[node name="T" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(9.3454355e-06, 3.7760817e-06, 937.01154, -89.48988, 44.62692, 6.257428e-05, -44.62692, -89.48988, 7.0742404e-05, 0, 14.335428, 0)
+[node name="T" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.4018153e-06, 5.6641227e-07, 140.55174, -13.423483, 6.694038, 9.386143e-06, -6.694038, -13.423483, 1.0611361e-05, 0, 2.1503143, 0)
 mesh = SubResource("ArrayMesh_odu30")
 skeleton = NodePath("")
 
-[node name="F_6" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(14.45636, -98.94957, -0.00010035913, -98.94956, -14.456361, 3.9138635e-05, -8.009615e-06, 1.4089689e-05, -664.6485, 7, 10.051625, 0)
+[node name="F_6" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.1684542, -14.842436, -1.505387e-05, -14.842435, -2.1684542, 5.8707956e-06, -1.2014423e-06, 2.1134535e-06, -99.69728, 1.0500001, 1.5077438, 0)
 mesh = SubResource("ArrayMesh_ul34h")
 skeleton = NodePath("")
 
-[node name="F_7" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(-25.387474, -96.72372, -8.8091765e-05, -96.72372, 25.387474, 9.241252e-05, -1.1487817e-05, 1.8626299e-05, -583.4054, 7, 11.807507, 0)
+[node name="F_7" type="MeshInstance3D" parent="."]
+transform = Transform3D(-3.8081212, -14.508558, -1.3213766e-05, -14.508558, 3.8081212, 1.3861879e-05, -1.7231725e-06, 2.793945e-06, -87.51081, 1.0500001, 1.771126, 0)
 mesh = SubResource("ArrayMesh_adtj5")
 skeleton = NodePath("")
 
-[node name="F_8" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(-57.957676, -81.491776, 7.525689e-05, -81.49178, 57.957672, 4.7592355e-05, -1.6532978e-05, -6.770564e-06, -498.40384, 7, 13.527355, 0)
+[node name="F_8" type="MeshInstance3D" parent="."]
+transform = Transform3D(-8.693652, -12.223767, 1.1288534e-05, -12.223768, 8.693651, 7.1388536e-06, -2.479947e-06, -1.0155846e-06, -74.76058, 1.0500001, 2.0291033, 0)
 mesh = SubResource("ArrayMesh_epea4")
 skeleton = NodePath("")
 
-[node name="F_9" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(-68.58058, -72.778465, 4.0308885e-05, -72.778465, 68.58058, 1.2146476e-06, -1.0686525e-05, -1.0677199e-05, -266.95367, 7, 15.152217, 0)
+[node name="F_9" type="MeshInstance3D" parent="."]
+transform = Transform3D(-10.287087, -10.91677, 6.046333e-06, -10.91677, 10.287087, 1.8219714e-07, -1.6029787e-06, -1.6015798e-06, -40.043053, 1.0500001, 2.2728326, 0)
 mesh = SubResource("ArrayMesh_bmin1")
 skeleton = NodePath("")
 
-[node name="B_9" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(-68.58058, -72.778465, 4.0308885e-05, -72.778465, 68.58058, 1.2146476e-06, -1.0686525e-05, -1.0677199e-05, -266.95367, -7.053551, 15.152217, 0)
+[node name="B_9" type="MeshInstance3D" parent="."]
+transform = Transform3D(-10.287087, -10.91677, 6.046333e-06, -10.91677, 10.287087, 1.8219714e-07, -1.6029787e-06, -1.6015798e-06, -40.043053, -1.0580328, 2.2728326, 0)
 mesh = SubResource("ArrayMesh_pr4mv")
 skeleton = NodePath("")
 
-[node name="B_8" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(-57.957676, -81.491776, 7.525689e-05, -81.49178, 57.957672, 4.7592355e-05, -1.6532978e-05, -6.770564e-06, -498.40384, -7.053551, 13.527355, 0)
+[node name="B_8" type="MeshInstance3D" parent="."]
+transform = Transform3D(-8.693652, -12.223767, 1.1288534e-05, -12.223768, 8.693651, 7.1388536e-06, -2.479947e-06, -1.0155846e-06, -74.76058, -1.0580328, 2.0291033, 0)
 mesh = SubResource("ArrayMesh_nauym")
 skeleton = NodePath("")
 
-[node name="B_7" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(-25.387474, -96.72372, -8.8091765e-05, -96.72372, 25.387474, 9.241252e-05, -1.1487817e-05, 1.8626299e-05, -583.4054, -7.0872364, 11.807507, 0)
+[node name="B_7" type="MeshInstance3D" parent="."]
+transform = Transform3D(-3.8081212, -14.508558, -1.3213766e-05, -14.508558, 3.8081212, 1.3861879e-05, -1.7231725e-06, 2.793945e-06, -87.51081, -1.0630856, 1.771126, 0)
 mesh = SubResource("ArrayMesh_pehd4")
 skeleton = NodePath("")
 
-[node name="B_6" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(14.45636, -98.94957, -0.00010035913, -98.94956, -14.456361, 3.9138635e-05, -8.009615e-06, 1.4089689e-05, -664.6485, -7.0872364, 10.051625, 0)
+[node name="B_6" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.1684542, -14.842436, -1.505387e-05, -14.842435, -2.1684542, 5.8707956e-06, -1.2014423e-06, 2.1134535e-06, -99.69728, -1.0630856, 1.5077438, 0)
 mesh = SubResource("ArrayMesh_ajix7")
 skeleton = NodePath("")
 
-[node name="E_1" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(109.56023, 0, 0, 0, -1.1706269e-05, 35.331387, 0, -267.80823, -1.544384e-06, 7.00197, 5.5609965, 0)
+[node name="E_1" type="MeshInstance3D" parent="."]
+transform = Transform3D(16.434034, 0, 0, 0, -1.7559404e-06, 5.2997084, 0, -40.171234, -2.3165761e-07, 1.0502955, 0.83414954, 0)
 mesh = SubResource("ArrayMesh_gvp1o")
 skeleton = NodePath("")
 
-[node name="E_2" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(102.22202, 4.353255e-05, -2.888834e-06, 1.5435096e-05, -288.30298, -2.888834e-06, -1.54351e-05, 4.353253e-05, -19.131882, 7.00197, 2.4047549, 2.3450892)
+[node name="E_2" type="MeshInstance3D" parent="."]
+transform = Transform3D(15.333304, 6.5298827e-06, -4.333251e-07, 2.3152645e-06, -43.24545, -4.333251e-07, -2.3152652e-06, 6.52988e-06, -2.8697824, 1.0502955, 0.36071324, 0.3517634)
 mesh = SubResource("ArrayMesh_occen")
 skeleton = NodePath("")
 
-[node name="Roof_R" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(-992.2234, -1.039145e-05, -0.00016842567, 0, 22.237696, -519.004, 0.00038638603, -26.684814, -432.51016, 3.8866567e-16, 12.491737, -4.0562315)
+[node name="Roof_R" type="MeshInstance3D" parent="."]
+transform = Transform3D(-148.83351, -1.5587176e-06, -2.5263851e-05, 0, 3.3356545, -77.85061, 5.7957906e-05, -4.0027223, -64.876526, 5.8299855e-17, 1.8737607, -0.60843474)
 mesh = SubResource("ArrayMesh_gbhu7")
 skeleton = NodePath("")
 
-[node name="Roof_L" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(992.2234, 4.5463244e-16, -1.1734638e-14, -2.1553395e-14, 22.237686, -519.00415, 1.0568099e-15, 26.684818, 432.51, 3.8866567e-16, 12.491737, 4.0643816)
+[node name="Roof_L" type="MeshInstance3D" parent="."]
+transform = Transform3D(148.83351, 6.819487e-17, -1.7601958e-15, -3.2330094e-15, 3.335653, -77.850624, 1.5852149e-16, 4.0027227, 64.8765, 5.8299855e-17, 1.8737607, 0.6096573)
 mesh = SubResource("ArrayMesh_8rasf")
 skeleton = NodePath("")
 
-[node name="E_3" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(102.22202, 4.353255e-05, -2.888834e-06, 1.5435096e-05, -288.30298, -2.888834e-06, -1.54351e-05, 4.353253e-05, -19.131882, 7.00197, 2.4047549, -2.3833208)
+[node name="E_3" type="MeshInstance3D" parent="."]
+transform = Transform3D(15.333304, 6.5298827e-06, -4.333251e-07, 2.3152645e-06, -43.24545, -4.333251e-07, -2.3152652e-06, 6.52988e-06, -2.8697824, 1.0502955, 0.36071324, -0.35749814)
 mesh = SubResource("ArrayMesh_m3jm3")
 skeleton = NodePath("")
 
-[node name="Floor" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(791.12866, 0, 0, 0, -2.844951e-05, 25.19573, 0, -650.84894, -1.1013403e-06, 0, -0.4632655, 0)
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(118.669304, 0, 0, 0, -4.267427e-06, 3.7793596, 0, -97.62734, -1.6520106e-07, 0, -0.06948983, 0)
 mesh = SubResource("ArrayMesh_set20")
 skeleton = NodePath("")
 
-[node name="R_5" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(1.197234e-05, 6.57579e-06, 844.72485, -99.65276, 8.326126, 9.615724e-05, -8.326126, -99.65276, 6.3774954e-05, 0, 6.7777042, -6)
+[node name="R_5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.7958511e-06, 9.863685e-07, 126.70873, -14.947915, 1.248919, 1.4423586e-05, -1.248919, -14.947915, 9.5662435e-06, 0, 1.0166557, -0.90000004)
 mesh = SubResource("ArrayMesh_bg2qk")
 skeleton = NodePath("")
 
-[node name="R_4" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(1.0908551e-05, 1.1826975e-05, 844.7249, -94.363594, -33.09852, 0.000120020675, 33.09852, -94.363594, 6.377496e-05, 0, 5.052867, -6)
+[node name="R_4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.6362827e-06, 1.7740464e-06, 126.70874, -14.15454, -4.964778, 1.8003102e-05, 4.964778, -14.15454, 9.566244e-06, 0, 0.7579301, -0.90000004)
 mesh = SubResource("ArrayMesh_mwqvs")
 skeleton = NodePath("")
 
-[node name="R_3" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(1.2293746e-05, 3.0235631e-05, 844.72504, -99.408875, 10.857162, 7.55044e-05, -10.857162, -99.408875, 0.0002651731, 0, 3.3934312, -6)
+[node name="R_3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.844062e-06, 4.535345e-06, 126.70876, -14.911332, 1.6285745, 1.1325661e-05, -1.6285745, -14.911332, 3.9775965e-05, 0, 0.5090147, -0.90000004)
 mesh = SubResource("ArrayMesh_hmtuu")
 skeleton = NodePath("")
 
-[node name="R_2" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(-1.5184219e-05, -1.0979918e-06, 844.7249, -83.03407, -55.72561, -0.0001116721, 55.725605, -83.03408, 6.377496e-05, 0, 1.7763716, -6)
+[node name="R_2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.2776328e-06, -1.6469878e-07, 126.70874, -12.4551115, -8.358842, -1.6750817e-05, 8.358841, -12.455112, 9.566244e-06, 0, 0.26645574, -0.90000004)
 mesh = SubResource("ArrayMesh_40tx5")
 skeleton = NodePath("")
 
-[node name="R_1" type="MeshInstance3D" parent="cabin1"]
-transform = Transform3D(3.448883e-07, 7.636944e-06, 844.7249, -97.94882, 20.150232, -1.0145548e-05, -20.150232, -97.94882, 6.377496e-05, 0, 0, -6)
+[node name="R_1" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.1733245e-08, 1.1455417e-06, 126.70874, -14.692324, 3.022535, -1.5218322e-06, -3.022535, -14.692324, 9.566244e-06, 0, 0, -0.90000004)
 mesh = SubResource("ArrayMesh_eah00")
 skeleton = NodePath("")
 

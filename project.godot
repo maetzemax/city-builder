@@ -19,7 +19,6 @@ config/icon="res://assets/icons/icon.svg"
 [autoload]
 
 GameManager="*res://scripts/manager/game_manager.gd"
-TickManager="*res://scripts/manager/tick_manager.gd"
 
 [display]
 
@@ -37,7 +36,7 @@ buildings=""
 production_buildings=""
 resource_nodes=""
 storage_buildings=""
-Commodity=""
+resource_buildings=""
 
 [input]
 
@@ -76,8 +75,7 @@ load_game={
 [layer_names]
 
 3d_physics/layer_1="World"
-3d_physics/layer_2="Buildings"
-3d_physics/layer_3="Commodities"
+3d_physics/layer_3="Resource"
 
 [physics]
 

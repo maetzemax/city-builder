@@ -1,13 +1,13 @@
 [gd_scene load_steps=8 format=4 uid="uid://bmglwbl6r4ao7"]
 
-[ext_resource type="Script" uid="uid://d3cymgvuk6rtn" path="res://scripts/commodity.gd" id="1_wtjj2"]
-[ext_resource type="Resource" uid="uid://cayx6fwgmvj08" path="res://data/placeables/commodity/tree1.tres" id="2_o8mjk"]
-[ext_resource type="Texture2D" uid="uid://lb4hnvuake4s" path="res://assets/forest/color_1024x1024.jpg" id="3_1msaj"]
+[ext_resource type="Script" uid="uid://x402pio1wkde" path="res://scripts/buildings/resource_node.gd" id="1_k4kii"]
+[ext_resource type="Texture2D" uid="uid://lb4hnvuake4s" path="res://assets/forest/color_1024x1024.jpg" id="2_u2ld1"]
+[ext_resource type="Resource" uid="uid://o1nmy41ve7lk" path="res://data/buildings/resources/tree.tres" id="2_v6kpv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rsxby"]
 resource_name = "tree_color"
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("3_1msaj")
+albedo_texture = ExtResource("2_u2ld1")
 emission_enabled = true
 emission_energy_multiplier = 0.0
 
@@ -49,10 +49,10 @@ shadow_mesh = SubResource("ArrayMesh_jh3rp")
 radius = 0.6801758
 height = 3.9312134
 
-[node name="Tree1" type="Area3D" groups=["Commodity"]]
+[node name="Tree1" type="Area3D"]
 collision_layer = 5
-script = ExtResource("1_wtjj2")
-data = ExtResource("2_o8mjk")
+script = ExtResource("1_k4kii")
+building_data = ExtResource("2_v6kpv")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.377826, 0, 0, 0, 6.7560556e-08, 0.37782598, 0, -0.37782598, 6.7560556e-08, 0, 0, 0)

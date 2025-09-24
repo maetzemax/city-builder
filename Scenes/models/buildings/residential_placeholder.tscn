@@ -1,6 +1,8 @@
-[gd_scene load_steps=26 format=4 uid="uid://bn2j568mwjyxb"]
+[gd_scene load_steps=28 format=4 uid="uid://bn2j568mwjyxb"]
 
+[ext_resource type="Script" uid="uid://cefqsrj3f1y8j" path="res://scripts/buildings/building.gd" id="1_j5sa2"]
 [ext_resource type="Script" uid="uid://cpxe5t8wo7akl" path="res://scripts/light_activator.gd" id="1_jl12f"]
+[ext_resource type="Resource" uid="uid://d4jgl7e67eqah" path="res://data/buildings/residential/house1.tres" id="2_j5sa2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhj3v"]
 
@@ -205,6 +207,8 @@ material = SubResource("StandardMaterial3D_jl12f")
 size = Vector3(0.05, 1.2, 0.05)
 
 [node name="House1" type="Area3D"]
+script = ExtResource("1_j5sa2")
+building_data = ExtResource("2_j5sa2")
 
 [node name="Door" type="MeshInstance3D" parent="."]
 transform = Transform3D(29.999998, 0, 0, 0, -3.5762785e-06, 29.999998, 0, -29.999998, -3.5762785e-06, 0, 0.099999994, 0)

@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_wwtde")
+detection_radius = 20.0
 building_id = 1
 construction_cost = 200.0
 display_name = "Saw Mill"

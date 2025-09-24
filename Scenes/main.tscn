@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dvd53runfr5vs"]
+[gd_scene load_steps=20 format=3 uid="uid://dvd53runfr5vs"]
 
 [ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/models/environment/terrain.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://d1xj148c07pj0" path="res://scripts/manager/build_manager.gd" id="1_tefeu"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cxvyq11fluruq" path="res://scripts/models/buildings/building_data.gd" id="4_tipki"]
 [ext_resource type="Resource" uid="uid://d4jgl7e67eqah" path="res://data/buildings/residential/house1.tres" id="5_85g3d"]
 [ext_resource type="Resource" uid="uid://cpowfg6sqlul2" path="res://data/buildings/production/saw_mill.tres" id="6_choun"]
+[ext_resource type="Resource" uid="uid://o1nmy41ve7lk" path="res://data/buildings/resources/tree.tres" id="7_ya4ey"]
 [ext_resource type="Script" uid="uid://cyu4clyieh3ni" path="res://scripts/manager/economy_manager.gd" id="12_jkv2x"]
 [ext_resource type="Script" uid="uid://ci778ubcpw8b0" path="res://scripts/day_and_night_cycle.gd" id="14_a8y0u"]
 
@@ -132,13 +133,14 @@ build_manager = NodePath("../../../../..")
 buildings = Array[ExtResource("4_tipki")]([ExtResource("6_choun")])
 metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
-[node name="Environment" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer"]
-visible = false
+[node name="Environment" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
 layout_mode = 2
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 48
 text = "Environment"
 script = ExtResource("4_tefeu")
+build_manager = NodePath("../../../../..")
+buildings = Array[ExtResource("4_tipki")]([ExtResource("7_ya4ey")])
 metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
 [node name="EconomyManager" type="Node" parent="." node_paths=PackedStringArray("label")]
