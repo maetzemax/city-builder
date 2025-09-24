@@ -16,9 +16,15 @@ func save_game():
 			
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	
+	var camera_data: Dictionary = {
+		"position": build_manager.camera.global_position,
+		"rotation": build_manager.camera.global_rotation
+	}
+	
 	if file:
 		var complete_save_data = {
 			"buildings": save_data,
+			"camera": camera_data,
 			"version": "0.1",
 			"money": EconomyManager.money
 		}
@@ -49,6 +55,9 @@ func load_game():
 		building.load_from_data(building_data)
 		
 	EconomyManager.money = save_data.money
+	
+	build_manager.camera.global_position = save_data.camera.position
+	build_manager.camera.global_rotation = save_data.camera.rotation
 	
 	print("Game loaded! ", save_data.buildings.size(), " buildings restored.")
 	

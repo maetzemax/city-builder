@@ -1,0 +1,240 @@
+[gd_scene load_steps=22 format=3 uid="uid://ble25xwm6dllu"]
+
+[ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/models/environment/terrain.tscn" id="1_fe2o3"]
+[ext_resource type="PackedScene" uid="uid://djkhxkdyic626" path="res://scenes/ui/navigation_button.tscn" id="1_uhagc"]
+[ext_resource type="Script" uid="uid://ci778ubcpw8b0" path="res://scripts/environment/day_and_night_cycle.gd" id="2_1g8jr"]
+[ext_resource type="PackedScene" uid="uid://dvd53runfr5vs" path="res://scenes/main.tscn" id="2_wb0q5"]
+[ext_resource type="PackedScene" uid="uid://bn2j568mwjyxb" path="res://scenes/models/buildings/residential_placeholder.tscn" id="3_m1kxf"]
+[ext_resource type="FontFile" uid="uid://chv1w8s37w8t7" path="res://assets/fonts/Jersey15-Regular.ttf" id="3_q85j6"]
+[ext_resource type="Script" uid="uid://bvd3ryegodarr" path="res://scripts/ui/exit_button.gd" id="4_q85j6"]
+[ext_resource type="PackedScene" uid="uid://bmglwbl6r4ao7" path="res://scenes/models/buildings/tree1.tscn" id="4_x2yvf"]
+[ext_resource type="PackedScene" uid="uid://cdw4atnef81ew" path="res://scenes/models/buildings/saw_mill.tscn" id="5_x2yvf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8g5eo"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.22520697, 0.20444673, 0.22192162, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wb0q5"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.2784314, 0.25490198, 0.27450982, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q85j6"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.2784314, 0.25490198, 0.27450982, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7suek"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.7, 0.7, 0.7, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_otr3d"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.22520697, 0.20444673, 0.22192162, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="Gradient" id="Gradient_a8y0u"]
+offsets = PackedFloat32Array(0, 0.2, 0.8, 1)
+colors = PackedColorArray(0.8666667, 0.7137255, 0.7882353, 1, 0.6710475, 0.7802559, 1, 1, 0.67058825, 0.78039217, 1, 1, 0.8666667, 0.7411765, 0.7882353, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m1kxf"]
+gradient = SubResource("Gradient_a8y0u")
+
+[sub_resource type="Gradient" id="Gradient_jbj1t"]
+offsets = PackedFloat32Array(0, 0.2, 0.5, 0.8, 1)
+colors = PackedColorArray(0.86768293, 0.73972756, 0.7881959, 1, 0, 0.060000088, 0.6, 1, 0, 0.032000046, 0.32, 1, 0, 0.060000088, 0.6, 1, 0.8666667, 0.7411765, 0.7882353, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x2yvf"]
+gradient = SubResource("Gradient_jbj1t")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uhagc"]
+sky_top_color = Color(0.5990235, 0.66700757, 0.74295527, 1)
+sky_horizon_color = Color(0.69806564, 0.71506166, 0.7340486, 1)
+sun_angle_max = 15.0
+
+[sub_resource type="Sky" id="Sky_8gbba"]
+sky_material = SubResource("ProceduralSkyMaterial_uhagc")
+
+[sub_resource type="Environment" id="Environment_btxxm"]
+background_mode = 2
+sky = SubResource("Sky_8gbba")
+tonemap_mode = 3
+tonemap_exposure = 0.5
+ssao_enabled = true
+
+[node name="MainMenu" type="Node3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -418.0
+offset_top = -209.5
+offset_right = 418.0
+offset_bottom = 209.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 48
+
+[node name="Create Game" type="MarginContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 256
+theme_override_constants/margin_right = 256
+
+[node name="Button" parent="CanvasLayer/VBoxContainer/Create Game" instance=ExtResource("1_uhagc")]
+layout_mode = 2
+scene = ExtResource("2_wb0q5")
+
+[node name="Load Game" type="MarginContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button" parent="CanvasLayer/VBoxContainer/Load Game" instance=ExtResource("1_uhagc")]
+layout_mode = 2
+text = "Load Game"
+scene = ExtResource("2_wb0q5")
+should_load_save_file = true
+
+[node name="Exit" type="MarginContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer/Exit"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_q85j6")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_8g5eo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wb0q5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_q85j6")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_7suek")
+theme_override_styles/focus = SubResource("StyleBoxFlat_otr3d")
+text = "Exit"
+script = ExtResource("4_q85j6")
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="Terrain" parent="Environment" instance=ExtResource("1_fe2o3")]
+
+[node name="DayAndNightCycle" type="Node3D" parent="Environment" node_paths=PackedStringArray("sun_light", "world_environment", "day_timer", "night_timer")]
+script = ExtResource("2_1g8jr")
+sun_light = NodePath("Sun")
+world_environment = NodePath("WorldEnvironment")
+day_timer = NodePath("DayTimer")
+day_colors = SubResource("GradientTexture2D_m1kxf")
+night_timer = NodePath("NightTimer")
+night_colors = SubResource("GradientTexture2D_x2yvf")
+night_light_energy = 0.5
+metadata/_custom_type_script = "uid://ci778ubcpw8b0"
+
+[node name="Sun" type="DirectionalLight3D" parent="Environment/DayAndNightCycle"]
+transform = Transform3D(-0.8660254, -0.23857942, 0.4394086, 0, 0.8788171, 0.47715878, -0.50000006, 0.4132316, -0.7610779, 0, 0, 0)
+light_color = Color(1, 1, 0.98039216, 1)
+shadow_enabled = true
+shadow_reverse_cull_face = true
+shadow_blur = 0.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment/DayAndNightCycle"]
+environment = SubResource("Environment_btxxm")
+
+[node name="DayTimer" type="Timer" parent="Environment/DayAndNightCycle"]
+process_callback = 0
+
+[node name="NightTimer" type="Timer" parent="Environment/DayAndNightCycle"]
+process_callback = 0
+
+[node name="House1" parent="Environment" instance=ExtResource("3_m1kxf")]
+transform = Transform3D(0.59482276, 0, -0.80385685, 0, 1, 0, 0.80385685, 0, 0.59482276, 32.889, 7.122, -3.967)
+
+[node name="House2" parent="Environment" instance=ExtResource("3_m1kxf")]
+transform = Transform3D(0.9205048, 0, 0.3907311, 0, 1, 0, -0.3907311, 0, 0.9205048, 25.189, 6.992, -8.832)
+
+[node name="Tree1" parent="Environment" instance=ExtResource("4_x2yvf")]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 28, 7, -10)
+
+[node name="Tree4" parent="Environment" instance=ExtResource("4_x2yvf")]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 35, 7, -25)
+
+[node name="Tree2" parent="Environment" instance=ExtResource("4_x2yvf")]
+transform = Transform3D(0.258819, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.258819, 34, 7, -2)
+
+[node name="Tree6" parent="Environment" instance=ExtResource("4_x2yvf")]
+transform = Transform3D(0.258819, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.258819, 34, 7, -19)
+
+[node name="Tree3" parent="Environment" instance=ExtResource("4_x2yvf")]
+transform = Transform3D(-0.70710695, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710695, 23, 7, -7)
+
+[node name="Tree5" parent="Environment" instance=ExtResource("4_x2yvf")]
+transform = Transform3D(-0.70710695, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710695, 41, 7, -23)
+
+[node name="SawMill" parent="Environment" instance=ExtResource("5_x2yvf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 8, -21)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.87796557, 0.06578041, -0.47418284, 0, 0.9905146, 0.13740785, 0.47872376, -0.12063936, 0.86963767, 26.0564, 9.164326, 0.14120102)
