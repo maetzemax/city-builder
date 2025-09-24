@@ -45,6 +45,7 @@ background_mode = 2
 sky = SubResource("Sky_muem4")
 tonemap_mode = 3
 tonemap_exposure = 0.5
+ssao_enabled = true
 
 [node name="Main" type="Node3D"]
 

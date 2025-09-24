@@ -20,9 +20,6 @@ var is_orbiting: bool = false
 func _physics_process(_delta: float):
 	shoot_ray()
 
-func _ready():
-	rotation_degrees = Vector3(-30, 0, 0)
-
 func _input(event):
 	if event is InputEventMouseButton:
 		handle_mouse_button(event)

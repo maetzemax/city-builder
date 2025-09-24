@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" uid="uid://chv1w8s37w8t7" path="res://assets/fonts/Jersey15-Regular.ttf" id="1_2y53f"]
 [ext_resource type="Script" uid="uid://ddwj3ojos0iy5" path="res://scripts/ui/navigation_button.gd" id="2_khj17"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8g5eo"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2y53f"]
 content_margin_left = 24.0
 content_margin_top = 12.0
 content_margin_right = 24.0
@@ -19,7 +19,7 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wb0q5"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_khj17"]
 content_margin_left = 24.0
 content_margin_top = 12.0
 content_margin_right = 24.0
@@ -35,7 +35,7 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q85j6"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfb7x"]
 content_margin_left = 24.0
 content_margin_top = 12.0
 content_margin_right = 24.0
@@ -50,8 +50,9 @@ corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
+shadow_size = 2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7suek"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ad5bu"]
 content_margin_left = 24.0
 content_margin_top = 12.0
 content_margin_right = 24.0
@@ -67,7 +68,7 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_otr3d"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o4evi"]
 content_margin_left = 24.0
 content_margin_top = 12.0
 content_margin_right = 24.0
@@ -86,10 +87,10 @@ corner_radius_bottom_left = 12
 [node name="Button" type="Button"]
 theme_override_fonts/font = ExtResource("1_2y53f")
 theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("StyleBoxFlat_8g5eo")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_wb0q5")
-theme_override_styles/hover = SubResource("StyleBoxFlat_q85j6")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_7suek")
-theme_override_styles/focus = SubResource("StyleBoxFlat_otr3d")
+theme_override_styles/normal = SubResource("StyleBoxFlat_2y53f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_khj17")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rfb7x")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ad5bu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4evi")
 text = "Create Game"
 script = ExtResource("2_khj17")
