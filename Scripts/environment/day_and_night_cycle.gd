@@ -61,6 +61,7 @@ func _process(delta):
 	if current_time >= cycle_time:
 		current_time = 0.0
 		is_day = true
+		GameData.day_count += 1
 		day_started.emit()
 	
 	GameManager.is_day = is_day
@@ -96,6 +97,8 @@ func _process(delta):
 		angle = progress * 180.0 + 180.0  # 180° → 360°
 	
 	sun_light.rotation_degrees.x = -angle
+	
+	GameData.day_progress = (current_time / cycle_time) * 100
 	
 	# Debug Info
 	if show_debug_time:

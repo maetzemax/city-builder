@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dvd53runfr5vs"]
+[gd_scene load_steps=37 format=3 uid="uid://dvd53runfr5vs"]
 
 [ext_resource type="Script" uid="uid://l8a4rxtmphwk" path="res://scripts/manager/save_manager.gd" id="1_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/models/environment/terrain.tscn" id="1_jjgbg"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://bvd3ryegodarr" path="res://scripts/ui/exit_button.gd" id="11_dp3eg"]
 [ext_resource type="Script" uid="uid://cyu4clyieh3ni" path="res://scripts/manager/economy_manager.gd" id="12_jkv2x"]
 [ext_resource type="Script" uid="uid://ci778ubcpw8b0" path="res://scripts/environment/day_and_night_cycle.gd" id="14_a8y0u"]
+[ext_resource type="Script" uid="uid://c1i4acayxs71b" path="res://scenes/ui/hud_container.gd" id="18_0ld40"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_tipki"]
 
@@ -222,9 +223,10 @@ build_ui = NodePath("../User Interface/Build UI")
 hud = NodePath("../User Interface/Hud")
 metadata/_custom_type_script = "uid://cx7qf74acxtp4"
 
-[node name="SaveManager" type="Node" parent="." node_paths=PackedStringArray("build_manager")]
+[node name="SaveManager" type="Node" parent="." node_paths=PackedStringArray("build_manager", "day_night_cycle")]
 script = ExtResource("1_eb6dy")
 build_manager = NodePath("../BuildManager")
+day_night_cycle = NodePath("../DayAndNightCycle")
 metadata/_custom_type_script = "uid://l8a4rxtmphwk"
 
 [node name="BuildManager" type="Node" parent="." node_paths=PackedStringArray("camera", "builder", "build_ui")]
@@ -248,9 +250,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
 [node name="Environment" type="Node3D" parent="BuildManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
 
-[node name="EconomyManager" type="Node" parent="." node_paths=PackedStringArray("label")]
+[node name="EconomyManager" type="Node" parent="."]
 script = ExtResource("12_jkv2x")
-label = NodePath("../User Interface/Hud/MarginContainer/Label")
 metadata/_custom_type_script = "uid://cyu4clyieh3ni"
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -299,12 +300,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -418.0
-offset_top = -209.5
-offset_right = 418.0
-offset_bottom = 209.5
+offset_left = -371.0
+offset_top = -250.0
+offset_right = 371.0
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/separation = 48
 
 [node name="Resume" type="MarginContainer" parent="User Interface/Pause UI/VBoxContainer"]
@@ -368,28 +371,17 @@ save_manager = NodePath("../../../../../SaveManager")
 [node name="Build UI" type="CanvasLayer" parent="User Interface"]
 visible = false
 
-[node name="UI" type="Control" parent="User Interface/Build UI"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-mouse_filter = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="User Interface/Build UI/UI"]
+[node name="MarginContainer" type="MarginContainer" parent="User Interface/Build UI"]
 z_index = 2
 z_as_relative = false
-layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -246.0
+offset_left = -490.5
 offset_top = -139.0
-offset_right = 246.0
+offset_right = 490.5
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/margin_left = 24
@@ -397,52 +389,70 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 48
 
-[node name="HBoxContainer" type="HBoxContainer" parent="User Interface/Build UI/UI/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="User Interface/Build UI/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 48
 
-[node name="Residential" type="MenuButton" parent="User Interface/Build UI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
+[node name="Residential" type="MenuButton" parent="User Interface/Build UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
 layout_mode = 2
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 48
 text = "Residential"
 script = ExtResource("4_tefeu")
-build_manager = NodePath("../../../../../../BuildManager")
+build_manager = NodePath("../../../../../BuildManager")
 buildings = Array[ExtResource("4_tipki")]([ExtResource("5_85g3d")])
 metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
-[node name="Production" type="MenuButton" parent="User Interface/Build UI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
+[node name="Production" type="MenuButton" parent="User Interface/Build UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
 layout_mode = 2
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 48
 text = "Production"
 script = ExtResource("4_tefeu")
-build_manager = NodePath("../../../../../../BuildManager")
+build_manager = NodePath("../../../../../BuildManager")
 buildings = Array[ExtResource("4_tipki")]([ExtResource("6_choun")])
 metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
-[node name="Environment" type="MenuButton" parent="User Interface/Build UI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
+[node name="Environment" type="MenuButton" parent="User Interface/Build UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
 layout_mode = 2
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 48
 text = "Environment"
 script = ExtResource("4_tefeu")
-build_manager = NodePath("../../../../../../BuildManager")
+build_manager = NodePath("../../../../../BuildManager")
 buildings = Array[ExtResource("4_tipki")]([ExtResource("7_ya4ey")])
 metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
 [node name="Hud" type="CanvasLayer" parent="User Interface"]
 
-[node name="MarginContainer" type="MarginContainer" parent="User Interface/Hud"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="MarginContainer" type="MarginContainer" parent="User Interface/Hud" node_paths=PackedStringArray("day_label", "day_progress", "money_label")]
+offset_right = 238.0
+offset_bottom = 127.0
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 48
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 12
+script = ExtResource("18_0ld40")
+day_label = NodePath("VBoxContainer/DayLabel")
+day_progress = NodePath("VBoxContainer/DayProgressBar")
+money_label = NodePath("VBoxContainer/MoneyLabel")
 
-[node name="Label" type="Label" parent="User Interface/Hud/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="User Interface/Hud/MarginContainer"]
+layout_mode = 2
+
+[node name="DayLabel" type="Label" parent="User Interface/Hud/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Day 1"
+
+[node name="DayProgressBar" type="ProgressBar" parent="User Interface/Hud/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+show_percentage = false
+
+[node name="MoneyLabel" type="Label" parent="User Interface/Hud/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "100.00 €"
