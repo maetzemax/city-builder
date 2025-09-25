@@ -68,7 +68,7 @@ func load_game():
 	EconomyManager.money = save_data.money	
 	
 	GameData.day_count = save_data.day.count
-	await day_night_cycle.set_time_of_day(save_data.day.progress)
+	day_night_cycle.set_time_of_day(save_data.day.progress / 100)
 	
 	build_manager.camera.global_position = save_data.camera.position
 	build_manager.camera.global_rotation = save_data.camera.rotation
