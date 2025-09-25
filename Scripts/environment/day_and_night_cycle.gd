@@ -4,6 +4,7 @@ class_name DayAndNightCycle
 #region Export
 @export_category("Settings")
 @export_group("General")
+@export var is_menu: bool = false
 @export var sun_light: DirectionalLight3D
 @export var world_environment: WorldEnvironment
 
@@ -34,10 +35,6 @@ func _ready():
 	day_length_in_seconds = day_length * 60
 	night_length_in_seconds = night_length * 60
 	cycle_time = day_length_in_seconds + night_length_in_seconds
-	
-	current_time = 0.0
-	is_day = true
-	GameManager.is_day = true
 
 func _process(delta):
 	if GameManager.current_game_state == GameManager.GameState.PAUSED:
@@ -64,7 +61,8 @@ func _process(delta):
 		GameData.day_count += 1
 		day_started.emit()
 	
-	GameManager.is_day = is_day
+	if not is_menu:
+		GameManager.is_day = is_day
 	
 	var progress: float
 	if is_day:
@@ -98,7 +96,8 @@ func _process(delta):
 	
 	sun_light.rotation_degrees.x = -angle
 	
-	GameData.day_progress = (current_time / cycle_time) * 100
+	if not is_menu:
+		GameData.day_progress = (current_time / cycle_time) * 100
 	
 	# Debug Info
 	if show_debug_time:

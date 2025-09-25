@@ -19,8 +19,6 @@
 [ext_resource type="Script" uid="uid://ci778ubcpw8b0" path="res://scripts/environment/day_and_night_cycle.gd" id="14_a8y0u"]
 [ext_resource type="Script" uid="uid://c1i4acayxs71b" path="res://scenes/ui/hud_container.gd" id="18_0ld40"]
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_tipki"]
-
 [sub_resource type="Gradient" id="Gradient_jkv2x"]
 offsets = PackedFloat32Array(0, 0.2, 0.8, 1)
 colors = PackedColorArray(0.8666667, 0.7137255, 0.7882353, 1, 0.6710475, 0.7802559, 1, 1, 0.67058825, 0.78039217, 1, 1, 0.8666667, 0.7411765, 0.7882353, 1)
@@ -51,6 +49,8 @@ sky = SubResource("Sky_muem4")
 tonemap_mode = 3
 tonemap_exposure = 0.5
 ssao_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_tipki"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2y53f"]
 content_margin_left = 24.0
@@ -215,6 +215,32 @@ corner_radius_bottom_left = 12
 
 [node name="Main" type="Node3D"]
 
+[node name="DayAndNightCycle" type="Node3D" parent="." node_paths=PackedStringArray("sun_light", "world_environment")]
+script = ExtResource("14_a8y0u")
+sun_light = NodePath("Sun")
+world_environment = NodePath("WorldEnvironment")
+day_colors = SubResource("GradientTexture2D_jkv2x")
+night_colors = SubResource("GradientTexture2D_muem4")
+night_light_energy = 0.5
+show_debug_time = true
+metadata/_custom_type_script = "uid://ci778ubcpw8b0"
+
+[node name="Sun" type="DirectionalLight3D" parent="DayAndNightCycle"]
+transform = Transform3D(-0.8660254, -0.23857942, 0.4394086, 0, 0.8788171, 0.47715878, -0.50000006, 0.4132316, -0.7610779, 0, 0, 0)
+light_color = Color(1, 1, 0.98039216, 1)
+shadow_enabled = true
+shadow_reverse_cull_face = true
+shadow_blur = 0.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="DayAndNightCycle"]
+environment = SubResource("Environment_jjvhh")
+
+[node name="DayTimer" type="Timer" parent="DayAndNightCycle"]
+process_callback = 0
+
+[node name="NightTimer" type="Timer" parent="DayAndNightCycle"]
+process_callback = 0
+
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("save_manager", "pause_ui", "build_ui", "hud")]
 script = ExtResource("1_trceg")
 save_manager = NodePath("../SaveManager")
@@ -222,6 +248,10 @@ pause_ui = NodePath("../User Interface/Pause UI")
 build_ui = NodePath("../User Interface/Build UI")
 hud = NodePath("../User Interface/Hud")
 metadata/_custom_type_script = "uid://cx7qf74acxtp4"
+
+[node name="EconomyManager" type="Node" parent="."]
+script = ExtResource("12_jkv2x")
+metadata/_custom_type_script = "uid://cyu4clyieh3ni"
 
 [node name="SaveManager" type="Node" parent="." node_paths=PackedStringArray("build_manager", "day_night_cycle")]
 script = ExtResource("1_eb6dy")
@@ -250,44 +280,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
 [node name="Environment" type="Node3D" parent="BuildManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
 
-[node name="EconomyManager" type="Node" parent="."]
-script = ExtResource("12_jkv2x")
-metadata/_custom_type_script = "uid://cyu4clyieh3ni"
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
-script = ExtResource("2_bo1nx")
-
 [node name="Terrain" parent="." instance=ExtResource("1_jjgbg")]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_tipki")
-
-[node name="DayAndNightCycle" type="Node3D" parent="." node_paths=PackedStringArray("sun_light", "world_environment")]
-script = ExtResource("14_a8y0u")
-sun_light = NodePath("Sun")
-world_environment = NodePath("WorldEnvironment")
-day_colors = SubResource("GradientTexture2D_jkv2x")
-night_colors = SubResource("GradientTexture2D_muem4")
-night_light_energy = 0.5
-show_debug_time = true
-metadata/_custom_type_script = "uid://ci778ubcpw8b0"
-
-[node name="Sun" type="DirectionalLight3D" parent="DayAndNightCycle"]
-transform = Transform3D(-0.8660254, -0.23857942, 0.4394086, 0, 0.8788171, 0.47715878, -0.50000006, 0.4132316, -0.7610779, 0, 0, 0)
-light_color = Color(1, 1, 0.98039216, 1)
-shadow_enabled = true
-shadow_reverse_cull_face = true
-shadow_blur = 0.0
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="DayAndNightCycle"]
-environment = SubResource("Environment_jjvhh")
-
-[node name="DayTimer" type="Timer" parent="DayAndNightCycle"]
-process_callback = 0
-
-[node name="NightTimer" type="Timer" parent="DayAndNightCycle"]
-process_callback = 0
 
 [node name="User Interface" type="Node" parent="."]
 
@@ -456,3 +452,7 @@ show_percentage = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "100.00 €"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
+script = ExtResource("2_bo1nx")

@@ -182,13 +182,12 @@ script = ExtResource("4_q85j6")
 
 [node name="Terrain" parent="Environment" instance=ExtResource("1_fe2o3")]
 
-[node name="DayAndNightCycle" type="Node3D" parent="Environment" node_paths=PackedStringArray("sun_light", "world_environment", "day_timer", "night_timer")]
+[node name="DayAndNightCycle" type="Node3D" parent="Environment" node_paths=PackedStringArray("sun_light", "world_environment")]
 script = ExtResource("2_1g8jr")
+is_menu = true
 sun_light = NodePath("Sun")
 world_environment = NodePath("WorldEnvironment")
-day_timer = NodePath("DayTimer")
 day_colors = SubResource("GradientTexture2D_m1kxf")
-night_timer = NodePath("NightTimer")
 night_colors = SubResource("GradientTexture2D_x2yvf")
 night_light_energy = 0.5
 metadata/_custom_type_script = "uid://ci778ubcpw8b0"
