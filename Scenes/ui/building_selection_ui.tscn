@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwpgnlw0kaoa4"]
+
+[ext_resource type="Script" uid="uid://dbxqifhr5dcj0" path="res://scripts/ui/building_selection_ui.gd" id="1_v77ac"]
+[ext_resource type="Script" uid="uid://5v3jpx8gvog1" path="res://scripts/models/ui/building_category_data.gd" id="2_swbo7"]
+[ext_resource type="Resource" uid="uid://tymtjm2b832g" path="res://data/buildings/category/production.tres" id="3_ridvs"]
+
+[node name="BuildingSelectionUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v77ac")
+categories = Array[ExtResource("2_swbo7")]([ExtResource("3_ridvs")])

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dvd53runfr5vs"]
+[gd_scene load_steps=33 format=3 uid="uid://dvd53runfr5vs"]
 
 [ext_resource type="Script" uid="uid://l8a4rxtmphwk" path="res://scripts/manager/save_manager.gd" id="1_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/models/environment/terrain.tscn" id="1_jjgbg"]
@@ -6,11 +6,7 @@
 [ext_resource type="Script" uid="uid://cx7qf74acxtp4" path="res://scripts/manager/game_manager.gd" id="1_trceg"]
 [ext_resource type="Script" uid="uid://w7rwhkiuthrv" path="res://scripts/controller/camera_controller.gd" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://bhncwhwwcrmdm" path="res://scripts/buildings/builder.gd" id="3_8gbba"]
-[ext_resource type="Script" uid="uid://ilvgs5tvgwn7" path="res://scripts/ui/category_ui.gd" id="4_tefeu"]
-[ext_resource type="Script" uid="uid://cxvyq11fluruq" path="res://scripts/models/buildings/building_data.gd" id="4_tipki"]
-[ext_resource type="Resource" uid="uid://d4jgl7e67eqah" path="res://data/buildings/residential/house1.tres" id="5_85g3d"]
-[ext_resource type="Resource" uid="uid://cpowfg6sqlul2" path="res://data/buildings/production/saw_mill.tres" id="6_choun"]
-[ext_resource type="Resource" uid="uid://o1nmy41ve7lk" path="res://data/buildings/resources/tree.tres" id="7_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://bwpgnlw0kaoa4" path="res://scenes/ui/building_selection_ui.tscn" id="9_a8y0u"]
 [ext_resource type="Script" uid="uid://v2ueybxvska3" path="res://scripts/ui/resume_button.gd" id="10_0ld40"]
 [ext_resource type="PackedScene" uid="uid://dy5vhkqjiai5c" path="res://scenes/ui/save_load_button.tscn" id="10_dp3eg"]
 [ext_resource type="FontFile" uid="uid://chv1w8s37w8t7" path="res://assets/fonts/Jersey15-Regular.ttf" id="10_muem4"]
@@ -333,7 +329,6 @@ should_navigate_to_main_menu = true
 save_manager = NodePath("../../../../../SaveManager")
 
 [node name="Build UI" type="CanvasLayer" parent="User Interface"]
-visible = false
 
 [node name="MarginContainer" type="MarginContainer" parent="User Interface/Build UI"]
 z_index = 2
@@ -353,40 +348,9 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 48
 
-[node name="HBoxContainer" type="HBoxContainer" parent="User Interface/Build UI/MarginContainer"]
+[node name="BuildingSelectionUI" parent="User Interface/Build UI/MarginContainer" instance=ExtResource("9_a8y0u")]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 48
-
-[node name="Residential" type="MenuButton" parent="User Interface/Build UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
-layout_mode = 2
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 48
-text = "Residential"
-script = ExtResource("4_tefeu")
-build_manager = NodePath("../../../../../BuildManager")
-buildings = Array[ExtResource("4_tipki")]([ExtResource("5_85g3d")])
-metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
-
-[node name="Production" type="MenuButton" parent="User Interface/Build UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
-layout_mode = 2
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 48
-text = "Production"
-script = ExtResource("4_tefeu")
-build_manager = NodePath("../../../../../BuildManager")
-buildings = Array[ExtResource("4_tipki")]([ExtResource("6_choun")])
-metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
-
-[node name="Environment" type="MenuButton" parent="User Interface/Build UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
-layout_mode = 2
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 48
-text = "Environment"
-script = ExtResource("4_tefeu")
-build_manager = NodePath("../../../../../BuildManager")
-buildings = Array[ExtResource("4_tipki")]([ExtResource("7_ya4ey")])
-metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
 
 [node name="Hud" type="CanvasLayer" parent="User Interface"]
 

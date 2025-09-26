@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://b02r3c7dvucpi"]
+
+[ext_resource type="Script" uid="uid://ckr6gtu7hvca5" path="res://scripts/ui/ui_card_button.gd" id="1_tevgi"]
+[ext_resource type="FontFile" uid="uid://chv1w8s37w8t7" path="res://assets/fonts/Jersey15-Regular.ttf" id="2_hdapq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mx3cj"]
+
+[node name="UICardButton" type="PanelContainer"]
+custom_minimum_size = Vector2(100, 100)
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_mx3cj")
+script = ExtResource("1_tevgi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hdapq")
+theme_override_font_sizes/font_size = 24
+text = "Saw Mill"
+horizontal_alignment = 1
+autowrap_mode = 1

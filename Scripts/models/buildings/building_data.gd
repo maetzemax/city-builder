@@ -12,3 +12,4 @@ class_name BuildingData
 
 @export_category("UI")
 @export var display_name: String
+@export var icon: Texture2D

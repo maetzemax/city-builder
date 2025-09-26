@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="ResourceNodeData" load_steps=2 format=3 uid="uid://o1nmy41ve7lk"]
+[gd_resource type="Resource" script_class="ResourceNodeData" load_steps=3 format=3 uid="uid://o1nmy41ve7lk"]
 
 [ext_resource type="Script" uid="uid://cvkwxpvyg60bg" path="res://scripts/models/buildings/resource_node_data.gd" id="1_e2353"]
+[ext_resource type="Texture2D" uid="uid://jpnxfy0ychl2" path="res://assets/icons/house.png" id="1_fnsep"]
 
 [resource]
 script = ExtResource("1_e2353")
 building_id = 2
 construction_cost = 50.0
 display_name = "Tree"
+icon = ExtResource("1_fnsep")
 metadata/_custom_type_script = "uid://cvkwxpvyg60bg"
