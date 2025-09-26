@@ -2,9 +2,9 @@ extends Node
 
 class_name EconomyManager
 
-@export var label: Label
+const START_MONEY: float = 1000.0
 
-static var money: float = 1000.0
+static var money: float = START_MONEY
 
 static func add_money(amount: float):
 	money += amount
@@ -12,5 +12,5 @@ static func add_money(amount: float):
 static func reduce_money(amount: float):
 	money -= amount
 
-func _process(_delta):
-	label.text = "%2.2f €" % money
+static func reset_money():
+	money = START_MONEY

@@ -123,6 +123,11 @@ func handle_keyboard_movement(delta):
 		position += movement
 
 func shoot_ray():
+	Builder.is_mouse_over_ui = is_mouse_over_ui()
+	
+	if is_mouse_over_ui():
+		return
+	
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_length = 1000
 	var from = project_ray_origin(mouse_pos)
@@ -144,3 +149,29 @@ func shoot_ray():
 		
 		mouse_pos_on_terrain.emit(pos)
 		current_mouse_pos = pos
+
+func is_mouse_over_ui() -> bool:
+	var viewport = get_viewport()
+	var hovered_control = viewport.gui_get_hovered_control()
+	
+	if not hovered_control:
+		return false
+	
+	# Prüfe ob das Control effektiv interagierbar ist
+	return is_control_interactive(hovered_control)
+
+func is_control_interactive(control: Control) -> bool:
+	var _current = control
+	while _current:
+		# Wenn ein Parent unsichtbar ist, ist das Control nicht interaktiv
+		if not _current.visible:
+			return false
+		
+		# Wenn mouse_filter auf IGNORE steht, blockiert es keine Maus-Events
+		if _current.mouse_filter == Control.MOUSE_FILTER_IGNORE:
+			_current = _current.get_parent() as Control
+			continue
+			
+		_current = _current.get_parent() as Control
+	
+	return true

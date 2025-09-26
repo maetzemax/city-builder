@@ -17,11 +17,6 @@ enum GameState {
 static var current_game_state = GameState.RUNNING
 
 static var is_day: bool = true
-static var day_progress: float = 0.0
-
-func _ready():
-	if GameData.should_load_save_file:
-		save_manager.load_game()
 
 func _process(_delta: float):
 	if Input.is_action_just_pressed("ui_cancel"):

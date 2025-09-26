@@ -18,13 +18,13 @@ config/icon="res://assets/icons/icon.svg"
 
 [autoload]
 
-GameData="*res://scripts/game_data.gd"
+GameData="*res://scripts/models/game_data.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/stretch/aspect="keep_height"
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
@@ -37,6 +37,7 @@ production_buildings=""
 resource_nodes=""
 storage_buildings=""
 resource_buildings=""
+ui_category_buildings=""
 
 [input]
 

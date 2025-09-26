@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BuildingCategoryData" load_steps=5 format=3 uid="uid://bglyy81j0x8e0"]
+
+[ext_resource type="Script" uid="uid://cxvyq11fluruq" path="res://scripts/models/buildings/building_data.gd" id="1_lbj3x"]
+[ext_resource type="Resource" uid="uid://o1nmy41ve7lk" path="res://data/buildings/resources/tree.tres" id="2_ofbrj"]
+[ext_resource type="Texture2D" uid="uid://jpnxfy0ychl2" path="res://assets/icons/house.png" id="3_kib8j"]
+[ext_resource type="Script" uid="uid://5v3jpx8gvog1" path="res://scripts/models/ui/building_category_data.gd" id="4_woykp"]
+
+[resource]
+script = ExtResource("4_woykp")
+display_name = "Environment"
+icon = ExtResource("3_kib8j")
+buildings = Array[ExtResource("1_lbj3x")]([ExtResource("2_ofbrj")])
+metadata/_custom_type_script = "uid://5v3jpx8gvog1"

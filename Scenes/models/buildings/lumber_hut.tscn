@@ -1,7 +1,7 @@
 [gd_scene load_steps=93 format=4 uid="uid://cdw4atnef81ew"]
 
 [ext_resource type="Script" uid="uid://dpkjvnhpycei2" path="res://scripts/buildings/resource_production_building.gd" id="1_7wyx2"]
-[ext_resource type="Resource" uid="uid://cpowfg6sqlul2" path="res://data/buildings/production/saw_mill.tres" id="2_vjf57"]
+[ext_resource type="Resource" uid="uid://cpowfg6sqlul2" path="res://data/buildings/production/lumber_hut.tres" id="2_vjf57"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_55uai"]
 resource_name = "Log_D.BROWN"
@@ -2000,7 +2000,7 @@ shadow_mesh = SubResource("ArrayMesh_0h2sn")
 [sub_resource type="BoxShape3D" id="BoxShape3D_ymnl4"]
 size = Vector3(3.0478516, 2.9032898, 2.642334)
 
-[node name="SawMill" type="Area3D"]
+[node name="LumberHut" type="Area3D"]
 script = ExtResource("1_7wyx2")
 building_data = ExtResource("2_vjf57")
 

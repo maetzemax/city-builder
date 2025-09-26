@@ -6,7 +6,8 @@ class_name Builder
 @export var environment: Node3D
 @export var preview: Node3D
 
-var selected_building: BuildingData
+static var selected_building: BuildingData
+static var is_mouse_over_ui: bool = false
 
 var _preview_instance
 var _can_place: bool
@@ -49,7 +50,7 @@ func _color_preview_mesh():
 					child.material_override = red_material
 					
 func _check_preview():
-	if (not build_manager.is_building_state or build_manager.is_mouse_over_safe_area) and _preview_instance:
+	if (not build_manager.is_building_state or is_mouse_over_ui) and _preview_instance:
 		_preview_instance.queue_free()
 		_preview_instance = null
 

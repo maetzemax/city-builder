@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="ResourceBuildingData" load_steps=2 format=3 uid="uid://cpowfg6sqlul2"]
 
-[ext_resource type="Script" uid="uid://dr1ydsbj3l63n" path="res://scripts/models/buildings/resource_building_data.gd" id="1_wwtde"]
+[ext_resource type="Script" uid="uid://dr1ydsbj3l63n" path="res://scripts/models/buildings/resource_building_data.gd" id="1_rk2ys"]
 
 [resource]
-script = ExtResource("1_wwtde")
+script = ExtResource("1_rk2ys")
 detection_radius = 20.0
 building_id = 1
 construction_cost = 200.0
-display_name = "Saw Mill"
+display_name = "Lumber Mill"
 metadata/_custom_type_script = "uid://dr1ydsbj3l63n"
