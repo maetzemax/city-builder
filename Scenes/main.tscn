@@ -355,6 +355,7 @@ offset_top = -139.0
 offset_right = 490.5
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 24
@@ -363,6 +364,7 @@ theme_override_constants/margin_bottom = 48
 [node name="BuildingSelectionUI" parent="User Interface/Build UI/MarginContainer" instance=ExtResource("9_a8y0u")]
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_filter = 2
 categories = Array[ExtResource("10_jbj1t")]([ExtResource("11_muem4"), SubResource("Resource_0ld40")])
 
 [node name="Hud" type="CanvasLayer" parent="User Interface"]

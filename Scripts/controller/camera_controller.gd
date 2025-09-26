@@ -153,4 +153,25 @@ func shoot_ray():
 func is_mouse_over_ui() -> bool:
 	var viewport = get_viewport()
 	var hovered_control = viewport.gui_get_hovered_control()
-	return hovered_control != null
+	
+	if not hovered_control:
+		return false
+	
+	# Prüfe ob das Control effektiv interagierbar ist
+	return is_control_interactive(hovered_control)
+
+func is_control_interactive(control: Control) -> bool:
+	var _current = control
+	while _current:
+		# Wenn ein Parent unsichtbar ist, ist das Control nicht interaktiv
+		if not _current.visible:
+			return false
+		
+		# Wenn mouse_filter auf IGNORE steht, blockiert es keine Maus-Events
+		if _current.mouse_filter == Control.MOUSE_FILTER_IGNORE:
+			_current = _current.get_parent() as Control
+			continue
+			
+		_current = _current.get_parent() as Control
+	
+	return true

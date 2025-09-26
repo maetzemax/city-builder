@@ -17,7 +17,6 @@ func _ready():
 	for building in category.buildings:
 		var ui_card_button = UI_CARD_BUTTON.instantiate()
 		ui_card_button.building = building
-		ui_card_button.add_to_group("ui_card_buttons")
 		v_box_container.add_child(ui_card_button)
 
 func _on_root_pressed():
