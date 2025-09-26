@@ -2,8 +2,7 @@ extends Control
 
 @export var category: BuildingCategoryData
 
-@onready var root_box: VBoxContainer = $RootBox
-@onready var v_box_container: VBoxContainer = $RootBox/VBoxContainer
+@onready var v_box_container: VBoxContainer = $VBoxContainer
 
 const UI_CARD_BUTTON = preload("uid://b02r3c7dvucpi")
 
@@ -11,7 +10,7 @@ func _ready():
 	var root_category_button = UI_CARD_BUTTON.instantiate()
 	root_category_button.dispaly_name = category.display_name
 	root_category_button.texture = category.icon
-	root_box.add_child(root_category_button)
+	add_child(root_category_button)
 	
 	for building in category.buildings:
 		var ui_card_button = UI_CARD_BUTTON.instantiate()
