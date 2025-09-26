@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ResourceNodeData" load_steps=2 format=3 uid="uid://o1nmy41ve7lk"]
+
+[ext_resource type="Script" uid="uid://cvkwxpvyg60bg" path="res://scripts/models/buildings/resource_node_data.gd" id="1_e2353"]
+
+[resource]
+script = ExtResource("1_e2353")
+building_id = 2
+construction_cost = 50.0
+display_name = "Tree"
+metadata/_custom_type_script = "uid://cvkwxpvyg60bg"

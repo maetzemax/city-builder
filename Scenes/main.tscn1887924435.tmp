@@ -1,0 +1,192 @@
+[gd_scene load_steps=16 format=3 uid="uid://dvd53runfr5vs"]
+
+[ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/models/environment/terrain.tscn" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://d1xj148c07pj0" path="res://scripts/manager/build_manager.gd" id="1_tefeu"]
+[ext_resource type="Script" uid="uid://w7rwhkiuthrv" path="res://camera_controller.gd" id="2_bo1nx"]
+[ext_resource type="Script" uid="uid://bhncwhwwcrmdm" path="res://scripts/builder.gd" id="3_8gbba"]
+[ext_resource type="Script" uid="uid://ilvgs5tvgwn7" path="res://scripts/category_ui.gd" id="4_tefeu"]
+[ext_resource type="Script" uid="uid://cyu4clyieh3ni" path="res://scripts/manager/economy_manager.gd" id="12_jkv2x"]
+[ext_resource type="Script" uid="uid://ci778ubcpw8b0" path="res://scripts/day_and_night_cycle.gd" id="14_a8y0u"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_tipki"]
+
+[sub_resource type="Gradient" id="Gradient_a8y0u"]
+offsets = PackedFloat32Array(0, 0.2, 0.8, 1)
+colors = PackedColorArray(0.8666667, 0.7137255, 0.7882353, 1, 0.6710475, 0.7802559, 1, 1, 0.67058825, 0.78039217, 1, 1, 0.8666667, 0.7411765, 0.7882353, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jkv2x"]
+gradient = SubResource("Gradient_a8y0u")
+
+[sub_resource type="Gradient" id="Gradient_jbj1t"]
+offsets = PackedFloat32Array(0, 0.2, 0.5, 0.8, 1)
+colors = PackedColorArray(0.86768293, 0.73972756, 0.7881959, 1, 0, 0.060000088, 0.6, 1, 0, 0.032000046, 0.32, 1, 0, 0.060000088, 0.6, 1, 0.8666667, 0.7411765, 0.7882353, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_muem4"]
+gradient = SubResource("Gradient_jbj1t")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bo1nx"]
+sky_top_color = Color(0.5990235, 0.66700757, 0.74295527, 1)
+sky_horizon_color = Color(0.69806564, 0.71506166, 0.7340486, 1)
+sun_angle_max = 15.0
+
+[sub_resource type="Sky" id="Sky_8gbba"]
+sky_material = SubResource("ProceduralSkyMaterial_bo1nx")
+
+[sub_resource type="Environment" id="Environment_jjvhh"]
+background_mode = 2
+sky = SubResource("Sky_8gbba")
+tonemap_mode = 3
+tonemap_exposure = 0.5
+
+[node name="Main" type="Node3D"]
+
+[node name="BuildManager" type="Node" parent="." node_paths=PackedStringArray("camera", "builder")]
+script = ExtResource("1_tefeu")
+camera = NodePath("../Camera3D")
+builder = NodePath("Builder")
+metadata/_custom_type_script = "uid://d1xj148c07pj0"
+
+[node name="Builder" type="Node3D" parent="BuildManager" node_paths=PackedStringArray("build_manager", "environment", "preview")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
+script = ExtResource("3_8gbba")
+build_manager = NodePath("")
+environment = NodePath("../Environment")
+preview = NodePath("../Preview")
+metadata/_custom_type_script = "uid://bhncwhwwcrmdm"
+
+[node name="Preview" type="Node3D" parent="BuildManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
+
+[node name="Environment" type="Node3D" parent="BuildManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
+
+[node name="BuildUI" type="CanvasLayer" parent="BuildManager"]
+
+[node name="UI" type="Control" parent="BuildManager/BuildUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="Safezone" type="Control" parent="BuildManager/BuildUI/UI"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -187.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="BuildManager/BuildUI/UI"]
+z_index = 2
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -246.0
+offset_top = -139.0
+offset_right = 246.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 48
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BuildManager/BuildUI/UI/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 48
+
+[node name="Residential" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
+layout_mode = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 48
+text = "Residential"
+script = ExtResource("4_tefeu")
+build_manager = NodePath("")
+metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
+
+[node name="Production" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
+layout_mode = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 48
+text = "Production"
+script = ExtResource("4_tefeu")
+build_manager = NodePath("")
+metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
+
+[node name="Environment" type="MenuButton" parent="BuildManager/BuildUI/UI/MarginContainer/HBoxContainer" node_paths=PackedStringArray("build_manager")]
+layout_mode = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 48
+text = "Environment"
+script = ExtResource("4_tefeu")
+build_manager = NodePath("")
+metadata/_custom_type_script = "uid://ilvgs5tvgwn7"
+
+[node name="EconomyManager" type="Node" parent="." node_paths=PackedStringArray("label")]
+script = ExtResource("12_jkv2x")
+label = NodePath("CanvasLayer/MarginContainer/Label")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="EconomyManager"]
+
+[node name="MarginContainer" type="MarginContainer" parent="EconomyManager/CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 12
+
+[node name="Label" type="Label" parent="EconomyManager/CanvasLayer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "100.00 €"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
+script = ExtResource("2_bo1nx")
+
+[node name="Terrain" parent="." instance=ExtResource("1_jjgbg")]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_tipki")
+
+[node name="DayAndNightCycle" type="Node3D" parent="." node_paths=PackedStringArray("sun_light", "world_environment", "day_timer", "night_timer")]
+script = ExtResource("14_a8y0u")
+sun_light = NodePath("Sun")
+world_environment = NodePath("WorldEnvironment")
+day_timer = NodePath("DayTimer")
+day_colors = SubResource("GradientTexture2D_jkv2x")
+night_timer = NodePath("NightTimer")
+night_colors = SubResource("GradientTexture2D_muem4")
+night_light_energy = 0.5
+metadata/_custom_type_script = "uid://ci778ubcpw8b0"
+
+[node name="Sun" type="DirectionalLight3D" parent="DayAndNightCycle"]
+transform = Transform3D(-0.8660254, -0.23857942, 0.4394086, 0, 0.8788171, 0.47715878, -0.50000006, 0.4132316, -0.7610779, 0, 0, 0)
+light_color = Color(1, 1, 0.98039216, 1)
+shadow_enabled = true
+shadow_reverse_cull_face = true
+shadow_blur = 0.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="DayAndNightCycle"]
+environment = SubResource("Environment_jjvhh")
+
+[node name="DayTimer" type="Timer" parent="DayAndNightCycle"]
+process_callback = 0
+
+[node name="NightTimer" type="Timer" parent="DayAndNightCycle"]
+process_callback = 0

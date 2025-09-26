@@ -1,0 +1,20 @@
+[gd_scene load_steps=8 format=3 uid="uid://djkhxkdyic626"]
+
+[ext_resource type="FontFile" uid="uid://chv1w8s37w8t7" path="res://assets/fonts/Jersey15-Regular.ttf" id="1_2y53f"]
+[ext_resource type="StyleBox" uid="uid://dsi6jel10bb44" path="res://data/ui/button_normal.tres" id="2_bwc62"]
+[ext_resource type="Script" uid="uid://ddwj3ojos0iy5" path="res://scripts/ui/navigation_button.gd" id="2_khj17"]
+[ext_resource type="StyleBox" uid="uid://ntn8lwok44gj" path="res://data/ui/button_pressed.tres" id="3_yptee"]
+[ext_resource type="StyleBox" uid="uid://tbmuitapijgg" path="res://data/ui/button_hover.tres" id="4_geo3u"]
+[ext_resource type="StyleBox" uid="uid://51gw51qxifnx" path="res://data/ui/button_disabled.tres" id="5_whs48"]
+[ext_resource type="StyleBox" uid="uid://dtw4eiocxgiew" path="res://data/ui/button_focused.tres" id="6_wtgpe"]
+
+[node name="Button" type="Button"]
+theme_override_fonts/font = ExtResource("1_2y53f")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = ExtResource("2_bwc62")
+theme_override_styles/pressed = ExtResource("3_yptee")
+theme_override_styles/hover = ExtResource("4_geo3u")
+theme_override_styles/disabled = ExtResource("5_whs48")
+theme_override_styles/focus = ExtResource("6_wtgpe")
+text = "Create Game"
+script = ExtResource("2_khj17")
