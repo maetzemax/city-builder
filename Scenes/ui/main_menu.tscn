@@ -8,7 +8,7 @@
 [ext_resource type="FontFile" uid="uid://chv1w8s37w8t7" path="res://assets/fonts/Jersey15-Regular.ttf" id="3_q85j6"]
 [ext_resource type="Script" uid="uid://bvd3ryegodarr" path="res://scripts/ui/exit_button.gd" id="4_q85j6"]
 [ext_resource type="PackedScene" uid="uid://bmglwbl6r4ao7" path="res://scenes/models/buildings/tree1.tscn" id="4_x2yvf"]
-[ext_resource type="PackedScene" uid="uid://cdw4atnef81ew" path="res://scenes/models/buildings/saw_mill.tscn" id="5_x2yvf"]
+[ext_resource type="PackedScene" uid="uid://cdw4atnef81ew" path="res://scenes/models/buildings/lumber_hut.tscn" id="5_x2yvf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8g5eo"]
 content_margin_left = 24.0

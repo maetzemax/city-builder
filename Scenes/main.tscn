@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dvd53runfr5vs"]
+[gd_scene load_steps=37 format=3 uid="uid://dvd53runfr5vs"]
 
 [ext_resource type="Script" uid="uid://l8a4rxtmphwk" path="res://scripts/manager/save_manager.gd" id="1_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/models/environment/terrain.tscn" id="1_jjgbg"]
@@ -6,9 +6,6 @@
 [ext_resource type="Script" uid="uid://cx7qf74acxtp4" path="res://scripts/manager/game_manager.gd" id="1_trceg"]
 [ext_resource type="Script" uid="uid://w7rwhkiuthrv" path="res://scripts/controller/camera_controller.gd" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://bhncwhwwcrmdm" path="res://scripts/buildings/builder.gd" id="3_8gbba"]
-[ext_resource type="Script" uid="uid://cxvyq11fluruq" path="res://scripts/models/buildings/building_data.gd" id="4_tipki"]
-[ext_resource type="Resource" uid="uid://d4jgl7e67eqah" path="res://data/buildings/residential/house1.tres" id="5_85g3d"]
-[ext_resource type="Resource" uid="uid://o1nmy41ve7lk" path="res://data/buildings/resources/tree.tres" id="7_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://bwpgnlw0kaoa4" path="res://scenes/ui/building_selection_ui.tscn" id="9_a8y0u"]
 [ext_resource type="Script" uid="uid://v2ueybxvska3" path="res://scripts/ui/resume_button.gd" id="10_0ld40"]
 [ext_resource type="PackedScene" uid="uid://dy5vhkqjiai5c" path="res://scenes/ui/save_load_button.tscn" id="10_dp3eg"]
@@ -16,7 +13,9 @@
 [ext_resource type="FontFile" uid="uid://chv1w8s37w8t7" path="res://assets/fonts/Jersey15-Regular.ttf" id="10_muem4"]
 [ext_resource type="Script" uid="uid://bvd3ryegodarr" path="res://scripts/ui/exit_button.gd" id="11_dp3eg"]
 [ext_resource type="Resource" uid="uid://tymtjm2b832g" path="res://data/buildings/category/production.tres" id="11_muem4"]
+[ext_resource type="Resource" uid="uid://x624lnhh1dgc" path="res://data/buildings/category/residential.tres" id="12_dp3eg"]
 [ext_resource type="Script" uid="uid://cyu4clyieh3ni" path="res://scripts/manager/economy_manager.gd" id="12_jkv2x"]
+[ext_resource type="Resource" uid="uid://bglyy81j0x8e0" path="res://data/buildings/category/environment.tres" id="13_0ld40"]
 [ext_resource type="Script" uid="uid://ci778ubcpw8b0" path="res://scripts/environment/day_and_night_cycle.gd" id="14_a8y0u"]
 [ext_resource type="Script" uid="uid://c1i4acayxs71b" path="res://scripts/ui/hud_container.gd" id="18_0ld40"]
 
@@ -214,12 +213,6 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="Resource" id="Resource_0ld40"]
-script = ExtResource("10_jbj1t")
-display_name = "asdsadas"
-buildings = Array[ExtResource("4_tipki")]([ExtResource("5_85g3d"), ExtResource("7_ya4ey")])
-metadata/_custom_type_script = "uid://5v3jpx8gvog1"
-
 [node name="Main" type="Node3D"]
 
 [node name="DayAndNightCycle" type="Node3D" parent="." node_paths=PackedStringArray("sun_light", "world_environment")]
@@ -340,7 +333,6 @@ should_navigate_to_main_menu = true
 save_manager = NodePath("../../../../../SaveManager")
 
 [node name="Build UI" type="CanvasLayer" parent="User Interface"]
-visible = false
 
 [node name="MarginContainer" type="MarginContainer" parent="User Interface/Build UI"]
 z_index = 2
@@ -365,7 +357,7 @@ theme_override_constants/margin_bottom = 48
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
-categories = Array[ExtResource("10_jbj1t")]([ExtResource("11_muem4"), SubResource("Resource_0ld40")])
+categories = Array[ExtResource("10_jbj1t")]([ExtResource("11_muem4"), ExtResource("12_dp3eg"), ExtResource("13_0ld40")])
 
 [node name="Hud" type="CanvasLayer" parent="User Interface"]
 visible = false

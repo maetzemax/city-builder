@@ -7,9 +7,9 @@ class_name BuildManager
 @export var build_ui: CanvasLayer
 
 var buildings: Dictionary = {
-	0: "res://scenes/models/buildings/residential_placeholder.tscn",
-	1: "res://scenes/models/buildings/saw_mill.tscn",
-	2: "res://scenes/models/buildings/tree1.tscn"
+	0: "uid://bn2j568mwjyxb", # residential placeholder
+	1: "uid://cdw4atnef81ew", # lumber hut
+	2: "uid://bmglwbl6r4ao7" # tree1
 }
 
 var is_grid_enabled = false

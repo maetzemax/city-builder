@@ -17,13 +17,17 @@ func _ready():
 	for building in category.buildings:
 		var ui_card_button = UI_CARD_BUTTON.instantiate()
 		ui_card_button.building = building
+		ui_card_button.pressed.connect(_on_building_presed)
 		v_box_container.add_child(ui_card_button)
 
 func _on_root_pressed():
 	var containers = get_tree().get_nodes_in_group("ui_category_buildings")
 	
 	for container in containers:
-		container.visible = false
+		if container != v_box_container:
+			container.visible = false
 		
-	v_box_container.visible = true
-	
+	v_box_container.visible = !v_box_container.visible
+
+func _on_building_presed():
+	v_box_container.visible = false
