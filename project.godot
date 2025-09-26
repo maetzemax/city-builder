@@ -37,6 +37,7 @@ production_buildings=""
 resource_nodes=""
 storage_buildings=""
 resource_buildings=""
+ui_category_buildings=""
 
 [input]
 

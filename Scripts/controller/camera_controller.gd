@@ -123,6 +123,11 @@ func handle_keyboard_movement(delta):
 		position += movement
 
 func shoot_ray():
+	Builder.is_mouse_over_ui = is_mouse_over_ui()
+	
+	if is_mouse_over_ui():
+		return
+	
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_length = 1000
 	var from = project_ray_origin(mouse_pos)
@@ -144,3 +149,8 @@ func shoot_ray():
 		
 		mouse_pos_on_terrain.emit(pos)
 		current_mouse_pos = pos
+
+func is_mouse_over_ui() -> bool:
+	var viewport = get_viewport()
+	var hovered_control = viewport.gui_get_hovered_control()
+	return hovered_control != null

@@ -1,30 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://b02r3c7dvucpi"]
+[gd_scene load_steps=8 format=3 uid="uid://b02r3c7dvucpi"]
 
 [ext_resource type="Script" uid="uid://ckr6gtu7hvca5" path="res://scripts/ui/ui_card_button.gd" id="1_tevgi"]
-[ext_resource type="FontFile" uid="uid://chv1w8s37w8t7" path="res://assets/fonts/Jersey15-Regular.ttf" id="2_hdapq"]
+[ext_resource type="StyleBox" uid="uid://dsi6jel10bb44" path="res://data/ui/button_normal.tres" id="2_1sfwa"]
+[ext_resource type="Texture2D" uid="uid://jpnxfy0ychl2" path="res://assets/icons/house.png" id="2_tevgi"]
+[ext_resource type="StyleBox" uid="uid://ntn8lwok44gj" path="res://data/ui/button_pressed.tres" id="3_5mk3y"]
+[ext_resource type="StyleBox" uid="uid://tbmuitapijgg" path="res://data/ui/button_hover.tres" id="4_onuye"]
+[ext_resource type="StyleBox" uid="uid://51gw51qxifnx" path="res://data/ui/button_disabled.tres" id="5_qxel0"]
+[ext_resource type="StyleBox" uid="uid://dtw4eiocxgiew" path="res://data/ui/button_focused.tres" id="6_uvelr"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mx3cj"]
-
-[node name="UICardButton" type="PanelContainer"]
-custom_minimum_size = Vector2(100, 100)
-size_flags_horizontal = 0
-size_flags_vertical = 8
-theme_override_styles/panel = SubResource("StyleBoxFlat_mx3cj")
+[node name="Button" type="Button"]
+offset_right = 112.0
+offset_bottom = 134.0
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("2_1sfwa")
+theme_override_styles/pressed = ExtResource("3_5mk3y")
+theme_override_styles/hover = ExtResource("4_onuye")
+theme_override_styles/disabled = ExtResource("5_qxel0")
+theme_override_styles/focus = ExtResource("6_uvelr")
+text = "Saw Mil"
+icon = ExtResource("2_tevgi")
+icon_alignment = 1
+vertical_icon_alignment = 0
 script = ExtResource("1_tevgi")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
-alignment = 1
-
-[node name="TextureButton" type="TextureButton" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Label" type="Label" parent="VBoxContainer"]
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_hdapq")
-theme_override_font_sizes/font_size = 24
-text = "Saw Mill"
-horizontal_alignment = 1
-autowrap_mode = 1

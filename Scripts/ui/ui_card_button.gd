@@ -1,13 +1,22 @@
-extends PanelContainer
+extends Button
 
 class_name UICardButton
 
-@export var dispaly_name: String
-@export var texture: Texture2D
-
-@onready var texture_button: TextureButton = $VBoxContainer/TextureButton
-@onready var label: Label = $VBoxContainer/Label
+@export var category: BuildingCategoryData
+@export var building: BuildingData
 
 func _ready():
-	texture_button.texture_normal = texture
-	label.text = dispaly_name
+	if building:
+		pressed.connect(_on_building_pressed)
+		icon = building.icon
+		text = building.display_name
+	elif category:
+		pressed.connect(_on_category_pressed)
+		icon = category.icon
+		text = category.display_name
+
+func _on_category_pressed():
+	pass
+
+func _on_building_pressed():
+	Builder.selected_building = building
