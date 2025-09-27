@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cxvyq11fluruq" path="res://scripts/models/buildings/building_data.gd" id="1_2don2"]
 [ext_resource type="Resource" uid="uid://d4jgl7e67eqah" path="res://data/buildings/residential/house1.tres" id="2_8b7jr"]
-[ext_resource type="Texture2D" uid="uid://jpnxfy0ychl2" path="res://assets/icons/house.png" id="3_aq7g5"]
+[ext_resource type="Texture2D" uid="uid://cjl57gam34ji" path="res://assets/icons/house.svg" id="3_2don2"]
 [ext_resource type="Script" uid="uid://5v3jpx8gvog1" path="res://scripts/models/ui/building_category_data.gd" id="4_pi2lj"]
 
 [resource]
 script = ExtResource("4_pi2lj")
 display_name = "Residential"
-icon = ExtResource("3_aq7g5")
+icon = ExtResource("3_2don2")
 buildings = Array[ExtResource("1_2don2")]([ExtResource("2_8b7jr")])
 metadata/_custom_type_script = "uid://5v3jpx8gvog1"

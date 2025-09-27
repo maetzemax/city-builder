@@ -30,10 +30,10 @@ func _get_resources_stored_in_production_output():
 			
 		match resource:
 			ProductionBuildingData.ResourceType.WOOD:
-				wood_label.text = "%ox Wood" % amount
+				wood_label.text = "%dx Wood" % amount
 				
 			ProductionBuildingData.ResourceType.STONE:
-				stone_label.text = "%ox Stone" % amount
+				stone_label.text = "%dx Stone" % amount
 
 func merge_building_resources(buildings: Array) -> Dictionary:
 	var total := {}

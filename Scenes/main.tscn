@@ -339,6 +339,7 @@ should_navigate_to_main_menu = true
 save_manager = NodePath("../../../../../SaveManager")
 
 [node name="Build UI" type="CanvasLayer" parent="User Interface"]
+visible = false
 
 [node name="MarginContainer" type="MarginContainer" parent="User Interface/Build UI"]
 z_index = 2
