@@ -4,7 +4,9 @@
 
 [resource]
 script = ExtResource("1_rk2ys")
+extraction_rate = 7
 detection_radius = 20.0
+storage_capacity = 90
 building_id = 1
 construction_cost = 200.0
 display_name = "Lumber Mill"

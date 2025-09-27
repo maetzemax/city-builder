@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cxvyq11fluruq" path="res://scripts/models/buildings/building_data.gd" id="1_ugwcc"]
 [ext_resource type="Resource" uid="uid://cpowfg6sqlul2" path="res://data/buildings/production/lumber_hut.tres" id="2_sj4kw"]
-[ext_resource type="Texture2D" uid="uid://jpnxfy0ychl2" path="res://assets/icons/house.png" id="3_n71f5"]
+[ext_resource type="Texture2D" uid="uid://vxdwq1kpmqid" path="res://assets/icons/gear.svg" id="3_ugwcc"]
 [ext_resource type="Script" uid="uid://5v3jpx8gvog1" path="res://scripts/models/ui/building_category_data.gd" id="4_uogu6"]
 
 [resource]
 script = ExtResource("4_uogu6")
 display_name = "Production"
-icon = ExtResource("3_n71f5")
+icon = ExtResource("3_ugwcc")
 buildings = Array[ExtResource("1_ugwcc")]([ExtResource("2_sj4kw")])
 metadata/_custom_type_script = "uid://5v3jpx8gvog1"
