@@ -1,0 +1,591 @@
+[gd_scene load_steps=41 format=3 uid="uid://dvd53runfr5vs"]
+
+[ext_resource type="Script" uid="uid://sqer1ykwxtg5" path="res://addons/day_and_night_cycle/scripts/cycle_controller.gd" id="1_2wyq8"]
+[ext_resource type="Script" uid="uid://l8a4rxtmphwk" path="res://scripts/manager/save_manager.gd" id="1_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/models/environment/terrain.tscn" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://d1xj148c07pj0" path="res://scripts/manager/build_manager.gd" id="1_tefeu"]
+[ext_resource type="Script" uid="uid://cx7qf74acxtp4" path="res://scripts/manager/game_manager.gd" id="1_trceg"]
+[ext_resource type="Script" uid="uid://w7rwhkiuthrv" path="res://scripts/controller/camera_controller.gd" id="2_bo1nx"]
+[ext_resource type="Resource" uid="uid://kr0ipoip375a" path="res://addons/day_and_night_cycle/presets/default_day_cycle.tres" id="2_vxglm"]
+[ext_resource type="Resource" uid="uid://b0mbm2nb4pntn" path="res://addons/day_and_night_cycle/presets/default_night_cycle.tres" id="3_2f3dj"]
+[ext_resource type="Script" uid="uid://bhncwhwwcrmdm" path="res://scripts/buildings/builder.gd" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://bwpgnlw0kaoa4" path="res://scenes/ui/building_selection_ui.tscn" id="9_a8y0u"]
+[ext_resource type="Script" uid="uid://v2ueybxvska3" path="res://scripts/ui/resume_button.gd" id="10_0ld40"]
+[ext_resource type="PackedScene" uid="uid://dy5vhkqjiai5c" path="res://scenes/ui/save_load_button.tscn" id="10_dp3eg"]
+[ext_resource type="Script" uid="uid://5v3jpx8gvog1" path="res://scripts/models/ui/building_category_data.gd" id="10_jbj1t"]
+[ext_resource type="FontFile" uid="uid://chv1w8s37w8t7" path="res://assets/fonts/Jersey15-Regular.ttf" id="10_muem4"]
+[ext_resource type="Script" uid="uid://bvd3ryegodarr" path="res://scripts/ui/exit_button.gd" id="11_dp3eg"]
+[ext_resource type="Resource" uid="uid://tymtjm2b832g" path="res://data/buildings/category/production.tres" id="11_muem4"]
+[ext_resource type="Resource" uid="uid://x624lnhh1dgc" path="res://data/buildings/category/residential.tres" id="12_dp3eg"]
+[ext_resource type="Script" uid="uid://cyu4clyieh3ni" path="res://scripts/manager/economy_manager.gd" id="12_jkv2x"]
+[ext_resource type="Resource" uid="uid://bglyy81j0x8e0" path="res://data/buildings/category/environment.tres" id="13_0ld40"]
+[ext_resource type="Texture2D" uid="uid://crw0lxfjoyd2u" path="res://assets/icons/Keyboard & Mouse/Vector/keyboard_g_outline.svg" id="14_0ld40"]
+[ext_resource type="Script" uid="uid://eypqmsiqtw7t" path="res://scenes/builder_info_ui.gd" id="14_y6deb"]
+[ext_resource type="Texture2D" uid="uid://c70ntq2ojs4uy" path="res://assets/icons/Keyboard & Mouse/Vector/keyboard_r_outline.svg" id="15_yc10j"]
+[ext_resource type="Texture2D" uid="uid://c3olj2c7mt6nt" path="res://assets/icons/Keyboard & Mouse/Vector/mouse_scroll_vertical_outline.svg" id="16_jscy8"]
+[ext_resource type="Texture2D" uid="uid://drnbu5rk77eb" path="res://assets/icons/Keyboard & Mouse/Vector/keyboard_ctrl_outline.svg" id="16_pm3ni"]
+[ext_resource type="Script" uid="uid://c1i4acayxs71b" path="res://scripts/ui/hud_container.gd" id="18_0ld40"]
+[ext_resource type="Texture2D" uid="uid://kys2magqp63x" path="res://assets/icons/Keyboard & Mouse/Vector/keyboard_f1_outline.svg" id="18_pm3ni"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bo1nx"]
+sky_top_color = Color(0.5990235, 0.66700757, 0.74295527, 1)
+sky_horizon_color = Color(0.69806564, 0.71506166, 0.7340486, 1)
+sun_angle_max = 15.0
+
+[sub_resource type="Sky" id="Sky_muem4"]
+sky_material = SubResource("ProceduralSkyMaterial_bo1nx")
+
+[sub_resource type="Environment" id="Environment_jjvhh"]
+background_mode = 2
+sky = SubResource("Sky_muem4")
+tonemap_mode = 3
+tonemap_exposure = 0.5
+ssao_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_tipki"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2y53f"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.22520697, 0.20444673, 0.22192162, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_khj17"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.2784314, 0.25490198, 0.27450982, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfb7x"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.2784314, 0.25490198, 0.27450982, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ad5bu"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.7, 0.7, 0.7, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o4evi"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.22520697, 0.20444673, 0.22192162, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ld40"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.22520697, 0.20444673, 0.22192162, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqmmt"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.2784314, 0.25490198, 0.27450982, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yc10j"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.2784314, 0.25490198, 0.27450982, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jscy8"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.7, 0.7, 0.7, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pm3ni"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.22520697, 0.20444673, 0.22192162, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="Main" type="Node3D"]
+
+[node name="CycleController" type="Node3D" parent="." node_paths=PackedStringArray("sun_light", "world_environment")]
+script = ExtResource("1_2wyq8")
+day_data = ExtResource("2_vxglm")
+night_data = ExtResource("3_2f3dj")
+sun_light = NodePath("Sun")
+world_environment = NodePath("WorldEnvironment")
+metadata/_custom_type_script = "uid://sqer1ykwxtg5"
+
+[node name="Sun" type="DirectionalLight3D" parent="CycleController"]
+transform = Transform3D(-0.8660254, -0.23857942, 0.4394086, 0, 0.8788171, 0.47715878, -0.50000006, 0.4132316, -0.7610779, 0, 0, 0)
+light_color = Color(1, 1, 0.98039216, 1)
+shadow_enabled = true
+shadow_reverse_cull_face = true
+shadow_blur = 0.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="CycleController"]
+environment = SubResource("Environment_jjvhh")
+
+[node name="EconomyManager" type="Node" parent="."]
+script = ExtResource("12_jkv2x")
+metadata/_custom_type_script = "uid://cyu4clyieh3ni"
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_tipki")
+
+[node name="Terrain" parent="." instance=ExtResource("1_jjgbg")]
+
+[node name="PlayerController" type="Node3D" parent="." node_paths=PackedStringArray("camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.769093, 20.400227)
+script = ExtResource("2_bo1nx")
+camera = NodePath("Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="PlayerController"]
+
+[node name="User Interface" type="Node" parent="."]
+
+[node name="Pause UI" type="CanvasLayer" parent="User Interface"]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="User Interface/Pause UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -371.0
+offset_top = -250.0
+offset_right = 371.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 48
+
+[node name="Resume" type="MarginContainer" parent="User Interface/Pause UI/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 256
+theme_override_constants/margin_right = 256
+
+[node name="Button" type="Button" parent="User Interface/Pause UI/VBoxContainer/Resume"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_muem4")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_2y53f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_khj17")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rfb7x")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ad5bu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4evi")
+text = "Resume"
+script = ExtResource("10_0ld40")
+
+[node name="Save Game" type="MarginContainer" parent="User Interface/Pause UI/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button" parent="User Interface/Pause UI/VBoxContainer/Save Game" node_paths=PackedStringArray("save_manager") instance=ExtResource("10_dp3eg")]
+layout_mode = 2
+save_manager = NodePath("../../../../../SaveManager")
+
+[node name="Load Game" type="MarginContainer" parent="User Interface/Pause UI/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button" parent="User Interface/Pause UI/VBoxContainer/Load Game" node_paths=PackedStringArray("save_manager") instance=ExtResource("10_dp3eg")]
+layout_mode = 2
+text = "Load"
+action_type = 1
+save_manager = NodePath("../../../../../SaveManager")
+
+[node name="Exit" type="MarginContainer" parent="User Interface/Pause UI/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="User Interface/Pause UI/VBoxContainer/Exit" node_paths=PackedStringArray("save_manager")]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_muem4")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_0ld40")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gqmmt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yc10j")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_jscy8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pm3ni")
+text = "Save & Exit"
+script = ExtResource("11_dp3eg")
+should_navigate_to_main_menu = true
+save_manager = NodePath("../../../../../SaveManager")
+
+[node name="Build UI" type="CanvasLayer" parent="User Interface"]
+visible = false
+
+[node name="MarginContainer" type="MarginContainer" parent="User Interface/Build UI"]
+z_index = 2
+z_as_relative = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -490.5
+offset_top = -139.0
+offset_right = 490.5
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 48
+
+[node name="BuildingSelectionUI" parent="User Interface/Build UI/MarginContainer" instance=ExtResource("9_a8y0u")]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+categories = Array[ExtResource("10_jbj1t")]([ExtResource("11_muem4"), ExtResource("12_dp3eg"), ExtResource("13_0ld40")])
+
+[node name="MarginContainer2" type="MarginContainer" parent="User Interface/Build UI"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -53.5
+offset_bottom = 53.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_right = 16
+script = ExtResource("14_y6deb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="User Interface/Build UI/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="User Interface/Build UI/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_muem4")
+theme_override_font_sizes/font_size = 32
+text = "Builder - Hotkeys"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="User Interface/Build UI/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="User Interface/Build UI/MarginContainer2/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+texture = ExtResource("14_0ld40")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="User Interface/Build UI/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_muem4")
+theme_override_font_sizes/font_size = 24
+text = "Toggle Grid Snapping"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="User Interface/Build UI/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="User Interface/Build UI/MarginContainer2/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+texture = ExtResource("15_yc10j")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="User Interface/Build UI/MarginContainer2/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_muem4")
+theme_override_font_sizes/font_size = 24
+text = "Rotate Building 90°"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="User Interface/Build UI/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="User Interface/Build UI/MarginContainer2/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="User Interface/Build UI/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+texture = ExtResource("16_pm3ni")
+expand_mode = 3
+
+[node name="Plus" type="Label" parent="User Interface/Build UI/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_muem4")
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="User Interface/Build UI/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+texture = ExtResource("15_yc10j")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Slash" type="Label" parent="User Interface/Build UI/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_muem4")
+text = "/"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect3" type="TextureRect" parent="User Interface/Build UI/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+texture = ExtResource("16_pm3ni")
+expand_mode = 3
+
+[node name="Plus2" type="Label" parent="User Interface/Build UI/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_muem4")
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect4" type="TextureRect" parent="User Interface/Build UI/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+texture = ExtResource("16_jscy8")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="User Interface/Build UI/MarginContainer2/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_muem4")
+theme_override_font_sizes/font_size = 24
+text = "Rotate Building Free"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="User Interface/Build UI/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="User Interface/Build UI/MarginContainer2/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+texture = ExtResource("18_pm3ni")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="User Interface/Build UI/MarginContainer2/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_muem4")
+theme_override_font_sizes/font_size = 24
+text = "Toggle Info"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hud" type="CanvasLayer" parent="User Interface"]
+visible = false
+
+[node name="MarginContainer" type="MarginContainer" parent="User Interface/Hud" node_paths=PackedStringArray("day_label", "day_progress", "wood_label", "stone_label", "money_label")]
+offset_right = 238.0
+offset_bottom = 127.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 12
+script = ExtResource("18_0ld40")
+day_label = NodePath("VBoxContainer/DayLabel")
+day_progress = NodePath("VBoxContainer/DayProgressBar")
+resources = Array[int]([0, 1])
+wood_label = NodePath("VBoxContainer/Wood")
+stone_label = NodePath("VBoxContainer/Stone")
+money_label = NodePath("VBoxContainer/MoneyLabel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="User Interface/Hud/MarginContainer"]
+layout_mode = 2
+
+[node name="DayLabel" type="Label" parent="User Interface/Hud/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_muem4")
+theme_override_font_sizes/font_size = 24
+text = "Day 1"
+
+[node name="DayProgressBar" type="ProgressBar" parent="User Interface/Hud/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+show_percentage = false
+
+[node name="MoneyLabel" type="Label" parent="User Interface/Hud/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_muem4")
+theme_override_font_sizes/font_size = 48
+text = "100.00 €"
+
+[node name="Wood" type="Label" parent="User Interface/Hud/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_muem4")
+
+[node name="Stone" type="Label" parent="User Interface/Hud/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_muem4")
+
+[node name="BuildManager" type="Node" parent="." node_paths=PackedStringArray("camera", "builder", "build_ui")]
+script = ExtResource("1_tefeu")
+camera = NodePath("../PlayerController")
+builder = NodePath("Builder")
+build_ui = NodePath("../User Interface/Build UI")
+metadata/_custom_type_script = "uid://d1xj148c07pj0"
+
+[node name="Builder" type="Node3D" parent="BuildManager" node_paths=PackedStringArray("build_manager", "environment", "preview")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
+script = ExtResource("3_8gbba")
+build_manager = NodePath("..")
+environment = NodePath("../Environment")
+preview = NodePath("../Preview")
+metadata/_custom_type_script = "uid://bhncwhwwcrmdm"
+
+[node name="Preview" type="Node3D" parent="BuildManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
+
+[node name="Environment" type="Node3D" parent="BuildManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14.830542, 10)
+
+[node name="SaveManager" type="Node" parent="." node_paths=PackedStringArray("build_manager")]
+script = ExtResource("1_eb6dy")
+build_manager = NodePath("../BuildManager")
+metadata/_custom_type_script = "uid://l8a4rxtmphwk"
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("save_manager", "pause_ui", "build_ui", "hud")]
+script = ExtResource("1_trceg")
+save_manager = NodePath("../SaveManager")
+pause_ui = NodePath("../User Interface/Pause UI")
+build_ui = NodePath("../User Interface/Build UI")
+hud = NodePath("../User Interface/Hud")
+metadata/_custom_type_script = "uid://cx7qf74acxtp4"

@@ -1,8 +1,8 @@
+class_name GameManager
 extends Node
 
-class_name GameManager
-
 @export var save_manager: SaveManager
+@export var cycle_controller: CycleController
 
 @export var pause_ui: CanvasLayer
 @export var build_ui: CanvasLayer
@@ -17,6 +17,15 @@ enum GameState {
 static var current_game_state = GameState.RUNNING
 
 static var is_day: bool = true
+
+static var day_count: int
+static var day_progress: float
+
+
+func _ready():
+	cycle_controller.day_started.connect(_on_day_started)
+	cycle_controller.night_started.connect(_on_night_started)
+
 
 func _process(_delta: float):
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -41,6 +50,18 @@ func _process(_delta: float):
 			hud.visible = false
 			build_ui.visible = false
 			pause_ui.visible = true
+	
+	day_progress = cycle_controller.get_cycle_progress()
+
+
+func _on_day_started():
+	is_day = true
+	day_count += 1
+
+
+func _on_night_started():
+	is_day = false
+	
 
 func _input(event: InputEvent):
 	if event is InputEventKey:

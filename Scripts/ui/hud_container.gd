@@ -13,8 +13,8 @@ extends MarginContainer
 @export var money_label: Label
 
 func _process(_delta):
-	day_label.text = "Day %o" % GameData.day_count
-	day_progress.value = GameData.day_progress
+	day_label.text = "Day %o" % GameManager.day_count
+	day_progress.value = GameManager.day_progress * 100
 	money_label.text = "%2.2f €" % EconomyManager.money
 	_get_resources_stored_in_production_output()
 
