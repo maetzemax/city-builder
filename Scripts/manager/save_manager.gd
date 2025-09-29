@@ -62,13 +62,13 @@ func load_game():
 	
 	for building_data in save_data.buildings:
 		var building = load(build_manager.buildings[building_data.building_id]).instantiate()
-		build_manager.builder.environment.add_child(building)
+		add_child(building)
 		building.load_from_data(building_data)
 		
 	EconomyManager.money = save_data.money
 	
 	GameManager.day_count = save_data.day.count
-	cycle_controller.set_cycle_progress(save_data.day.progress / 100)
+	cycle_controller.set_cycle_progress(save_data.day.progress)
 	
 	build_manager.camera.global_position = save_data.camera.position
 	build_manager.camera.global_rotation = save_data.camera.rotation

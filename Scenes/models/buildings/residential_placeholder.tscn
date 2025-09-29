@@ -1,8 +1,8 @@
 [gd_scene load_steps=29 format=4 uid="uid://bn2j568mwjyxb"]
 
-[ext_resource type="Script" uid="uid://cefqsrj3f1y8j" path="res://scripts/buildings/building.gd" id="1_j5sa2"]
 [ext_resource type="Script" uid="uid://cpxe5t8wo7akl" path="res://scripts/environment/light_activator.gd" id="1_jl12f"]
 [ext_resource type="Resource" uid="uid://d4jgl7e67eqah" path="res://data/buildings/residential/house1.tres" id="2_j5sa2"]
+[ext_resource type="Script" uid="uid://dlp0qru60siqa" path="res://scripts/buildings/residential_building.gd" id="4_yjul0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhj3v"]
 
@@ -210,11 +210,10 @@ albedo_color = Color(0.41, 0.246, 0.1025, 1)
 material = SubResource("StandardMaterial3D_jl12f")
 size = Vector3(0.05, 1.2, 0.05)
 
-[node name="Building" type="Node3D" node_paths=PackedStringArray("npc_spawn_point")]
-script = ExtResource("1_j5sa2")
+[node name="House" type="Node3D" node_paths=PackedStringArray("npc_spawn_point")]
+script = ExtResource("4_yjul0")
 npc_spawn_point = NodePath("NPCSpawnPoint")
 building_data = ExtResource("2_j5sa2")
-metadata/_custom_type_script = "uid://cefqsrj3f1y8j"
 
 [node name="Door" type="MeshInstance3D" parent="."]
 transform = Transform3D(29.999998, 0, 0, 0, -3.5762785e-06, 29.999998, 0, -29.999998, -3.5762785e-06, 0, 0.099999994, 0)
@@ -262,6 +261,7 @@ shape = SubResource("BoxShape3D_wrggc")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5215864, 1.0247328, 1.238267)
 mesh = SubResource("BoxMesh_jl12f")
+skeleton = NodePath("")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0016496181)
@@ -275,6 +275,7 @@ script = ExtResource("1_jl12f")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5215864, 0.424142, 1.238267)
 mesh = SubResource("BoxMesh_kb6u8")
+skeleton = NodePath("")
 
 [node name="NPCSpawnPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 2)

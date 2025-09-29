@@ -249,6 +249,10 @@ camera = NodePath("Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="PlayerController"]
 
+[node name="NPCManager" type="Node" parent="."]
+script = ExtResource("27_qkpxi")
+metadata/_custom_type_script = "uid://cc1tc8gvhwrui"
+
 [node name="User Interface" type="Node" parent="."]
 
 [node name="Pause UI" type="CanvasLayer" parent="User Interface"]
@@ -563,9 +567,6 @@ theme_override_fonts/font = ExtResource("10_muem4")
 [node name="Stone" type="Label" parent="User Interface/Hud/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("10_muem4")
-
-[node name="NPCManager" type="Node" parent="."]
-script = ExtResource("27_qkpxi")
 
 [node name="BuildManager" type="Node" parent="." node_paths=PackedStringArray("camera", "navigation_manager")]
 script = ExtResource("1_tefeu")
