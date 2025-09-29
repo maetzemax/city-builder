@@ -33,6 +33,7 @@
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bo1nx"]
 sky_top_color = Color(0.5990235, 0.66700757, 0.74295527, 1)
 sky_horizon_color = Color(0.69806564, 0.71506166, 0.7340486, 1)
+sky_cover = ExtResource("4_vxglm")
 sun_angle_max = 15.0
 
 [sub_resource type="Sky" id="Sky_muem4"]
@@ -41,6 +42,7 @@ sky_material = SubResource("ProceduralSkyMaterial_bo1nx")
 [sub_resource type="Environment" id="Environment_jjvhh"]
 background_mode = 2
 sky = SubResource("Sky_muem4")
+ambient_light_source = 2
 tonemap_mode = 3
 tonemap_exposure = 0.5
 ssao_enabled = true
@@ -562,11 +564,10 @@ theme_override_fonts/font = ExtResource("10_muem4")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("10_muem4")
 
-[node name="BuildManager" type="Node" parent="." node_paths=PackedStringArray("camera", "builder", "build_ui")]
+[node name="BuildManager" type="Node" parent="." node_paths=PackedStringArray("camera", "builder")]
 script = ExtResource("1_tefeu")
 camera = NodePath("../PlayerController")
 builder = NodePath("Builder")
-build_ui = NodePath("../User Interface/Build UI")
 metadata/_custom_type_script = "uid://d1xj148c07pj0"
 
 [node name="Builder" type="Node3D" parent="BuildManager" node_paths=PackedStringArray("build_manager", "environment", "preview")]

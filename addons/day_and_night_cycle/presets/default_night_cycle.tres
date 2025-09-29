@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://kolqah11th63" path="res://addons/day_and_night_cycle/scripts/cycle_data.gd" id="1_ro1vk"]
 
 [sub_resource type="Gradient" id="Gradient_u4ray"]
-offsets = PackedFloat32Array(0, 0.1, 0.5, 0.9, 1)
-colors = PackedColorArray(0.8392157, 0.40784314, 0.4627451, 1, 0.14509805, 0.38039216, 0.5137255, 1, 0.057769164, 0.19461128, 0.2717888, 1, 0.14509805, 0.38039216, 0.5137255, 1, 0.8374334, 0.48671246, 0.4633525, 1)
+offsets = PackedFloat32Array(0, 0.1, 0.2, 0.8, 0.9, 1)
+colors = PackedColorArray(0.8392157, 0.40784314, 0.4627451, 1, 0.14509805, 0.38039216, 0.5137255, 1, 0.05882353, 0.19607843, 0.27058825, 1, 0.057769164, 0.19461128, 0.2717888, 1, 0.14509805, 0.38039216, 0.5137255, 1, 0.8374334, 0.48671246, 0.4633525, 1)
 metadata/_snap_enabled = true
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_d15nv"]

@@ -4,7 +4,6 @@ class_name BuildManager
 
 @export var camera: CameraController
 @export var builder: Builder
-@export var build_ui: CanvasLayer
 
 var buildings: Dictionary = {
 	0: "uid://bn2j568mwjyxb", # residential placeholder
