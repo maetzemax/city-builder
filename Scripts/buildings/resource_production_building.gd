@@ -14,7 +14,7 @@ func _ready():
 	add_child(working_area)
 
 func _process(delta):
-	if GameManager.current_game_state == GameManager.GameState.PAUSED:
+	if GameManager.current_game_state == GameManager.GameState.PAUSED or GameManager.current_game_state == GameManager.GameState.MAIN_MENU:
 		return
 		
 	super._process(delta)
@@ -42,12 +42,20 @@ func start_production():
 		return
 	
 	var node = connected_resource_nodes[randi() % connected_resource_nodes.size()]
+	
+	var npc = spawn_npc()
+	npc.set_target_position(node.global_position)
+	
 	var extracted = node.extract_resource(building_data.extraction_rate)
 	
 	if extracted > 0:
 		add_resource(building_data.resource_type, int(extracted))
 		is_producing = true
 		production_timer = 0.0
+		
+	await get_tree().create_timer(3.0).timeout
+	npc.queue_free()
+
 
 func complete_production():
 	is_producing = false

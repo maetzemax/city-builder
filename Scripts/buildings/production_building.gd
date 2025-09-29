@@ -14,7 +14,7 @@ func _ready():
 	add_to_group("production_buildings")
 
 func _process(delta):
-	if not is_active or GameManager.current_game_state == GameManager.GameState.PAUSED:
+	if not is_active or GameManager.current_game_state == GameManager.GameState.PAUSED or GameManager.current_game_state == GameManager.GameState.MAIN_MENU:
 		return
 		
 	if can_produce() and not is_producing:

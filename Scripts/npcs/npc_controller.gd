@@ -1,6 +1,7 @@
 class_name NPCController
 extends CharacterBody3D
 
+@export var id: int
 @export var movement_speed: float = 5.0
 
 var nav_agent: NavigationAgent3D
@@ -9,13 +10,11 @@ var nav_agent: NavigationAgent3D
 func _ready():
 	nav_agent = NavigationAgent3D.new()
 	add_child(nav_agent)
+	nav_agent.debug_enabled = true
 	add_to_group("npc")
 
 
 func _physics_process(_delta):
-	if nav_agent.distance_to_target() <= 1:
-		return
-	
 	var destination = nav_agent.get_next_path_position()
 	var local_destination = destination - global_position
 	var direction = local_destination.normalized()

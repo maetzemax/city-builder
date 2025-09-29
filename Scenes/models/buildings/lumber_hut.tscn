@@ -2000,8 +2000,9 @@ shadow_mesh = SubResource("ArrayMesh_0h2sn")
 [sub_resource type="BoxShape3D" id="BoxShape3D_ymnl4"]
 size = Vector3(3.0478516, 2.9032898, 2.642334)
 
-[node name="ResourceBuilding" type="StaticBody3D"]
+[node name="ResourceBuilding" type="StaticBody3D" node_paths=PackedStringArray("npc_spawn_point")]
 script = ExtResource("1_7wyx2")
+npc_spawn_point = NodePath("NPCSpawnPoint")
 building_data = ExtResource("2_vjf57")
 metadata/_custom_type_script = "uid://dpkjvnhpycei2"
 
@@ -2224,4 +2225,8 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3000001, 0)
 shape = SubResource("BoxShape3D_ymnl4")
+
+[node name="NPCSpawnPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.2, 0)

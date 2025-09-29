@@ -49,8 +49,7 @@ shadow_mesh = SubResource("ArrayMesh_jh3rp")
 radius = 0.6801758
 height = 3.9312134
 
-[node name="ResourceNode" type="StaticBody3D"]
-collision_layer = 5
+[node name="ResourceNode" type="Node3D"]
 script = ExtResource("1_k4kii")
 building_data = ExtResource("2_v6kpv")
 metadata/_custom_type_script = "uid://x402pio1wkde"
@@ -59,10 +58,6 @@ metadata/_custom_type_script = "uid://x402pio1wkde"
 transform = Transform3D(0.377826, 0, 0, 0, 6.7560556e-08, 0.37782598, 0, -0.37782598, 6.7560556e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_b50ks")
 skeleton = NodePath("")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9425354, 0)
-shape = SubResource("CapsuleShape3D_brrpb")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 6

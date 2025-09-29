@@ -41,6 +41,7 @@ func _process(_delta: float):
 	_color_preview_mesh()
 	_check_preview()
 
+
 func _color_preview_mesh():
 	if _preview_instance:
 		if _can_place:
@@ -54,6 +55,7 @@ func _color_preview_mesh():
 				if child is MeshInstance3D:
 					child.material_override = red_material
 					
+
 
 func _check_preview():
 	if (not build_manager.is_building_state or is_mouse_over_ui) and _preview_instance:
@@ -77,7 +79,8 @@ func _on_camera_3d_clicked_element(pos: Vector3) -> void:
 		_preview_instance.queue_free()
 		_preview_instance = null
 		
-		build_manager.navigation_manager.bake_navigation_async()
+		if instance is not ResourceNode:
+			build_manager.navigation_manager.bake_navigation_async()
 
 
 func _on_camera_3d_mouse_pos_on_terrain(pos: Vector3) -> void:
@@ -91,6 +94,7 @@ func _on_camera_3d_mouse_pos_on_terrain(pos: Vector3) -> void:
 		_preview_instance.name = "Preview"
 	elif _preview_instance:
 		_preview_instance.global_position = snap_to_grid(pos)
+
 
 func snap_to_grid(pos: Vector3) -> Vector3:
 	if not build_manager.is_grid_enabled:

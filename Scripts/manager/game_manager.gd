@@ -11,10 +11,11 @@ extends Node
 enum GameState {
 	RUNNING,
 	BUILDING,
-	PAUSED
+	PAUSED,
+	MAIN_MENU,
 }
 
-static var current_game_state = GameState.RUNNING
+static var current_game_state = GameState.MAIN_MENU
 
 static var is_day: bool = true
 
@@ -23,6 +24,7 @@ static var day_progress: float
 
 
 func _ready():
+	current_game_state = GameState.RUNNING
 	cycle_controller.day_started.connect(_on_day_started)
 	cycle_controller.night_started.connect(_on_night_started)
 
