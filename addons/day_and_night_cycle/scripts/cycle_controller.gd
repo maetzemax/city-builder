@@ -70,10 +70,10 @@ func _process(delta):
 	if world_environment.environment and world_environment.environment.sky:
 		var sky_material = world_environment.environment.sky.sky_material
 		if sky_material:
-			sky_material.sky_top_color = sky_color.lightened(0.1)
+			sky_material.sky_top_color = sky_color
 			sky_material.sky_horizon_color = sky_color
-			sky_material.ground_bottom_color = sky_color.darkened(0.1)
-			sky_material.ground_horizon_color = sky_color.darkened(0.2)
+			sky_material.ground_bottom_color = sky_color
+			sky_material.ground_horizon_color = sky_color
 	else:
 		push_warning("Could not find sky material. Please assign WorldEnvironment accrodingly. Need Help? Look for 'Setup' in the README file.")
 	

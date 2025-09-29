@@ -1,7 +1,6 @@
 class_name ResourceBuilding
 extends ProductionBuilding
 
-var workers: Array[Citizen]
 var connected_resource_nodes: Array[ResourceNode] = []
 
 var working_area: BuildingWorkingArea

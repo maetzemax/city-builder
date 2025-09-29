@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ble25xwm6dllu"]
+[gd_scene load_steps=21 format=3 uid="uid://ble25xwm6dllu"]
 
 [ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/models/environment/terrain.tscn" id="1_fe2o3"]
 [ext_resource type="PackedScene" uid="uid://djkhxkdyic626" path="res://scenes/ui/navigation_button.tscn" id="1_uhagc"]
@@ -9,8 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bmglwbl6r4ao7" path="res://scenes/models/buildings/tree1.tscn" id="4_x2yvf"]
 [ext_resource type="Script" uid="uid://sqer1ykwxtg5" path="res://addons/day_and_night_cycle/scripts/cycle_controller.gd" id="5_otr3d"]
 [ext_resource type="PackedScene" uid="uid://cdw4atnef81ew" path="res://scenes/models/buildings/lumber_hut.tscn" id="5_x2yvf"]
-[ext_resource type="Script" uid="uid://kolqah11th63" path="res://addons/day_and_night_cycle/scripts/cycle_data.gd" id="6_n4uci"]
-[ext_resource type="Resource" uid="uid://b0mbm2nb4pntn" path="res://assets/game_night_cycle.tres" id="11_otr3d"]
 [ext_resource type="Script" uid="uid://c85ddrpo5m0rc" path="res://scripts/environment/world_environment.gd" id="12_n4uci"]
 [ext_resource type="Texture2D" uid="uid://bpoucta1iqcrr" path="res://assets/day_sky_cover.jpg" id="13_877pj"]
 [ext_resource type="Texture2D" uid="uid://dhevk6s213jhd" path="res://assets/night_sky_cover.jpg" id="14_ayp64"]
@@ -95,26 +93,6 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="Gradient" id="Gradient_onbwl"]
-offsets = PackedFloat32Array(0, 0.2, 0.8, 1)
-colors = PackedColorArray(0.8374334, 0.48671246, 0.4633525, 1, 0.245, 0.68599993, 0.98, 1, 0.29400003, 0.69416684, 0.98, 1, 0.8392157, 0.40784314, 0.4627451, 1)
-metadata/_snap_enabled = true
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jji54"]
-gradient = SubResource("Gradient_onbwl")
-metadata/_snap_enabled = true
-
-[sub_resource type="Curve" id="Curve_5mae3"]
-_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Resource" id="Resource_877pj"]
-script = ExtResource("6_n4uci")
-colors = SubResource("GradientTexture2D_jji54")
-length = 7200.0
-light_energy = SubResource("Curve_5mae3")
-metadata/_custom_type_script = "uid://kolqah11th63"
-
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n4uci"]
 sky_top_color = Color(0.5990235, 0.66700757, 0.74295527, 1)
 sky_horizon_color = Color(0.69806564, 0.71506166, 0.7340486, 1)
@@ -189,12 +167,8 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_otr3d")
 text = "Exit"
 script = ExtResource("4_q85j6")
 
-[node name="CycleController" type="Node3D" parent="." node_paths=PackedStringArray("sun_light", "world_environment")]
+[node name="CycleController" type="Node3D" parent="."]
 script = ExtResource("5_otr3d")
-day_data = SubResource("Resource_877pj")
-night_data = ExtResource("11_otr3d")
-sun_light = NodePath("Sun")
-world_environment = NodePath("WorldEnvironment")
 metadata/_custom_type_script = "uid://sqer1ykwxtg5"
 
 [node name="Sun" type="DirectionalLight3D" parent="CycleController"]

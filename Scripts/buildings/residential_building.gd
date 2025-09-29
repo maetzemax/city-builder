@@ -2,6 +2,10 @@ class_name ResidentialBuilding
 extends Building
 
 var current_occupants: int = 0
+var occupants: Array[CitizenData]
+
+var citizen_spawn_time = 5
+var _current_time = 0.0
 
 
 func _ready():
@@ -13,6 +17,16 @@ func _process(_delta):
 	if not is_active or GameManager.current_game_state == GameManager.GameState.PAUSED or GameManager.current_game_state == GameManager.GameState.MAIN_MENU:
 		return
 		
+	_current_time += _delta
+	
+	if _current_time > citizen_spawn_time and current_occupants < building_data.max_occupants:
+		_current_time = 0.0
+		
+		spawn_npc()
+		add_occupants(1)
+		
+		print("Citizen Spawned")
+
 
 func add_occupants(amount: int):
 	if current_occupants >= building_data.max_occupants:
@@ -23,10 +37,11 @@ func add_occupants(amount: int):
 		
 	current_occupants += amount
 
-	
+
 func remove_occupants(amount: int):
 	var new_amount = current_occupants - amount
 	current_occupants = max(new_amount, 0)
+
 
 #region Encoding / Decoding
 func get_save_data() -> Dictionary:

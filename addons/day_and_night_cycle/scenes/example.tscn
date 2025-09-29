@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://4im48rtj4jfq"]
 
 [ext_resource type="Script" uid="uid://sqer1ykwxtg5" path="res://addons/day_and_night_cycle/scripts/cycle_controller.gd" id="1_o34ws"]
-[ext_resource type="Resource" uid="uid://b0mbm2nb4pntn" path="res://addons/day_and_night_cycle/presets/default_night_cycle.tres" id="2_pssa7"]
-[ext_resource type="Resource" uid="uid://kr0ipoip375a" path="res://addons/day_and_night_cycle/presets/default_day_cycle.tres" id="3_7w8s4"]
+[ext_resource type="Resource" uid="uid://b0mbm2nb4pntn" path="res://assets/game_night_cycle.tres" id="2_pssa7"]
+[ext_resource type="Resource" uid="uid://kr0ipoip375a" path="res://assets/game_day_cycle.tres" id="3_7w8s4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pssa7"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)

@@ -4,28 +4,21 @@ extends NPCController
 signal arrived_at_home
 signal arrived_at_work
 
-enum Activity {
-	HOME,
+enum CitizenState {
+	UNEMPLOYED,
 	WORKING,
-	WALKING,
+	RESTING,
+	TRAVELING_TO_WORK,
+	TRAVELING_TO_HOME,
 }
-
-enum Jobs {
-	LUMBERJACK,
-	WAREHOUSE,
-}
-
-const HOME = 0
-const WORKING = 1
-const WALKING = 2
 
 @export var full_name: String = "Hans Joachim Peter"
 @export var age: int = 18
 
-var current_activity: Activity = Activity.WORKING
+@export var current_state: CitizenState = CitizenState.UNEMPLOYED
 
 # Cached building references for performance
-var _workplace_building: Building
+var _workplace_building: ProductionBuilding
 var _home_building: Building
 
 
@@ -37,26 +30,45 @@ func _ready():
 func _process(_delta):
 	if not _home_building:
 		update_home_place()
-		walk_home()
 		
 	if not _workplace_building:
 		update_working_place()
 	
-	match current_activity:
-		HOME:
+	if _workplace_building and current_state == CitizenState.UNEMPLOYED:
+		walk_to_work()
+	
+	match current_state:
+		CitizenState.RESTING, CitizenState.UNEMPLOYED:
 			visible = false
-		WORKING:
-			visible = true
-		WALKING:
+		_:
 			visible = true
 	
-	if current_activity == WALKING and nav_agent.target_position == _workplace_building.npc_spawn_point.global_position and nav_agent.distance_to_target() < 2:
+	if current_state == CitizenState.TRAVELING_TO_WORK and nav_agent.target_position == _workplace_building.npc_spawn_point.global_position and nav_agent.distance_to_target() < 2:
 		arrived_at_work.emit()
-		current_activity = Activity.WORKING
+		current_state = CitizenState.WORKING
 		
-	if current_activity == WALKING and nav_agent.target_position == _home_building.npc_spawn_point.global_position and nav_agent.distance_to_target() < 2:
+	if current_state == CitizenState.TRAVELING_TO_HOME and nav_agent.target_position == _home_building.npc_spawn_point.global_position and nav_agent.distance_to_target() < 2:
 		arrived_at_home.emit()
-		current_activity = Activity.HOME
+		current_state = CitizenState.RESTING
+
+
+func _physics_process(_delta):
+	match current_state:
+		CitizenState.UNEMPLOYED, CitizenState.RESTING:
+			if not _home_building:
+				return
+			
+			global_position = _home_building.global_position
+			visible = false
+			return
+		CitizenState.WORKING:
+			global_position = _workplace_building.global_position
+			visible = false
+			return
+		_:
+			super._physics_process(_delta)
+			visible = true
+
 
 func update_working_place():
 	var buildings = get_tree().get_nodes_in_group("production_buildings")
@@ -65,6 +77,9 @@ func update_working_place():
 	var temp_building: Building = null
 	
 	for building in buildings:
+		if building.is_preview or building.workers_count == building.building_data.max_workers:
+			return
+			
 		if not temp_building:
 			temp_building = building
 			shortest_distance = building.global_position.distance_to(global_position)
@@ -73,6 +88,7 @@ func update_working_place():
 			temp_building = building
 			
 	_workplace_building = temp_building
+	_workplace_building.add_new_worker(self)
 
 
 func update_home_place():
@@ -82,6 +98,9 @@ func update_home_place():
 	var temp_building: Building = null
 	
 	for building in buildings:
+		if building.is_preview:
+			return
+		
 		if not temp_building:
 			temp_building = building
 			shortest_distance = building.global_position.distance_to(global_position)
@@ -94,12 +113,12 @@ func update_home_place():
 
 func walk_to_work():
 	set_target_position(_workplace_building.npc_spawn_point.global_position)
-	current_activity = Activity.WALKING
+	current_state = CitizenState.TRAVELING_TO_WORK
 
 
 func walk_home():
 	set_target_position(_home_building.npc_spawn_point.global_position)
-	current_activity = Activity.WALKING
+	current_state = CitizenState.TRAVELING_TO_HOME
 
 #region Save/Load System
 func get_save_data() -> Dictionary:
@@ -107,7 +126,9 @@ func get_save_data() -> Dictionary:
 	data.merge({
 		"full_name": full_name,
 		"age": age,
-		"current_activity": current_activity,
+		"current_state": current_state,
+		"workplace_position": _workplace_building.global_position if _workplace_building else Vector3.ZERO,
+		"home_position": _home_building.global_position if _home_building else Vector3.ZERO,
 	})
 	return data
 
@@ -115,5 +136,26 @@ func load_from_data(data: Dictionary):
 	super.load_from_data(data)
 	full_name = data.get("full_name", "Hans Joachim Peter")
 	age = data.get("age", 18)
-	current_activity = data.get("current_activity", Activity.HOME)
+	current_state = data.get("current_state", CitizenState.UNEMPLOYED)
+	
+	# Gebäude anhand ihrer Position in der bereits geladenen Szene finden
+	var workplace_pos = data.get("workplace_position", Vector3.ZERO)
+	var home_pos = data.get("home_position", Vector3.ZERO)
+	
+	if workplace_pos != Vector3.ZERO:
+		_workplace_building = find_building_at_position(workplace_pos, "production_buildings")
+		_workplace_building.add_worker(self)
+	
+	if home_pos != Vector3.ZERO:
+		_home_building = find_building_at_position(home_pos, "residental_buildings")
+
+func find_building_at_position(target_pos: Vector3, group_name: String) -> Building:
+	var buildings = get_tree().get_nodes_in_group(group_name)
+	
+	for building in buildings:
+		if building.global_position.distance_to(target_pos) < 0.1: # Sehr kleine Toleranz
+			return building
+	
+	return null
+	
 #endregion

@@ -30,12 +30,6 @@ window/stretch/mode="canvas_items"
 
 enabled=PackedStringArray("res://addons/day_and_night_cycle/plugin.cfg")
 
-[file_customization]
-
-folder_colors={
-"res://addons/": "teal"
-}
-
 [global_group]
 
 buildings=""

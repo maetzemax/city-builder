@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://sqer1ykwxtg5" path="res://addons/day_and_night_cycle/scripts/cycle_controller.gd" id="1_2wyq8"]
 [ext_resource type="Script" uid="uid://l8a4rxtmphwk" path="res://scripts/manager/save_manager.gd" id="1_eb6dy"]
+[ext_resource type="Resource" uid="uid://kr0ipoip375a" path="res://assets/game_day_cycle.tres" id="1_fv21b"]
 [ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/models/environment/terrain.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://d1xj148c07pj0" path="res://scripts/manager/build_manager.gd" id="1_tefeu"]
 [ext_resource type="Script" uid="uid://cx7qf74acxtp4" path="res://scripts/manager/game_manager.gd" id="1_trceg"]
 [ext_resource type="Script" uid="uid://w7rwhkiuthrv" path="res://scripts/controller/camera_controller.gd" id="2_bo1nx"]
-[ext_resource type="Resource" uid="uid://kr0ipoip375a" path="res://addons/day_and_night_cycle/presets/default_day_cycle.tres" id="2_vxglm"]
-[ext_resource type="Resource" uid="uid://b0mbm2nb4pntn" path="res://addons/day_and_night_cycle/presets/default_night_cycle.tres" id="3_2f3dj"]
+[ext_resource type="Resource" uid="uid://b0mbm2nb4pntn" path="res://assets/game_night_cycle.tres" id="3_2f3dj"]
 [ext_resource type="Script" uid="uid://bhncwhwwcrmdm" path="res://scripts/buildings/builder.gd" id="3_8gbba"]
 [ext_resource type="Texture2D" uid="uid://bpoucta1iqcrr" path="res://assets/day_sky_cover.jpg" id="4_vxglm"]
 [ext_resource type="Script" uid="uid://c85ddrpo5m0rc" path="res://scripts/environment/world_environment.gd" id="5_2f3dj"]
@@ -214,7 +214,7 @@ corner_radius_bottom_left = 12
 
 [node name="CycleController" type="Node3D" parent="." node_paths=PackedStringArray("sun_light", "world_environment")]
 script = ExtResource("1_2wyq8")
-day_data = ExtResource("2_vxglm")
+day_data = ExtResource("1_fv21b")
 night_data = ExtResource("3_2f3dj")
 sun_light = NodePath("Sun")
 world_environment = NodePath("WorldEnvironment")
