@@ -28,7 +28,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/day_and_night_cycle/plugin.cfg")
 
 [global_group]
 
@@ -80,4 +80,4 @@ toggle_builder_help={
 [rendering]
 
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
-anti_aliasing/quality/use_taa=true
+anti_aliasing/quality/screen_space_aa=2

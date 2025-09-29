@@ -1,9 +1,11 @@
-extends Camera3D
+extends Node3D
 
 class_name CameraController
 
 signal clicked_element(pos: Vector3)
 signal mouse_pos_on_terrain(pos: Vector3)
+
+@export var camera: Camera3D
 
 @export var orbit_sensitivity: float = 0.005
 @export var zoom_sensitivity: float = 0.05
@@ -130,8 +132,8 @@ func shoot_ray():
 	
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_length = 1000
-	var from = project_ray_origin(mouse_pos)
-	var to = from + project_ray_normal(mouse_pos) * ray_length
+	var from = camera.project_ray_origin(mouse_pos)
+	var to = from + camera.project_ray_normal(mouse_pos) * ray_length
 	var space = get_world_3d().direct_space_state
 	
 	var ray_query = PhysicsRayQueryParameters3D.new()

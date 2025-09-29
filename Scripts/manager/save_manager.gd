@@ -3,7 +3,7 @@ extends Node
 class_name SaveManager
 
 @export var build_manager: BuildManager
-@export var day_night_cycle: DayAndNightCycle
+@export var cycle_controller: CycleController
 
 const SAVE_PATH = "user://game.save"
 
@@ -27,8 +27,8 @@ func save_game():
 	}
 	
 	var day_data: Dictionary = {
-		"count": GameData.day_count,
-		"progress": GameData.day_progress
+		"count": GameManager.day_count,
+		"progress": GameManager.day_progress
 	}
 	
 	if file:
@@ -65,10 +65,10 @@ func load_game():
 		build_manager.builder.environment.add_child(building)
 		building.load_from_data(building_data)
 		
-	EconomyManager.money = save_data.money	
+	EconomyManager.money = save_data.money
 	
-	GameData.day_count = save_data.day.count
-	day_night_cycle.set_time_of_day(save_data.day.progress / 100)
+	GameManager.day_count = save_data.day.count
+	cycle_controller.set_cycle_progress(save_data.day.progress / 100)
 	
 	build_manager.camera.global_position = save_data.camera.position
 	build_manager.camera.global_rotation = save_data.camera.rotation
