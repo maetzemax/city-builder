@@ -46,12 +46,12 @@ func start_production():
 	var npc = spawn_npc()
 	npc.set_target_position(node.global_position)
 	
-	var extracted = node.extract_resource(building_data.extraction_rate)
+	#var extracted = node.extract_resource(building_data.extraction_rate)
 	
-	if extracted > 0:
-		add_resource(building_data.resource_type, int(extracted))
-		is_producing = true
-		production_timer = 0.0
+	#if extracted > 0:
+		#add_resource(building_data.resource_type, int(extracted))
+	is_producing = true
+	production_timer = 0.0
 		
 	await get_tree().create_timer(3.0).timeout
 	npc.queue_free()

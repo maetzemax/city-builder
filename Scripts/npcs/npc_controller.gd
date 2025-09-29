@@ -1,7 +1,6 @@
 class_name NPCController
 extends CharacterBody3D
 
-@export var id: int
 @export var movement_speed: float = 5.0
 
 var nav_agent: NavigationAgent3D
@@ -37,7 +36,7 @@ func get_save_data() -> Dictionary:
 
 
 func load_from_data(data: Dictionary):
-	movement_speed = data.get(movement_speed, 5.0)
+	movement_speed = data.get("movement_speed", 5.0)
 	set_target_position(data.get("target_position", Vector3.ZERO))
 	global_position = data.get("position", Vector3.ZERO)
 	global_rotation.y = data.get("rotation_y", 0.0)
