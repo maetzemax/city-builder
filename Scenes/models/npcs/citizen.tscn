@@ -13,6 +13,7 @@ radial_segments = 8
 
 [node name="Citizen" type="CharacterBody3D"]
 script = ExtResource("1_4x14l")
+movement_speed = 20.0
 metadata/_custom_type_script = "uid://dxjoewqy4rxx4"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

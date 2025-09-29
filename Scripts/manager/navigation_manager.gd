@@ -15,7 +15,7 @@ func _setup_navigation():
 	
 	navigation_mesh = NavigationMesh.new()
 	navigation_mesh.geometry_parsed_geometry_type = NavigationMesh.PARSED_GEOMETRY_STATIC_COLLIDERS
-	navigation_mesh.cell_size = 0.25
+	navigation_mesh.cell_size = 0.5
 
 	var nav_map = navigation_region.get_navigation_map()
 	NavigationServer3D.map_set_cell_size(nav_map, navigation_mesh.cell_size)
@@ -38,7 +38,6 @@ func bake_navigation_async():
 			get_tree().root
 		)
 
-		# Starte den Bake im Hintergrund
 		NavigationServer3D.bake_from_source_geometry_data_async(
 			navigation_mesh,
 			source_geometry
