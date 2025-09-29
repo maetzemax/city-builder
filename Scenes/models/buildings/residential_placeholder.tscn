@@ -258,7 +258,6 @@ shape = SubResource("BoxShape3D_wrggc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5215864, 1.0247328, 1.238267)
-visible = false
 mesh = SubResource("BoxMesh_jl12f")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D"]
@@ -272,5 +271,4 @@ script = ExtResource("1_jl12f")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5215864, 0.424142, 1.238267)
-visible = false
 mesh = SubResource("BoxMesh_kb6u8")

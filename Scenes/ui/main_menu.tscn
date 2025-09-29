@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ble25xwm6dllu"]
+[gd_scene load_steps=27 format=3 uid="uid://ble25xwm6dllu"]
 
 [ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/models/environment/terrain.tscn" id="1_fe2o3"]
 [ext_resource type="PackedScene" uid="uid://djkhxkdyic626" path="res://scenes/ui/navigation_button.tscn" id="1_uhagc"]
@@ -9,8 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://bmglwbl6r4ao7" path="res://scenes/models/buildings/tree1.tscn" id="4_x2yvf"]
 [ext_resource type="PackedScene" uid="uid://cdw4atnef81ew" path="res://scenes/models/buildings/lumber_hut.tscn" id="5_x2yvf"]
 [ext_resource type="Script" uid="uid://sqer1ykwxtg5" path="res://addons/day_and_night_cycle/scripts/cycle_controller.gd" id="9_q85j6"]
-[ext_resource type="Resource" uid="uid://kr0ipoip375a" path="res://addons/day_and_night_cycle/presets/default_day_cycle.tres" id="10_7suek"]
+[ext_resource type="Script" uid="uid://kolqah11th63" path="res://addons/day_and_night_cycle/scripts/cycle_data.gd" id="10_n4uci"]
 [ext_resource type="Resource" uid="uid://b0mbm2nb4pntn" path="res://addons/day_and_night_cycle/presets/default_night_cycle.tres" id="11_otr3d"]
+[ext_resource type="Script" uid="uid://c85ddrpo5m0rc" path="res://scripts/environment/world_environment.gd" id="12_n4uci"]
+[ext_resource type="Texture2D" uid="uid://bpoucta1iqcrr" path="res://assets/day_sky_cover.jpg" id="13_877pj"]
+[ext_resource type="Texture2D" uid="uid://dhevk6s213jhd" path="res://assets/night_sky_cover.jpg" id="14_ayp64"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8g5eo"]
 content_margin_left = 24.0
@@ -92,17 +95,39 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uhagc"]
+[sub_resource type="Gradient" id="Gradient_u4ray"]
+offsets = PackedFloat32Array(0, 0.2, 0.8, 1)
+colors = PackedColorArray(0.8374334, 0.48671246, 0.4633525, 1, 0.245, 0.68599993, 0.98, 1, 0.29400003, 0.69416684, 0.98, 1, 0.8392157, 0.40784314, 0.4627451, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d15nv"]
+gradient = SubResource("Gradient_u4ray")
+metadata/_snap_enabled = true
+
+[sub_resource type="Curve" id="Curve_o3ut8"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Resource" id="Resource_n4uci"]
+script = ExtResource("10_n4uci")
+colors = SubResource("GradientTexture2D_d15nv")
+length = 72000.0
+light_energy = SubResource("Curve_o3ut8")
+metadata/_custom_type_script = "uid://kolqah11th63"
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n4uci"]
 sky_top_color = Color(0.5990235, 0.66700757, 0.74295527, 1)
 sky_horizon_color = Color(0.69806564, 0.71506166, 0.7340486, 1)
+sky_cover = ExtResource("13_877pj")
 sun_angle_max = 15.0
 
-[sub_resource type="Sky" id="Sky_8gbba"]
-sky_material = SubResource("ProceduralSkyMaterial_uhagc")
+[sub_resource type="Sky" id="Sky_muem4"]
+sky_material = SubResource("ProceduralSkyMaterial_n4uci")
 
-[sub_resource type="Environment" id="Environment_btxxm"]
+[sub_resource type="Environment" id="Environment_877pj"]
 background_mode = 2
-sky = SubResource("Sky_8gbba")
+sky = SubResource("Sky_muem4")
+ambient_light_source = 2
 tonemap_mode = 3
 tonemap_exposure = 0.5
 ssao_enabled = true
@@ -164,6 +189,27 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_otr3d")
 text = "Exit"
 script = ExtResource("4_q85j6")
 
+[node name="CycleController" type="Node3D" parent="." node_paths=PackedStringArray("sun_light", "world_environment")]
+script = ExtResource("9_q85j6")
+day_data = SubResource("Resource_n4uci")
+night_data = ExtResource("11_otr3d")
+sun_light = NodePath("Sun")
+world_environment = NodePath("WorldEnvironment")
+metadata/_custom_type_script = "uid://sqer1ykwxtg5"
+
+[node name="Sun" type="DirectionalLight3D" parent="CycleController"]
+transform = Transform3D(-0.8660254, -0.3050726, 0.39614487, 0, 0.7922896, 0.61014515, -0.50000006, 0.5284012, -0.6861429, 0, 0, 4.7846985)
+light_color = Color(1, 1, 0.98039216, 1)
+shadow_enabled = true
+shadow_reverse_cull_face = true
+shadow_blur = 0.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="CycleController"]
+environment = SubResource("Environment_877pj")
+script = ExtResource("12_n4uci")
+day_cover = ExtResource("13_877pj")
+night_cover = ExtResource("14_ayp64")
+
 [node name="Environment" type="Node3D" parent="."]
 
 [node name="Terrain" parent="Environment" instance=ExtResource("1_fe2o3")]
@@ -175,43 +221,28 @@ transform = Transform3D(0.59482276, 0, -0.80385685, 0, 1, 0, 0.80385685, 0, 0.59
 transform = Transform3D(0.9205048, 0, 0.3907311, 0, 1, 0, -0.3907311, 0, 0.9205048, 25.189, 6.992, -8.832)
 
 [node name="Tree1" parent="Environment" instance=ExtResource("4_x2yvf")]
-transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 28, 7, -10)
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 28, 7.134019, -10)
 
 [node name="Tree4" parent="Environment" instance=ExtResource("4_x2yvf")]
-transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 35, 7, -25)
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 35, 8.171981, -25)
 
 [node name="Tree2" parent="Environment" instance=ExtResource("4_x2yvf")]
-transform = Transform3D(0.258819, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.258819, 34, 7, -2)
+transform = Transform3D(0.258819, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.258819, 34, 6.926034, -2)
 
 [node name="Tree6" parent="Environment" instance=ExtResource("4_x2yvf")]
-transform = Transform3D(0.258819, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.258819, 34, 7, -19)
+transform = Transform3D(0.258819, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.258819, 34, 7.9461784, -19)
 
 [node name="Tree3" parent="Environment" instance=ExtResource("4_x2yvf")]
-transform = Transform3D(-0.70710695, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710695, 23, 7, -7)
+transform = Transform3D(-0.70710695, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710695, 23, 6.5601234, -7)
 
 [node name="Tree5" parent="Environment" instance=ExtResource("4_x2yvf")]
-transform = Transform3D(-0.70710695, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710695, 41, 7, -23)
+transform = Transform3D(-0.70710695, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710695, 41, 8.120825, -23)
 
 [node name="SawMill" parent="Environment" instance=ExtResource("5_x2yvf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 8, -21)
 
-[node name="CycleController" type="Node3D" parent="Environment" node_paths=PackedStringArray("sun_light", "world_environment")]
-script = ExtResource("9_q85j6")
-day_data = ExtResource("10_7suek")
-night_data = ExtResource("11_otr3d")
-sun_light = NodePath("Sun")
-world_environment = NodePath("WorldEnvironment")
-metadata/_custom_type_script = "uid://sqer1ykwxtg5"
-
-[node name="Sun" type="DirectionalLight3D" parent="Environment/CycleController"]
-transform = Transform3D(-0.8660254, -0.23857942, 0.4394086, 0, 0.8788171, 0.47715878, -0.50000006, 0.4132316, -0.7610779, 0, 0, 0)
-light_color = Color(1, 1, 0.98039216, 1)
-shadow_enabled = true
-shadow_reverse_cull_face = true
-shadow_blur = 0.0
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment/CycleController"]
-environment = SubResource("Environment_btxxm")
-
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.87796557, 0.06578041, -0.47418284, 0, 0.9905146, 0.13740785, 0.47872376, -0.12063936, 0.86963767, 26.0564, 9.164326, 0.14120102)
+transform = Transform3D(0.9804365, 0.0022256717, -0.19682328, 0, 0.9999361, 0.011307248, 0.19683588, -0.011086037, 0.9803738, 27.879145, 8.353338, 0.20375824)
+
+[connection signal="day_started" from="CycleController" to="CycleController/WorldEnvironment" method="_on_cycle_controller_day_started"]
+[connection signal="night_started" from="CycleController" to="CycleController/WorldEnvironment" method="_on_cycle_controller_night_started"]

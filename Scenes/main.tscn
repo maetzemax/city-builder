@@ -570,9 +570,8 @@ theme_override_fonts/font = ExtResource("10_muem4")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("10_muem4")
 
-[node name="ResidentManager" type="Node" parent="." node_paths=PackedStringArray("navigation_manager")]
+[node name="ResidentManager" type="Node" parent="."]
 script = ExtResource("27_qkpxi")
-navigation_manager = NodePath("../NavigationManager")
 
 [node name="BuildManager" type="Node" parent="." node_paths=PackedStringArray("camera", "navigation_manager")]
 script = ExtResource("1_tefeu")
