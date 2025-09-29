@@ -40,7 +40,7 @@ resource_buildings=""
 ui_category_buildings=""
 npc=""
 residental_buildings=""
-citizen=""
+citizens=""
 
 [input]
 

@@ -45,7 +45,7 @@ func _process(_delta):
 	
 	if current_state == CitizenState.TRAVELING_TO_WORK and nav_agent.target_position == _workplace_building.npc_spawn_point.global_position and nav_agent.distance_to_target() < 2:
 		arrived_at_work.emit()
-		_workplace_building.add_worker(self)
+		_workplace_building.add_current_worker(self)
 		current_state = CitizenState.WORKING
 		
 	if current_state == CitizenState.TRAVELING_TO_HOME and nav_agent.target_position == _home_building.npc_spawn_point.global_position and nav_agent.distance_to_target() < 2:
@@ -63,6 +63,9 @@ func _physics_process(_delta):
 			visible = false
 			return
 		CitizenState.WORKING:
+			if not _workplace_building:
+				return
+
 			global_position = _workplace_building.global_position
 			visible = false
 			return
@@ -78,8 +81,8 @@ func update_working_place():
 	var temp_building: Building = null
 	
 	for building in buildings:
-		if building.is_preview or building.workers.size() == building.building_data.max_workers:
-			return
+		if building.is_preview or building.assigned_workers.size() == building.building_data.max_workers:
+			continue
 			
 		if not temp_building:
 			temp_building = building
@@ -88,7 +91,9 @@ func update_working_place():
 		if building.global_position.distance_to(global_position) < shortest_distance:
 			temp_building = building
 			
-	_workplace_building = temp_building
+	if temp_building:
+		_workplace_building = temp_building
+		_workplace_building.add_assigned_worker(self)
 
 
 func update_home_place():
@@ -99,7 +104,7 @@ func update_home_place():
 	
 	for building in buildings:
 		if building.is_preview:
-			return
+			break
 		
 		if not temp_building:
 			temp_building = building
@@ -108,7 +113,8 @@ func update_home_place():
 		if building.global_position.distance_to(global_position) < shortest_distance:
 			temp_building = building
 	
-	_home_building = temp_building
+	if temp_building:
+		_home_building = temp_building
 
 
 func walk_to_work():
@@ -119,6 +125,7 @@ func walk_to_work():
 func walk_home():
 	set_target_position(_home_building.npc_spawn_point.global_position)
 	current_state = CitizenState.TRAVELING_TO_HOME
+
 
 #region Save/Load System
 func get_save_data() -> Dictionary:
@@ -144,6 +151,7 @@ func load_from_data(data: Dictionary):
 	
 	if workplace_pos != Vector3.ZERO:
 		_workplace_building = find_building_at_position(workplace_pos, "production_buildings")
+		_workplace_building.add_assigned_worker(self)
 	
 	if home_pos != Vector3.ZERO:
 		_home_building = find_building_at_position(home_pos, "residental_buildings")

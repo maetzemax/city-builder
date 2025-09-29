@@ -11,7 +11,8 @@ signal production_completed(output: Dictionary)
 signal storage_changed(resource: String, amount: int)
 
 
-var workers: Array[Citizen]
+@export var assigned_workers: Array[Citizen]
+@export var current_workers: Array[Citizen]
 
 func _ready():
 	super._ready()
@@ -84,9 +85,13 @@ func remove_resource(resource: ProductionBuildingData.ResourceType, amount: int)
 	return actual_removed
 
 
-func add_worker(worker: Citizen):
-	workers.append(worker)
-	
+func add_assigned_worker(worker: Citizen):
+	assigned_workers.append(worker)
+
+
+func add_current_worker(worker: Citizen):
+	current_workers.append(worker)
+
 
 #region Encoding / Decoding
 func get_save_data() -> Dictionary:

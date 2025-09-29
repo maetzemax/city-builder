@@ -249,10 +249,6 @@ camera = NodePath("Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="PlayerController"]
 
-[node name="NPCManager" type="Node" parent="."]
-script = ExtResource("27_qkpxi")
-metadata/_custom_type_script = "uid://cc1tc8gvhwrui"
-
 [node name="User Interface" type="Node" parent="."]
 
 [node name="Pause UI" type="CanvasLayer" parent="User Interface"]
@@ -523,9 +519,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Hud" type="CanvasLayer" parent="User Interface"]
-visible = false
 
-[node name="MarginContainer" type="MarginContainer" parent="User Interface/Hud" node_paths=PackedStringArray("day_label", "day_progress", "wood_label", "stone_label", "money_label")]
+[node name="MarginContainer" type="MarginContainer" parent="User Interface/Hud" node_paths=PackedStringArray("day_label", "day_progress", "wood_label", "stone_label", "money_label", "citizen_label")]
 offset_right = 238.0
 offset_bottom = 127.0
 theme_override_constants/margin_left = 24
@@ -539,6 +534,7 @@ resources = Array[int]([0, 1])
 wood_label = NodePath("VBoxContainer/Wood")
 stone_label = NodePath("VBoxContainer/Stone")
 money_label = NodePath("VBoxContainer/MoneyLabel")
+citizen_label = NodePath("VBoxContainer/CitizensLabel")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="User Interface/Hud/MarginContainer"]
 layout_mode = 2
@@ -560,6 +556,12 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("10_muem4")
 theme_override_font_sizes/font_size = 48
 text = "100.00 €"
+
+[node name="CitizensLabel" type="Label" parent="User Interface/Hud/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_muem4")
+theme_override_font_sizes/font_size = 32
+text = "100 Citizens (12 Unemployed)"
 
 [node name="Wood" type="Label" parent="User Interface/Hud/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -603,6 +605,10 @@ pause_ui = NodePath("../User Interface/Pause UI")
 build_ui = NodePath("../User Interface/Build UI")
 hud = NodePath("../User Interface/Hud")
 metadata/_custom_type_script = "uid://cx7qf74acxtp4"
+
+[node name="NPCManager" type="Node" parent="."]
+script = ExtResource("27_qkpxi")
+metadata/_custom_type_script = "uid://cc1tc8gvhwrui"
 
 [connection signal="day_started" from="CycleController" to="CycleController/WorldEnvironment" method="_on_cycle_controller_day_started"]
 [connection signal="night_started" from="CycleController" to="CycleController/WorldEnvironment" method="_on_cycle_controller_night_started"]

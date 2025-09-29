@@ -4,7 +4,7 @@ extends Building
 var current_occupants: int = 0
 var occupants: Array[CitizenData]
 
-var citizen_spawn_time = 30
+var citizen_spawn_time = 10
 var _current_time = 0
 
 
