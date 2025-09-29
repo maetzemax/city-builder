@@ -59,11 +59,22 @@ func _process(_delta: float):
 func _on_day_started():
 	is_day = true
 	day_count += 1
+	_pay_upkeep()
 
 
 func _on_night_started():
 	is_day = false
 	
+
+func _pay_upkeep():
+	var buildings = get_tree().get_nodes_in_group("buildings")
+	var upkeep = 0.0
+	
+	for building in buildings:
+		upkeep += building.building_data.upkeep_cost
+
+	EconomyManager.reduce_money(upkeep)
+
 
 func _input(event: InputEvent):
 	if event is InputEventKey:

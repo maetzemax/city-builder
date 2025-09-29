@@ -93,6 +93,11 @@ func add_current_worker(worker: Citizen):
 	current_workers.append(worker)
 
 
+func remove_current_worker(worker: Citizen):
+	current_workers.erase(worker)
+	worker.global_position = npc_spawn_point.global_position
+
+
 #region Encoding / Decoding
 func get_save_data() -> Dictionary:
 	var data = super.get_save_data()

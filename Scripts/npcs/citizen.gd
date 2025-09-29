@@ -118,13 +118,15 @@ func update_home_place():
 
 
 func walk_to_work():
-	set_target_position(_workplace_building.npc_spawn_point.global_position)
-	current_state = CitizenState.TRAVELING_TO_WORK
+	if _workplace_building:
+		set_target_position(_workplace_building.npc_spawn_point.global_position)
+		current_state = CitizenState.TRAVELING_TO_WORK
 
 
-func walk_home():
-	set_target_position(_home_building.npc_spawn_point.global_position)
-	current_state = CitizenState.TRAVELING_TO_HOME
+func walk_to_home():
+	if _home_building:
+		set_target_position(_home_building.npc_spawn_point.global_position)
+		current_state = CitizenState.TRAVELING_TO_HOME
 
 
 #region Save/Load System

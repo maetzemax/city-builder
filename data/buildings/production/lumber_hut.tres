@@ -4,10 +4,13 @@
 
 [resource]
 script = ExtResource("1_rk2ys")
-extraction_rate = 7
+extraction_rate = 10
 detection_radius = 20.0
-storage_capacity = 90
+max_workers = 10
+production_time = 3
+storage_capacity = 300
 building_id = 1
 construction_cost = 200.0
+upkeep_cost = 100.0
 display_name = "Lumber Mill"
 metadata/_custom_type_script = "uid://dr1ydsbj3l63n"
