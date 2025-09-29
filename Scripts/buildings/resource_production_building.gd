@@ -24,8 +24,9 @@ func find_nearby_resources():
 	connected_resource_nodes.clear()
 	
 	for node in working_area.get_overlapping_areas():
-		if node.building_data.resource_type == building_data.resource_type and node.is_in_group("resource_nodes") and not node.is_preview:
-			connected_resource_nodes.append(node)
+		var parent = node.get_parent()
+		if parent.building_data.resource_type == building_data.resource_type and parent.is_in_group("resource_nodes") and not parent.is_preview:
+			connected_resource_nodes.append(parent)
 
 func can_produce() -> bool:
 	connected_resource_nodes = connected_resource_nodes.filter(func(node): return node != null and node.current_amount > 0)

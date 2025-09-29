@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://dvd53runfr5vs"]
+[gd_scene load_steps=46 format=3 uid="uid://dvd53runfr5vs"]
 
 [ext_resource type="Script" uid="uid://sqer1ykwxtg5" path="res://addons/day_and_night_cycle/scripts/cycle_controller.gd" id="1_2wyq8"]
 [ext_resource type="Script" uid="uid://l8a4rxtmphwk" path="res://scripts/manager/save_manager.gd" id="1_eb6dy"]
@@ -30,9 +30,8 @@
 [ext_resource type="Texture2D" uid="uid://drnbu5rk77eb" path="res://assets/icons/Keyboard & Mouse/Vector/keyboard_ctrl_outline.svg" id="16_pm3ni"]
 [ext_resource type="Script" uid="uid://c1i4acayxs71b" path="res://scripts/ui/hud_container.gd" id="18_0ld40"]
 [ext_resource type="Texture2D" uid="uid://kys2magqp63x" path="res://assets/icons/Keyboard & Mouse/Vector/keyboard_f1_outline.svg" id="18_pm3ni"]
-[ext_resource type="Script" uid="uid://cc1tc8gvhwrui" path="res://scripts/manager/resident_manager.gd" id="27_qkpxi"]
+[ext_resource type="Script" uid="uid://cc1tc8gvhwrui" path="res://scripts/manager/npc_manager.gd" id="27_qkpxi"]
 [ext_resource type="PackedScene" uid="uid://bn2j568mwjyxb" path="res://scenes/models/buildings/residential_placeholder.tscn" id="32_5q0nq"]
-[ext_resource type="Script" uid="uid://dxjoewqy4rxx4" path="res://scripts/citizen_controller.gd" id="33_5q0nq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bo1nx"]
 sky_top_color = Color(0.5990235, 0.66700757, 0.74295527, 1)
@@ -40,12 +39,12 @@ sky_horizon_color = Color(0.69806564, 0.71506166, 0.7340486, 1)
 sky_cover = ExtResource("4_vxglm")
 sun_angle_max = 15.0
 
-[sub_resource type="Sky" id="Sky_muem4"]
+[sub_resource type="Sky" id="Sky_5q0nq"]
 sky_material = SubResource("ProceduralSkyMaterial_bo1nx")
 
 [sub_resource type="Environment" id="Environment_jjvhh"]
 background_mode = 2
-sky = SubResource("Sky_muem4")
+sky = SubResource("Sky_5q0nq")
 ambient_light_source = 2
 tonemap_mode = 3
 tonemap_exposure = 0.5
@@ -211,10 +210,6 @@ corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_qkpxi"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5q0nq"]
 
 [node name="Main" type="Node3D"]
 
@@ -570,7 +565,7 @@ theme_override_fonts/font = ExtResource("10_muem4")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("10_muem4")
 
-[node name="ResidentManager" type="Node" parent="."]
+[node name="NPCManager" type="Node" parent="."]
 script = ExtResource("27_qkpxi")
 
 [node name="BuildManager" type="Node" parent="." node_paths=PackedStringArray("camera", "navigation_manager")]
@@ -613,22 +608,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.5, 45)
 
 [node name="House2" parent="." instance=ExtResource("32_5q0nq")]
 transform = Transform3D(0.25881907, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881907, 3, 2.4, 8)
-
-[node name="CitizenController" type="CharacterBody3D" parent="." node_paths=PackedStringArray("nav_agent", "camera")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-script = ExtResource("33_5q0nq")
-nav_agent = NodePath("NavigationAgent3D")
-camera = NodePath("../PlayerController")
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CitizenController"]
-debug_enabled = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CitizenController"]
-mesh = SubResource("CapsuleMesh_qkpxi")
-skeleton = NodePath("../NavigationAgent3D")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitizenController"]
-shape = SubResource("CapsuleShape3D_5q0nq")
 
 [connection signal="day_started" from="CycleController" to="CycleController/WorldEnvironment" method="_on_cycle_controller_day_started"]
 [connection signal="night_started" from="CycleController" to="CycleController/WorldEnvironment" method="_on_cycle_controller_night_started"]
