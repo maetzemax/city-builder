@@ -4,8 +4,8 @@ extends Building
 var current_occupants: int = 0
 var occupants: Array[CitizenData]
 
-var citizen_spawn_time = 5
-var _current_time = 0.0
+var citizen_spawn_time = 30
+var _current_time = 0
 
 
 func _ready():

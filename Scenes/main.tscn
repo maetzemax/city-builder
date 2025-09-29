@@ -307,11 +307,12 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Button" parent="User Interface/Pause UI/VBoxContainer/Load Game" node_paths=PackedStringArray("save_manager") instance=ExtResource("10_dp3eg")]
+[node name="Button" parent="User Interface/Pause UI/VBoxContainer/Load Game" node_paths=PackedStringArray("save_manager", "nav_manager") instance=ExtResource("10_dp3eg")]
 layout_mode = 2
 text = "Load"
 action_type = 1
 save_manager = NodePath("../../../../../SaveManager")
+nav_manager = NodePath("../../../../../NavigationManager")
 
 [node name="Exit" type="MarginContainer" parent="User Interface/Pause UI/VBoxContainer"]
 layout_mode = 2

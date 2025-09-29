@@ -5,13 +5,13 @@ class_name ProductionBuilding
 var stored_resources: Dictionary = {}
 var production_timer: float = 0.0
 var is_producing: bool = false
-var workers_count: int = 0
+
 
 signal production_completed(output: Dictionary)
 signal storage_changed(resource: String, amount: int)
 
 
-var _workers: Array[Citizen]
+var workers: Array[Citizen]
 
 func _ready():
 	super._ready()
@@ -84,20 +84,14 @@ func remove_resource(resource: ProductionBuildingData.ResourceType, amount: int)
 	return actual_removed
 
 
-func add_new_worker(worker: Citizen):
-	_workers.append(worker)
-	workers_count += 1
-
-
 func add_worker(worker: Citizen):
-	_workers.append(worker)
+	workers.append(worker)
 	
 
 #region Encoding / Decoding
 func get_save_data() -> Dictionary:
 	var data = super.get_save_data()
 	data.merge({
-		"workers_count": workers_count,
 		"stored_resources": stored_resources,
 		"production_timer": production_timer,
 		"is_producing": is_producing
@@ -107,7 +101,6 @@ func get_save_data() -> Dictionary:
 
 func load_from_data(data: Dictionary):
 	super.load_from_data(data)
-	workers_count = data.get("workers_count")
 	stored_resources = data.get("stored_resources", {})
 	production_timer = data.get("production_timer", 0.0)
 	is_producing = data.get("is_producing", false)

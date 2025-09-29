@@ -33,7 +33,7 @@ func find_nearby_resources():
 func can_produce() -> bool:
 	connected_resource_nodes = connected_resource_nodes.filter(func(node): return node != null and node.current_amount > 0)
 	
-	if connected_resource_nodes.is_empty():
+	if connected_resource_nodes.is_empty() or workers.is_empty():
 		return false
 	
 	var current_amount = stored_resources.get(building_data.resource_type, 0)
@@ -41,12 +41,14 @@ func can_produce() -> bool:
 
 
 func start_production():
-	if connected_resource_nodes.is_empty():
+	if connected_resource_nodes.is_empty() or workers.is_empty():
 		return
 	
 	var node = connected_resource_nodes[randi() % connected_resource_nodes.size()]
 	
-	var extracted = node.extract_resource(building_data.extraction_rate)
+	var calcluated_extract = building_data.extraction_rate * (float(workers.size()) / float(building_data.max_workers))
+	
+	var extracted = node.extract_resource(round(calcluated_extract))
 	
 	if extracted > 0:
 		add_resource(building_data.resource_type, int(extracted))

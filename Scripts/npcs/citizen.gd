@@ -45,6 +45,7 @@ func _process(_delta):
 	
 	if current_state == CitizenState.TRAVELING_TO_WORK and nav_agent.target_position == _workplace_building.npc_spawn_point.global_position and nav_agent.distance_to_target() < 2:
 		arrived_at_work.emit()
+		_workplace_building.add_worker(self)
 		current_state = CitizenState.WORKING
 		
 	if current_state == CitizenState.TRAVELING_TO_HOME and nav_agent.target_position == _home_building.npc_spawn_point.global_position and nav_agent.distance_to_target() < 2:
@@ -77,7 +78,7 @@ func update_working_place():
 	var temp_building: Building = null
 	
 	for building in buildings:
-		if building.is_preview or building.workers_count == building.building_data.max_workers:
+		if building.is_preview or building.workers.size() == building.building_data.max_workers:
 			return
 			
 		if not temp_building:
@@ -88,7 +89,6 @@ func update_working_place():
 			temp_building = building
 			
 	_workplace_building = temp_building
-	_workplace_building.add_new_worker(self)
 
 
 func update_home_place():
@@ -144,7 +144,6 @@ func load_from_data(data: Dictionary):
 	
 	if workplace_pos != Vector3.ZERO:
 		_workplace_building = find_building_at_position(workplace_pos, "production_buildings")
-		_workplace_building.add_worker(self)
 	
 	if home_pos != Vector3.ZERO:
 		_home_building = find_building_at_position(home_pos, "residental_buildings")

@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_e2353")
+max_amount = 20
 building_id = 2
 construction_cost = 50.0
 display_name = "Tree"
