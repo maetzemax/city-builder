@@ -139,7 +139,7 @@ func shoot_ray():
 	var ray_query = PhysicsRayQueryParameters3D.new()
 	ray_query.from = from
 	ray_query.to = to
-	ray_query.collision_mask = 1
+	ray_query.collision_mask = 8
 	
 	var raycast_result = space.intersect_ray(ray_query)
 	if raycast_result:

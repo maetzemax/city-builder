@@ -30,6 +30,12 @@ window/stretch/mode="canvas_items"
 
 enabled=PackedStringArray("res://addons/day_and_night_cycle/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://addons/": "teal"
+}
+
 [global_group]
 
 buildings=""
@@ -72,6 +78,10 @@ toggle_builder_help={
 
 3d_physics/layer_1="World"
 3d_physics/layer_3="Resource"
+
+[navigation]
+
+3d/merge_rasterizer_cell_scale=0.001
 
 [physics]
 

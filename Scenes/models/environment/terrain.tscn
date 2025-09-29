@@ -59,6 +59,7 @@ data = PackedVector3Array(0.96879995, 1, 0.0919, 1, 1, 0.091299996, 1, 0.9687999
 
 [node name="Terrain" type="StaticBody3D"]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
+collision_layer = 9
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.0000004, 0, 0, 0, 1.0000004, -2.842171e-14, 0, 2.842171e-14, 1.0000004, 0, 7.4428255e-09, -0.062434938)

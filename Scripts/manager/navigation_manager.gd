@@ -1,0 +1,59 @@
+class_name NavigationManager
+extends Node3D
+
+var navigation_region: NavigationRegion3D
+var navigation_mesh: NavigationMesh
+
+
+func _ready():
+	_setup_navigation()
+
+
+func _setup_navigation():
+	navigation_region = NavigationRegion3D.new()
+	add_child(navigation_region)
+	
+	navigation_mesh = NavigationMesh.new()
+	navigation_mesh.geometry_parsed_geometry_type = NavigationMesh.PARSED_GEOMETRY_STATIC_COLLIDERS
+	navigation_mesh.cell_size = 0.25
+
+	var nav_map = navigation_region.get_navigation_map()
+	NavigationServer3D.map_set_cell_size(nav_map, navigation_mesh.cell_size)
+
+	navigation_region.navigation_mesh = navigation_mesh
+	
+	bake_navigation()
+
+
+func bake_navigation():
+	if navigation_region and navigation_mesh:
+		var source_geometry = NavigationMeshSourceGeometryData3D.new()
+		NavigationServer3D.parse_source_geometry_data(
+			navigation_mesh,
+			source_geometry,
+			get_tree().root
+		)
+		NavigationServer3D.bake_from_source_geometry_data(
+			navigation_mesh,
+			source_geometry
+		)
+		
+		print("Navigation mesh baked")
+
+
+func on_building_changed():
+	bake_navigation_async()
+
+
+func bake_navigation_async():
+	await get_tree().process_frame
+	bake_navigation()
+
+
+func get_navigatoion_path(start: Vector3, end: Vector3) -> PackedVector3Array:
+	return NavigationServer3D.map_get_path(
+		navigation_region.get_navigation_map(),
+		start,
+		end,
+		true
+	)

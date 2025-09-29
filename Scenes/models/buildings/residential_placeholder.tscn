@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cefqsrj3f1y8j" path="res://scripts/buildings/building.gd" id="1_j5sa2"]
 [ext_resource type="Script" uid="uid://cpxe5t8wo7akl" path="res://scripts/environment/light_activator.gd" id="1_jl12f"]
-[ext_resource type="Resource" uid="uid://d4jgl7e67eqah" path="res://data/buildings/residential/house1.tres" id="2_j5sa2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhj3v"]
 
@@ -120,6 +119,10 @@ shadow_mesh = SubResource("ArrayMesh_5wesj")
 albedo_color = Color(1, 0.8666667, 0.5372549, 1)
 metallic_specular = 0.0
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ylasi"]
+margin = 0.0
+points = PackedVector3Array(0.01, 0.01, 0.017998042, 0, 0.01, 0.028, 0.01, -0.01, 0.017998042, 0.01, 0.01, -0.0019999999, 0, -0.01, 0.028, -0.01, 0.01, 0.017998042, 0.01, -0.01, -0.0019999999, -0.01, 0.01, -0.0019999999, -0.01, -0.01, 0.017998042, -0.01, -0.01, -0.0019999999)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k4llc"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3op13"]
@@ -206,9 +209,9 @@ albedo_color = Color(0.41, 0.246, 0.1025, 1)
 material = SubResource("StandardMaterial3D_jl12f")
 size = Vector3(0.05, 1.2, 0.05)
 
-[node name="House1" type="Area3D"]
+[node name="Building" type="Node3D"]
 script = ExtResource("1_j5sa2")
-building_data = ExtResource("2_j5sa2")
+metadata/_custom_type_script = "uid://cefqsrj3f1y8j"
 
 [node name="Door" type="MeshInstance3D" parent="."]
 transform = Transform3D(29.999998, 0, 0, 0, -3.5762785e-06, 29.999998, 0, -29.999998, -3.5762785e-06, 0, 0.099999994, 0)
@@ -228,6 +231,11 @@ mesh = SubResource("ArrayMesh_cw1la")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_gttws")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_ylasi")
+
 [node name="Windows" type="MeshInstance3D" parent="."]
 transform = Transform3D(3.0000007, 0, 0, 0, -2.3841862e-06, 20, 0, -20, -2.3841862e-06, 0.9999999, 0.79999995, 0.5)
 mesh = SubResource("ArrayMesh_rm1wt")
@@ -240,12 +248,17 @@ mesh = SubResource("ArrayMesh_wrdvc")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_forep")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 1.3343505, 0)
 shape = SubResource("BoxShape3D_wrggc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5215864, 1.0247328, 1.238267)
+visible = false
 mesh = SubResource("BoxMesh_jl12f")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D"]
@@ -259,4 +272,5 @@ script = ExtResource("1_jl12f")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5215864, 0.424142, 1.238267)
+visible = false
 mesh = SubResource("BoxMesh_kb6u8")

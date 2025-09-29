@@ -2000,9 +2000,10 @@ shadow_mesh = SubResource("ArrayMesh_0h2sn")
 [sub_resource type="BoxShape3D" id="BoxShape3D_ymnl4"]
 size = Vector3(3.0478516, 2.9032898, 2.642334)
 
-[node name="LumberHut" type="Area3D"]
+[node name="ResourceBuilding" type="StaticBody3D"]
 script = ExtResource("1_7wyx2")
 building_data = ExtResource("2_vjf57")
+metadata/_custom_type_script = "uid://dpkjvnhpycei2"
 
 [node name="L_1" type="MeshInstance3D" parent="."]
 transform = Transform3D(5.1733245e-08, 1.1455417e-06, 126.70874, -14.692324, 3.022535, -1.5218322e-06, -3.022535, -14.692324, 9.566244e-06, 0, 0, 0.90000004)
@@ -2216,4 +2217,11 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2660675, 0)
+shape = SubResource("BoxShape3D_ymnl4")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_ymnl4")
