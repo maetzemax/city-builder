@@ -16,6 +16,7 @@ func _setup_navigation():
 	navigation_mesh = NavigationMesh.new()
 	navigation_mesh.geometry_parsed_geometry_type = NavigationMesh.PARSED_GEOMETRY_STATIC_COLLIDERS
 	navigation_mesh.cell_size = 0.5
+	navigation_mesh.agent_max_slope = 5
 
 	var nav_map = navigation_region.get_navigation_map()
 	NavigationServer3D.map_set_cell_size(nav_map, navigation_mesh.cell_size)
