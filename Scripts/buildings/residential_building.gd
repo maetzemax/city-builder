@@ -2,9 +2,9 @@ class_name ResidentialBuilding
 extends Building
 
 var current_occupants: int = 0
-var occupants: Array[CitizenData]
+var occupants: Array[Citizen]
 
-var citizen_spawn_time = 10
+var citizen_spawn_time = 2
 var _current_time = 0
 
 
@@ -22,25 +22,18 @@ func _process(_delta):
 	if _current_time > citizen_spawn_time and current_occupants < building_data.max_occupants:
 		_current_time = 0.0
 		
-		spawn_npc()
-		add_occupants(1)
+		var citizen = spawn_npc()
+		add_occupants(citizen)
 		
 		print("Citizen Spawned")
 
 
-func add_occupants(amount: int):
-	if current_occupants >= building_data.max_occupants:
-		return
-	
-	if current_occupants + amount > building_data.max_occupants:
-		return
-		
-	current_occupants += amount
+func add_occupants(citizen: Citizen):
+	occupants.append(citizen)
 
 
-func remove_occupants(amount: int):
-	var new_amount = current_occupants - amount
-	current_occupants = max(new_amount, 0)
+func remove_occupants(citizen: Citizen):
+	occupants.erase(citizen)
 
 
 #region Encoding / Decoding

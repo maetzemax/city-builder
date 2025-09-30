@@ -6,13 +6,12 @@ var stored_resources: Dictionary = {}
 var production_timer: float = 0.0
 var is_producing: bool = false
 
-
 signal production_completed(output: Dictionary)
 signal storage_changed(resource: String, amount: int)
 
-
 @export var assigned_workers: Array[Citizen]
 @export var current_workers: Array[Citizen]
+
 
 func _ready():
 	super._ready()

@@ -18,7 +18,7 @@ func spawn_npc() -> NPCController:
 	
 	var npc = load(NPCManager.npcs[0]).instantiate()
 	add_child(npc)
-	npc.global_position = npc_spawn_point.global_position
+	npc.global_position = global_position
 	return npc
 
 
