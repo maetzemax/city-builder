@@ -12,6 +12,8 @@ signal storage_changed(resource: String, amount: int)
 @export var assigned_workers: Array[Citizen]
 @export var current_workers: Array[Citizen]
 
+@export var shift: WorkingShift = WorkingShift.new()
+
 
 func _ready():
 	super._ready()
@@ -29,6 +31,14 @@ func _process(delta):
 		production_timer += delta
 		if production_timer >= building_data.production_time:
 			complete_production()
+			
+			
+		var time = GameManager.day_progress * 24
+		var is_working_time = time > shift.start_hour and time < shift.end_hour
+		
+		if not is_working_time and not current_workers.is_empty():
+			for worker in current_workers:
+				remove_current_worker(worker)
 
 
 func can_produce() -> bool:
@@ -85,16 +95,19 @@ func remove_resource(resource: ProductionBuildingData.ResourceType, amount: int)
 
 
 func add_assigned_worker(worker: Citizen):
-	assigned_workers.append(worker)
+	if not assigned_workers.has(worker):
+		assigned_workers.append(worker)
 
 
 func add_current_worker(worker: Citizen):
-	current_workers.append(worker)
+	if assigned_workers.has(worker):
+		current_workers.append(worker)
 
 
 func remove_current_worker(worker: Citizen):
 	current_workers.erase(worker)
 	worker.global_position = npc_spawn_point.global_position
+	worker.current_state = Citizen.CitizenState.TRAVELING_TO_HOME
 
 
 #region Encoding / Decoding

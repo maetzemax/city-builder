@@ -68,6 +68,9 @@ func load_game():
 	clear_all_buildings()
 	clear_all_citizens()
 	
+	if not save_data:
+		return
+	
 	for building_data in save_data.buildings:
 		var building = load(build_manager.buildings[building_data.building_id]).instantiate()
 		add_child(building)

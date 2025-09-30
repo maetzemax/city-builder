@@ -31,7 +31,6 @@ func get_save_data() -> Dictionary:
 	return {
 		"npc_id": npc_id,
 		"movement_speed": movement_speed,
-		"target_position": nav_agent.target_position,
 		"position": global_position,
 		"rotation_y": global_rotation.y,
 	}
@@ -40,7 +39,6 @@ func get_save_data() -> Dictionary:
 func load_from_data(data: Dictionary):
 	npc_id = data.get("npc_id", 0)
 	movement_speed = data.get("movement_speed", 5.0)
-	set_target_position(data.get("target_position", Vector3.ZERO))
 	global_position = data.get("position", Vector3.ZERO)
 	global_rotation.y = data.get("rotation_y", 0.0)
 #endregion

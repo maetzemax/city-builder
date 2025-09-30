@@ -1,7 +1,13 @@
-[gd_scene load_steps=93 format=4 uid="uid://cdw4atnef81ew"]
+[gd_scene load_steps=95 format=4 uid="uid://cdw4atnef81ew"]
 
 [ext_resource type="Script" uid="uid://dpkjvnhpycei2" path="res://scripts/buildings/resource_production_building.gd" id="1_7wyx2"]
+[ext_resource type="Script" uid="uid://nh15mtdn0ypj" path="res://scripts/models/buildings/working_shift.gd" id="2_73a7g"]
 [ext_resource type="Resource" uid="uid://cpowfg6sqlul2" path="res://data/buildings/production/lumber_hut.tres" id="2_vjf57"]
+
+[sub_resource type="Resource" id="Resource_0htdp"]
+script = ExtResource("2_73a7g")
+start_hour = 1
+metadata/_custom_type_script = "uid://nh15mtdn0ypj"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_55uai"]
 resource_name = "Log_D.BROWN"
@@ -2002,6 +2008,7 @@ size = Vector3(3.0478516, 2.9032898, 2.642334)
 
 [node name="ResourceBuilding" type="StaticBody3D" node_paths=PackedStringArray("npc_spawn_point")]
 script = ExtResource("1_7wyx2")
+shift = SubResource("Resource_0htdp")
 npc_spawn_point = NodePath("NPCSpawnPoint")
 building_data = ExtResource("2_vjf57")
 metadata/_custom_type_script = "uid://dpkjvnhpycei2"
