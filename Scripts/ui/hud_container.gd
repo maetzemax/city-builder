@@ -16,20 +16,21 @@ extends MarginContainer
 @export var citizen_label: Label
 
 func _process(_delta):
-	day_label.text = "Day %o" % GameManager.day_count
+	day_label.text = "Day %s" % GameManager.day_count
 	day_progress.value = GameManager.day_progress * 100
 	money_label.text = "%2.2f €" % EconomyManager.money
 	_get_resources_stored_in_production_output()
 	_get_citizens()
 	
 func _get_citizens():
-	var residentials = get_tree().get_nodes_in_group("residental_buildings")
+	var citizens = get_tree().get_nodes_in_group("citizens")
 	
-	var occupants = 0
-	for residential in residentials:
-		occupants += residential.occupants.size()
+	var unemployed = 0
+	for citizen in citizens:
+		if citizen.current_state == Citizen.CitizenState.UNEMPLOYED:
+			unemployed += 1
 			
-	citizen_label.text = "%o Citizen" % [occupants]
+	citizen_label.text = "%s Citizen (%s unemployed)" % [citizens.size(), unemployed]
 
 func _get_resources_stored_in_production_output():
 	var buildings = get_tree().get_nodes_in_group("resource_buildings")
