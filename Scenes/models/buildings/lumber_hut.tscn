@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=4 uid="uid://cdw4atnef81ew"]
+[gd_scene load_steps=16 format=4 uid="uid://cdw4atnef81ew"]
 
 [ext_resource type="Script" uid="uid://dpkjvnhpycei2" path="res://scripts/buildings/resource_production_building.gd" id="1_7wyx2"]
 [ext_resource type="Script" uid="uid://nh15mtdn0ypj" path="res://scripts/models/buildings/working_shift.gd" id="2_73a7g"]
 [ext_resource type="Resource" uid="uid://cpowfg6sqlul2" path="res://data/buildings/production/lumber_hut.tres" id="2_vjf57"]
 
-[sub_resource type="Resource" id="Resource_0htdp"]
+[sub_resource type="Resource" id="Resource_73a7g"]
 script = ExtResource("2_73a7g")
 metadata/_custom_type_script = "uid://nh15mtdn0ypj"
 
@@ -77,6 +77,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mnlri")
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0htdp"]
+points = PackedVector3Array(-3.0021124, -0.09561697, -2.3000002, -3.0021124, 1.4404118, -2.3000002, -2.9873042, -0.16918889, -2.3000002, -3.1979835, -0.16918889, -2.1180894, -3.1979835, -0.09561697, -2.1302469, -2.9873042, 1.5137926, -2.3000002, -3.1979835, 1.4404118, -2.1302469, -3.1979835, 1.5137926, -2.1180894, -3.1979835, -0.23148614, -2.0834184, -2.9455721, -0.23148614, -2.3000002, -3.3696232, -0.31977245, -1.788939, -3.1979835, 1.5760899, -2.0834184, -2.9455721, 1.5760899, -2.3000002, -3.3696232, 0.040061116, -1.788939, -3.1979835, -0.27295396, -2.0316367, -2.8836474, -0.27295396, -2.3000002, -3.327218, -0.31977245, -1.788939, -3.3696232, -0.31977245, 1.7884889, -2.8096066, -0.28766835, -2.3000002, -3.1979835, 1.6177489, -2.0316367, -2.8836474, 1.6177489, -2.3000002, -3.3696232, 0.040061116, 1.7884889, -3.1979835, 1.6324632, -1.9703995, -3.327218, -0.31977245, 1.7884889, 3.1903777, -0.28766835, -2.3000002, 3.5060601, -0.28766835, -1.9703995, -3.1979835, -0.27295396, 2.031187, -3.1979835, -0.23148614, 2.0829682, -3.1979835, -0.16918889, 2.1176395, -3.1979835, -0.09561697, 2.129797, -2.8096066, -0.28766835, 2.29955, -2.8836474, -0.27295396, 2.29955, -2.8096066, 1.6324632, -2.3000002, -3.1979835, 1.5137926, 2.1176395, -3.1979835, 1.5760899, 2.0829682, -3.1979835, 1.6177489, 2.031187, -3.1979835, 1.6324632, 1.9699497, -3.1979835, 1.4404118, 2.129797, 3.5060601, -0.28766835, 1.9699497, 3.1903777, -0.28766835, 2.29955, 3.2637453, -0.27295396, -2.3000002, 3.5060601, -0.27295396, -2.0316367, -2.9455721, -0.23148614, 2.29955, -2.9873042, -0.16918889, 2.29955, -3.0021124, -0.09561697, 2.29955, -2.8836474, 0.081720024, 2.3000007, 3.1903777, 1.6324632, -2.3000002, -3.0021124, 1.4404118, 2.29955, -2.9873042, 1.5137926, 2.29955, -2.9455721, 1.5760899, 2.29955, -2.8836474, 1.6177489, 2.3000007, -2.8096066, 1.6324632, 2.3000007, 3.5060601, -0.27295396, 2.031187, 3.2637453, -0.27295396, 2.29955, 3.2637453, 0.081720024, 2.3000007, 3.3256702, -0.23148614, -2.3000002, 3.5060601, -0.23148614, -2.0834184, 3.5060601, 1.6324632, -1.9703995, 3.2637453, 1.6177489, -2.3000002, 3.1903777, 1.6324632, 2.3000007, 3.5060601, -0.23148614, 2.0829682, 3.3256702, -0.23148614, 2.29955, 3.367402, -0.16918889, 2.29955, 3.3822103, -0.09561697, 2.29955, 3.2637453, 1.6177489, 2.3000007, 3.367402, -0.16918889, -2.3000002, 3.5060601, -0.16918889, -2.1180894, 3.5060601, 1.6324632, 1.9699497, 3.5060601, 1.6177489, -2.0316367, 3.3256702, 1.5760899, -2.3000002, 3.5060601, -0.16918889, 2.1176395, 3.3822103, 1.4404118, 2.29955, 3.5060601, -0.09561697, 2.129797, 3.367402, 1.5137926, 2.29955, 3.3256702, 1.5760899, 2.29955, 3.5060601, 1.6177489, 2.031187, 3.3822103, -0.09561697, -2.3000002, 3.5060601, -0.09561697, -2.1302469, 3.5060601, 1.5760899, -2.0834184, 3.367402, 1.5137926, -2.3000002, 3.5060601, 1.4404118, 2.129797, 3.5060601, 1.5137926, 2.1176395, 3.5060601, 1.5760899, 2.0829682, 3.3822103, 1.4404118, -2.3000002, 3.5060601, 1.4404118, -2.1302469, 3.5060601, 1.5137926, -2.1180894)
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_3ss0a"]
 _surfaces = [{
 "aabb": AABB(-3.2055876, 1.5844631, -2.5025, 6.7200003, 0.5999999, 5.005),
@@ -146,16 +149,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_tffgc")
 
-[node name="ResourceBuilding" type="StaticBody3D" node_paths=PackedStringArray("npc_spawn_point")]
+[node name="ResourceBuilding" type="Node3D" node_paths=PackedStringArray("npc_spawn_point")]
 script = ExtResource("1_7wyx2")
-shift = SubResource("Resource_0htdp")
+shift = SubResource("Resource_73a7g")
 npc_spawn_point = NodePath("NPCSpawnPoint")
 building_data = ExtResource("2_vjf57")
 metadata/_custom_type_script = "uid://dpkjvnhpycei2"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.2482064e-09, 0.95606995, -0.0743103)
-shape = SubResource("BoxShape3D_ymnl4")
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
@@ -163,31 +162,33 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9594239, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.336118, 0)
 shape = SubResource("BoxShape3D_ymnl4")
 
 [node name="NPCSpawnPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 3.9500685)
 
-[node name="meshes" type="Node3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
-
-[node name="Base" type="MeshInstance3D" parent="meshes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.2, 0, 0, 0)
+[node name="Base" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1.2, 0, 1, 0, -1, 0, -5.2453668e-08, 0, 0.28338754, 0)
 mesh = SubResource("ArrayMesh_3o4my")
 skeleton = NodePath("")
 
-[node name="Roof" type="MeshInstance3D" parent="meshes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.2, 0, 0, 0)
+[node name="StaticBody3D" type="StaticBody3D" parent="Base"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Base/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_0htdp")
+
+[node name="Roof" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1.2, 0, 1, 0, -1, 0, -5.2453668e-08, 0, 0.28338754, 0)
 mesh = SubResource("ArrayMesh_xrbgu")
 skeleton = NodePath("")
 
-[node name="Window_Right" type="MeshInstance3D" parent="meshes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 2.3700001)
+[node name="Window_Right" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.3700001, 0.44338754, -1.03595994e-07)
 mesh = SubResource("ArrayMesh_5absf")
 skeleton = NodePath("")
 
-[node name="Window_Right_001" type="MeshInstance3D" parent="meshes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, -2.3624094)
+[node name="Window_Right_001" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.3624094, 0.44338754, 1.0326419e-07)
 mesh = SubResource("ArrayMesh_5absf")
 skeleton = NodePath("")

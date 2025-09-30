@@ -52,7 +52,7 @@ void vertex() {
 
 void fragment() {
     // Get the world Y position (height) of the current fragment
-    float current_height = world_pos.z;
+    float current_height = world_pos.y;
 
     // Normalize height to 0.0-1.0 range based on min/max height uniforms
     float normalized_height = clamp((current_height - min_height) / (max_height - min_height), 0.0, 1.0);

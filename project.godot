@@ -78,6 +78,8 @@ toggle_builder_help={
 
 [navigation]
 
+pathfinding/max_threads=8
+3d/default_cell_size=1.0
 3d/merge_rasterizer_cell_scale=0.001
 
 [physics]

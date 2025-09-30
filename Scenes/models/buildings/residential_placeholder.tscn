@@ -192,7 +192,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_brmqo")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wrggc"]
-size = Vector3(2.3515625, 3.2365723, 2.6552734)
+size = Vector3(2.3515625, 3.1148682, 2.6552734)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xoao0"]
 shading_mode = 0
@@ -216,19 +216,19 @@ npc_spawn_point = NodePath("NPCSpawnPoint")
 building_data = ExtResource("2_j5sa2")
 
 [node name="Door" type="MeshInstance3D" parent="."]
-transform = Transform3D(29.999998, 0, 0, 0, -3.5762785e-06, 29.999998, 0, -29.999998, -3.5762785e-06, 0, 0.099999994, 0)
+transform = Transform3D(29.999998, 0, 0, 0, -3.5762785e-06, 29.999998, 0, -29.999998, -3.5762785e-06, 0, 0.3, 0)
 mesh = SubResource("ArrayMesh_7frvy")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_wrggc")
 
 [node name="Roof" type="MeshInstance3D" parent="."]
-transform = Transform3D(109.24397, 0, 0, 0, -1.5114791e-05, 103.38928, 0, -126.79204, -1.2324963e-05, 0, 0, 0)
+transform = Transform3D(109.24397, 0, 0, 0, -1.5114791e-05, 103.38928, 0, -126.79204, -1.2324963e-05, 0, 0.2, 0)
 mesh = SubResource("ArrayMesh_6oe4b")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_lubih")
 
 [node name="Walls" type="MeshInstance3D" parent="."]
-transform = Transform3D(99.99999, 0, 0, 0, -1.1920927e-05, 99.999985, 0, -99.999985, -1.1920927e-05, 0, 0, 0)
+transform = Transform3D(99.99999, 0, 0, 0, -1.1920927e-05, 99.999985, 0, -99.999985, -1.1920927e-05, 0, 0.2, 0)
 mesh = SubResource("ArrayMesh_cw1la")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_gttws")
@@ -239,27 +239,28 @@ surface_material_override/0 = SubResource("StandardMaterial3D_gttws")
 shape = SubResource("ConvexPolygonShape3D_ylasi")
 
 [node name="Windows" type="MeshInstance3D" parent="."]
-transform = Transform3D(3.0000007, 0, 0, 0, -2.3841862e-06, 20, 0, -20, -2.3841862e-06, 0.9999999, 0.79999995, 0.5)
+transform = Transform3D(3.0000007, 0, 0, 0, -2.3841862e-06, 20, 0, -20, -2.3841862e-06, 0.9999999, 0.99999994, 0.5)
 mesh = SubResource("ArrayMesh_rm1wt")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_forep")
 
 [node name="Windows_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(3.0000007, 0, 0, 0, -2.3841862e-06, 20, 0, -20, -2.3841862e-06, -0.9999999, 0.79999995, 0.5)
+transform = Transform3D(3.0000007, 0, 0, 0, -2.3841862e-06, 20, 0, -20, -2.3841862e-06, -0.9999999, 0.99999994, 0.5)
 mesh = SubResource("ArrayMesh_wrdvc")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_forep")
 
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(0.9999999, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 1.3343505, 0)
+transform = Transform3D(0.9999999, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 1.3952025, 0)
 shape = SubResource("BoxShape3D_wrggc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5215864, 1.0247328, 1.238267)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5215864, 1.2247329, 1.238267)
 mesh = SubResource("BoxMesh_jl12f")
 skeleton = NodePath("")
 
@@ -273,9 +274,9 @@ omni_range = 2.0
 script = ExtResource("1_jl12f")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5215864, 0.424142, 1.238267)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5215864, 0.624142, 1.238267)
 mesh = SubResource("BoxMesh_kb6u8")
 skeleton = NodePath("")
 
 [node name="NPCSpawnPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04221806, 1.6138548)

@@ -20,7 +20,7 @@ func _ready():
 
 func _process(_delta: float):
 	if _preview_instance:
-		_can_place = not _preview_instance.get_node("Area3D").has_overlapping_areas()
+		_can_place = not _preview_instance.get_node("Area3D").has_overlapping_areas() and not _preview_instance.get_node("Area3D").has_overlapping_bodies()
 		_preview_instance.global_rotation.y = _rotation
 		
 	if selected_building and EconomyManager.money < selected_building.construction_cost:
