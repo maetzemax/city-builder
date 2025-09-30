@@ -18,6 +18,7 @@ func spawn_npc() -> NPCController:
 	
 	var npc = load(NPCManager.npcs[0]).instantiate()
 	add_child(npc)
+	# Spawn inside the house
 	npc.global_position = global_position
 	return npc
 

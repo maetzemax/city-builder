@@ -18,6 +18,6 @@ point_count = 3
 [resource]
 script = ExtResource("1_gi50g")
 colors = SubResource("GradientTexture2D_jji54")
-length = 60.0
+length = 150.0
 light_energy = SubResource("Curve_5mae3")
 metadata/_custom_type_script = "uid://kolqah11th63"

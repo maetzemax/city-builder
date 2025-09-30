@@ -16,7 +16,12 @@ extends MarginContainer
 @export var citizen_label: Label
 
 func _process(_delta):
-	day_label.text = "Day %s" % GameManager.day_count
+	var total_minutes = int(GameManager.day_progress * 24 * 60)  # Convert to total minutes in day
+	@warning_ignore("integer_division")
+	var hours = int(total_minutes / 60)
+	var minutes = total_minutes % 60
+	
+	day_label.text = "Day %s %02d:%02d" % [GameManager.day_count, hours, minutes]
 	day_progress.value = GameManager.day_progress * 100
 	money_label.text = "%2.2f €" % EconomyManager.money
 	_get_resources_stored_in_production_output()

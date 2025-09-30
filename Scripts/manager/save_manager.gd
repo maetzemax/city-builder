@@ -77,7 +77,7 @@ func load_game():
 		building.load_from_data(building_data)
 		
 	for npc_data in save_data.npcs:
-		var npc = load(NPCManager.npcs[npc_data.npc_id]).instantiate()
+		var npc: NPCController = load(NPCManager.npcs[npc_data.npc_id]).instantiate()
 		add_child(npc)
 		npc.load_from_data(npc_data)
 	

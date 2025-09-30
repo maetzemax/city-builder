@@ -42,50 +42,52 @@ func _process(_delta):
 		var is_working = current_state == CitizenState.WORKING
 		
 		if is_working_time and not is_traveling_to_work and not is_working:
-			walk_to_work()
+			update_current_state(CitizenState.TRAVELING_TO_WORK)
 	
 	match current_state:
-		CitizenState.RESTING, CitizenState.UNEMPLOYED, CitizenState.WORKING:
-			visible = false
-			
 		CitizenState.TRAVELING_TO_WORK:
-			visible = true
-			set_target_position(_workplace_building.npc_spawn_point.global_position)
-			
 			if nav_agent.distance_to_target() < 2:
 				arrived_at_work.emit()
 				_workplace_building.add_current_worker(self)
-				current_state = CitizenState.WORKING
+				update_current_state(CitizenState.WORKING)
 				
 		CitizenState.TRAVELING_TO_HOME:
-			visible = true
-			set_target_position(_home_building.npc_spawn_point.global_position)
-			
 			if nav_agent.distance_to_target() < 2:
 				arrived_at_work.emit()
 				_home_building.add_current_citizen(self)
-				current_state = CitizenState.RESTING
+				update_current_state(CitizenState.RESTING)
 
 
 func _physics_process(_delta):
-	match current_state:
+	if GameManager.current_game_state == GameManager.GameState.MAIN_MENU or GameManager.current_game_state == GameManager.GameState.PAUSED:
+		return
+		
+	if current_state == CitizenState.TRAVELING_TO_WORK or current_state == CitizenState.TRAVELING_TO_HOME:
+		super._physics_process(_delta)
+
+
+func update_current_state(new_state):
+	match new_state:
 		CitizenState.UNEMPLOYED, CitizenState.RESTING:
-			if not _home_building:
-				return
-			
 			global_position = _home_building.global_position
 			visible = false
-			return
-		CitizenState.WORKING:
-			if not _workplace_building:
-				return
 
+		CitizenState.WORKING:
 			global_position = _workplace_building.global_position
 			visible = false
-			return
-		_:
-			super._physics_process(_delta)
+
+		CitizenState.TRAVELING_TO_WORK:
+			if current_state == CitizenState.UNEMPLOYED or current_state == CitizenState.RESTING:
+				global_position= _home_building.npc_spawn_point.global_position
+			
 			visible = true
+			set_target_position(_workplace_building.npc_spawn_point.global_position)
+
+		CitizenState.TRAVELING_TO_HOME:
+			visible = true
+			set_target_position(_home_building.npc_spawn_point.global_position)
+	
+	current_state = new_state
 
 
 func update_working_place():
@@ -132,11 +134,6 @@ func update_home_place():
 		_home_building = temp_building
 
 
-func walk_to_work():
-	if _workplace_building:
-		current_state = CitizenState.TRAVELING_TO_WORK
-
-
 #region Save/Load System
 func get_save_data() -> Dictionary:
 	var data = super.get_save_data()
@@ -154,9 +151,14 @@ func load_from_data(data: Dictionary):
 	
 	full_name = data.get("full_name", "Hans Joachim Peter")
 	age = data.get("age", 18)
-	current_state = data.get("current_state", CitizenState.UNEMPLOYED)
 
 	restore_building_references(data)
+	restore_current_state(data)
+
+
+func restore_current_state(data: Dictionary):
+	current_state = data.get("current_state", CitizenState.UNEMPLOYED)
+	update_current_state(current_state)
 
 
 func restore_building_references(data: Dictionary):

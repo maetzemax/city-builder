@@ -31,14 +31,14 @@ func _process(delta):
 		production_timer += delta
 		if production_timer >= building_data.production_time:
 			complete_production()
-			
-			
-		var time = GameManager.day_progress * 24
-		var is_working_time = time > shift.start_hour and time < shift.end_hour
-		
-		if not is_working_time and not current_workers.is_empty():
-			for worker in current_workers:
-				remove_current_worker(worker)
+	
+	var time = GameManager.day_progress * 24
+	var is_working_time = time > shift.start_hour and time < shift.end_hour
+	
+	if not is_working_time and not current_workers.is_empty():
+		for worker in current_workers:
+			remove_current_worker(worker)
+			return
 
 
 func can_produce() -> bool:
@@ -107,7 +107,7 @@ func add_current_worker(worker: Citizen):
 func remove_current_worker(worker: Citizen):
 	current_workers.erase(worker)
 	worker.global_position = npc_spawn_point.global_position
-	worker.current_state = Citizen.CitizenState.TRAVELING_TO_HOME
+	worker.update_current_state(Citizen.CitizenState.TRAVELING_TO_HOME)
 
 
 #region Encoding / Decoding
