@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="StorageBuildingData" load_steps=2 format=3 uid="uid://b3gdbs3s78vp3"]
+
+[ext_resource type="Script" uid="uid://cq7xp0m27bxmm" path="res://scripts/models/buildings/storage_building_data.gd" id="1_q5j2e"]
+
+[resource]
+script = ExtResource("1_q5j2e")
+storage_capacity = 2000
+accepted_resources = Array[int]([0])
+building_id = 3
+construction_cost = 100.0
+display_name = "Lumber Storage"
+metadata/_custom_type_script = "uid://cq7xp0m27bxmm"

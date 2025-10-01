@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dvd53runfr5vs"]
+[gd_scene load_steps=45 format=3 uid="uid://dvd53runfr5vs"]
 
 [ext_resource type="Script" uid="uid://sqer1ykwxtg5" path="res://addons/day_and_night_cycle/scripts/cycle_controller.gd" id="1_2wyq8"]
 [ext_resource type="Script" uid="uid://l8a4rxtmphwk" path="res://scripts/manager/save_manager.gd" id="1_eb6dy"]
@@ -31,7 +31,6 @@
 [ext_resource type="Script" uid="uid://c1i4acayxs71b" path="res://scripts/ui/hud_container.gd" id="18_0ld40"]
 [ext_resource type="Texture2D" uid="uid://kys2magqp63x" path="res://assets/icons/Keyboard & Mouse/Vector/keyboard_f1_outline.svg" id="18_pm3ni"]
 [ext_resource type="Script" uid="uid://cc1tc8gvhwrui" path="res://scripts/manager/npc_manager.gd" id="27_qkpxi"]
-[ext_resource type="PackedScene" uid="uid://bupay4s6hpdui" path="res://assets/models/lumber_storage.glb" id="32_qkpxi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bo1nx"]
 sky_top_color = Color(0.5990235, 0.66700757, 0.74295527, 1)
@@ -611,9 +610,6 @@ metadata/_custom_type_script = "uid://cx7qf74acxtp4"
 [node name="NPCManager" type="Node" parent="."]
 script = ExtResource("27_qkpxi")
 metadata/_custom_type_script = "uid://cc1tc8gvhwrui"
-
-[node name="lumber_storage" parent="." instance=ExtResource("32_qkpxi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.378235, 0.053993642, 31.538633)
 
 [connection signal="day_started" from="CycleController" to="CycleController/WorldEnvironment" method="_on_cycle_controller_day_started"]
 [connection signal="night_started" from="CycleController" to="CycleController/WorldEnvironment" method="_on_cycle_controller_night_started"]

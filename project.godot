@@ -30,6 +30,10 @@ window/stretch/mode="canvas_items"
 
 enabled=PackedStringArray("res://addons/day_and_night_cycle/plugin.cfg")
 
+[filesystem]
+
+import/blender/enabled=false
+
 [global_group]
 
 buildings=""

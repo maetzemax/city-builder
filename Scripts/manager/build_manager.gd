@@ -8,7 +8,8 @@ class_name BuildManager
 static var buildings: Dictionary = {
 	0: "uid://bn2j568mwjyxb", # residential placeholder
 	1: "uid://cdw4atnef81ew", # lumber hut
-	2: "uid://bmglwbl6r4ao7" # tree1
+	2: "uid://bmglwbl6r4ao7", # tree1
+	3: "uid://cqtkbxvtgvqt4",
 }
 
 var is_grid_enabled = false
