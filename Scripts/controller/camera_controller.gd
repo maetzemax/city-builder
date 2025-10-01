@@ -10,7 +10,7 @@ signal mouse_pos_on_terrain(pos: Vector3)
 @export var orbit_sensitivity: float = 0.005
 @export var zoom_sensitivity: float = 0.05
 
-@export var move_speed: float = 10.0
+@export var move_speed: float = 30.0
 @export var fast_move_multiplier: float = 2.0
 @export var slow_move_multiplier: float = 0.3
 @export var scroll_zoom_speed: float = 1.0
@@ -139,7 +139,7 @@ func shoot_ray():
 	var ray_query = PhysicsRayQueryParameters3D.new()
 	ray_query.from = from
 	ray_query.to = to
-	ray_query.collision_mask = 1
+	ray_query.collision_mask = 8
 	
 	var raycast_result = space.intersect_ray(ray_query)
 	if raycast_result:

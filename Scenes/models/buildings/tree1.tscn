@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://bmglwbl6r4ao7"]
+[gd_scene load_steps=9 format=4 uid="uid://bmglwbl6r4ao7"]
 
 [ext_resource type="Script" uid="uid://x402pio1wkde" path="res://scripts/buildings/resource_node.gd" id="1_k4kii"]
 [ext_resource type="Texture2D" uid="uid://lb4hnvuake4s" path="res://assets/forest/color_1024x1024.jpg" id="2_u2ld1"]
@@ -45,20 +45,33 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_jh3rp")
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u2ld1"]
+points = PackedVector3Array(0.30876982, -1.9256328, 4.9155474, 1.9090708, -0.91116345, 5.0690937, 1.1677963, -0.96582645, 7.2484326, -0.0033655167, -1.5803137, 7.0672474, -1.701606, -1.4562852, 4.677038, -0.026542068, -0.7151307, 7.8125e-06, 1.1782631, -0.9582867, 2.4301393, 1.8051504, -0.6329478, 2.4178555, 1.3352653, 0.991485, 5.2451606, 1.136022, 0.39320815, 7.074413, 1.7726284, 0.08596456, 2.329822, -0.17419887, -0.22090209, 10.457557, 0.54315174, -0.6631067, 8.645707, -0.077380896, -0.9820368, 8.583264, -0.67585826, -0.6563209, 8.653896, -1.2803168, -0.96582645, 6.8543296, -1.9094471, 0.47878397, 4.856176, -0.48035312, -0.41128004, 7.8125e-06, 0.37829936, -0.50477254, 7.8125e-06, -0.47100782, 1.9252793, 4.9810605, -0.056447268, 1.154343, 7.2484326, 1.1674224, 0.4885856, 2.5304563, 0.34091794, -0.014690757, 7.8125e-06, 0.0044845343, 0.19189775, 7.8125e-06, -1.3427439, 0.33929908, 7.0242543, -0.40035677, -0.018460512, 7.8125e-06)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_brrpb"]
 radius = 0.6801758
 height = 3.9312134
 
-[node name="Tree1" type="Area3D"]
-collision_layer = 5
+[node name="ResourceNode" type="Node3D"]
 script = ExtResource("1_k4kii")
 building_data = ExtResource("2_v6kpv")
+metadata/_custom_type_script = "uid://x402pio1wkde"
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.377826, 0, 0, 0, 6.7560556e-08, 0.37782598, 0, -0.37782598, 6.7560556e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_b50ks")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="Mesh"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_u2ld1")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19024116, 0)
+collision_layer = 7
+collision_mask = 2
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9425354, 0)
 shape = SubResource("CapsuleShape3D_brrpb")

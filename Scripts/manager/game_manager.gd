@@ -11,10 +11,11 @@ extends Node
 enum GameState {
 	RUNNING,
 	BUILDING,
-	PAUSED
+	PAUSED,
+	MAIN_MENU,
 }
 
-static var current_game_state = GameState.RUNNING
+static var current_game_state = GameState.MAIN_MENU
 
 static var is_day: bool = true
 
@@ -23,6 +24,7 @@ static var day_progress: float
 
 
 func _ready():
+	current_game_state = GameState.RUNNING
 	cycle_controller.day_started.connect(_on_day_started)
 	cycle_controller.night_started.connect(_on_night_started)
 
@@ -57,11 +59,22 @@ func _process(_delta: float):
 func _on_day_started():
 	is_day = true
 	day_count += 1
+	_pay_upkeep()
 
 
 func _on_night_started():
 	is_day = false
 	
+
+func _pay_upkeep():
+	var buildings = get_tree().get_nodes_in_group("buildings")
+	var upkeep = 0.0
+	
+	for building in buildings:
+		upkeep += building.building_data.upkeep_cost
+
+	EconomyManager.reduce_money(upkeep)
+
 
 func _input(event: InputEvent):
 	if event is InputEventKey:

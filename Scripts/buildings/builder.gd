@@ -1,6 +1,5 @@
-extends Node3D
-
 class_name Builder
+extends Node3D
 
 @export var build_manager: BuildManager
 @export var environment: Node3D
@@ -13,14 +12,20 @@ var _preview_instance
 var _can_place: bool
 var _rotation: float
 
+
+func _ready():
+	build_manager.camera.clicked_element.connect(_on_camera_3d_clicked_element)
+	build_manager.camera.mouse_pos_on_terrain.connect(_on_camera_3d_mouse_pos_on_terrain)
+
+
 func _process(_delta: float):
 	if _preview_instance:
-		_can_place = not _preview_instance.has_overlapping_areas()
+		_can_place = not _preview_instance.get_node("Area3D").has_overlapping_areas() and not _preview_instance.get_node("Area3D").has_overlapping_bodies()
 		_preview_instance.global_rotation.y = _rotation
 		
 	if selected_building and EconomyManager.money < selected_building.construction_cost:
 		_can_place = false
-		
+	
 	# Rotation
 	if Input.is_action_just_pressed("rotate_precise_right"):
 		_rotation += deg_to_rad(5)
@@ -36,6 +41,7 @@ func _process(_delta: float):
 	_color_preview_mesh()
 	_check_preview()
 
+
 func _color_preview_mesh():
 	if _preview_instance:
 		if _can_place:
@@ -49,10 +55,13 @@ func _color_preview_mesh():
 				if child is MeshInstance3D:
 					child.material_override = red_material
 					
+
+
 func _check_preview():
 	if (not build_manager.is_building_state or is_mouse_over_ui) and _preview_instance:
 		_preview_instance.queue_free()
 		_preview_instance = null
+
 
 func _on_camera_3d_clicked_element(pos: Vector3) -> void:
 	if _can_place and _preview_instance and selected_building:
@@ -69,6 +78,9 @@ func _on_camera_3d_clicked_element(pos: Vector3) -> void:
 
 		_preview_instance.queue_free()
 		_preview_instance = null
+		
+		if instance is not ResourceNode:
+			build_manager.navigation_manager.bake_navigation_async()
 
 
 func _on_camera_3d_mouse_pos_on_terrain(pos: Vector3) -> void:
@@ -82,6 +94,7 @@ func _on_camera_3d_mouse_pos_on_terrain(pos: Vector3) -> void:
 		_preview_instance.name = "Preview"
 	elif _preview_instance:
 		_preview_instance.global_position = snap_to_grid(pos)
+
 
 func snap_to_grid(pos: Vector3) -> Vector3:
 	if not build_manager.is_grid_enabled:

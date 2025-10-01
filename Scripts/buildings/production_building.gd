@@ -7,14 +7,21 @@ var production_timer: float = 0.0
 var is_producing: bool = false
 
 signal production_completed(output: Dictionary)
-signal storage_changed(resource: String, amount: int)
+signal storage_changed(resource: ProductionBuildingData.ResourceType, amount: int)
+
+@export var assigned_workers: Array[Citizen]
+@export var current_workers: Array[Citizen]
+
+@export var shift: WorkingShift = WorkingShift.new()
+
 
 func _ready():
 	super._ready()
 	add_to_group("production_buildings")
 
+
 func _process(delta):
-	if not is_active or GameManager.current_game_state == GameManager.GameState.PAUSED:
+	if not is_active or GameManager.current_game_state == GameManager.GameState.PAUSED or GameManager.current_game_state == GameManager.GameState.MAIN_MENU:
 		return
 		
 	if can_produce() and not is_producing:
@@ -24,6 +31,15 @@ func _process(delta):
 		production_timer += delta
 		if production_timer >= building_data.production_time:
 			complete_production()
+	
+	var time = GameManager.day_progress * 24
+	var is_working_time = time > shift.start_hour and time < shift.end_hour
+	
+	if not is_working_time and not current_workers.is_empty():
+		for worker in current_workers:
+			remove_current_worker(worker)
+			return
+
 
 func can_produce() -> bool:
 	for resource in building_data.input_resources:
@@ -40,6 +56,7 @@ func can_produce() -> bool:
 	
 	return true
 
+
 func start_production():
 	for resource in building_data.input_resources:
 		var required = building_data.input_resources[resource]
@@ -48,6 +65,7 @@ func start_production():
 	is_producing = true
 	production_timer = 0.0
 
+
 func complete_production():
 	for resource in building_data.output_resources:
 		var amount = building_data.output_resources[resource]
@@ -55,6 +73,7 @@ func complete_production():
 	
 	is_producing = false
 	production_completed.emit(building_data.output_resources)
+
 
 func add_resource(resource: ProductionBuildingData.ResourceType, amount: int) -> int:
 	var current = stored_resources.get(resource, 0)
@@ -65,6 +84,7 @@ func add_resource(resource: ProductionBuildingData.ResourceType, amount: int) ->
 	storage_changed.emit(resource, stored_resources[resource])
 	return actual_added
 
+
 func remove_resource(resource: ProductionBuildingData.ResourceType, amount: int) -> int:
 	var current = stored_resources.get(resource, 0)
 	var actual_removed = min(amount, current)
@@ -73,6 +93,24 @@ func remove_resource(resource: ProductionBuildingData.ResourceType, amount: int)
 	storage_changed.emit(resource, stored_resources[resource])
 	return actual_removed
 
+
+func add_assigned_worker(worker: Citizen):
+	if not assigned_workers.has(worker):
+		assigned_workers.append(worker)
+
+
+func add_current_worker(worker: Citizen):
+	if assigned_workers.has(worker):
+		current_workers.append(worker)
+
+
+func remove_current_worker(worker: Citizen):
+	current_workers.erase(worker)
+	worker.global_position = npc_spawn_point.global_position
+	worker.update_current_state(Citizen.CitizenState.TRAVELING_TO_HOME)
+
+
+#region Encoding / Decoding
 func get_save_data() -> Dictionary:
 	var data = super.get_save_data()
 	data.merge({
@@ -82,8 +120,10 @@ func get_save_data() -> Dictionary:
 	})
 	return data
 
+
 func load_from_data(data: Dictionary):
 	super.load_from_data(data)
 	stored_resources = data.get("stored_resources", {})
 	production_timer = data.get("production_timer", 0.0)
 	is_producing = data.get("is_producing", false)
+#endregion

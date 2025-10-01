@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="BuildingCategoryData" load_steps=5 format=3 uid="uid://tymtjm2b832g"]
+[gd_resource type="Resource" script_class="BuildingCategoryData" load_steps=6 format=3 uid="uid://tymtjm2b832g"]
 
 [ext_resource type="Script" uid="uid://cxvyq11fluruq" path="res://scripts/models/buildings/building_data.gd" id="1_ugwcc"]
 [ext_resource type="Resource" uid="uid://cpowfg6sqlul2" path="res://data/buildings/production/lumber_hut.tres" id="2_sj4kw"]
+[ext_resource type="Resource" uid="uid://b3gdbs3s78vp3" path="res://data/buildings/storage/lumber_storage.tres" id="3_sj4kw"]
 [ext_resource type="Texture2D" uid="uid://vxdwq1kpmqid" path="res://assets/icons/gear.svg" id="3_ugwcc"]
 [ext_resource type="Script" uid="uid://5v3jpx8gvog1" path="res://scripts/models/ui/building_category_data.gd" id="4_uogu6"]
 
@@ -9,5 +10,5 @@
 script = ExtResource("4_uogu6")
 display_name = "Production"
 icon = ExtResource("3_ugwcc")
-buildings = Array[ExtResource("1_ugwcc")]([ExtResource("2_sj4kw")])
+buildings = Array[ExtResource("1_ugwcc")]([ExtResource("2_sj4kw"), ExtResource("3_sj4kw")])
 metadata/_custom_type_script = "uid://5v3jpx8gvog1"

@@ -84,7 +84,7 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[node name="Button" type="Button" node_paths=PackedStringArray("save_manager")]
+[node name="Button" type="Button"]
 theme_override_fonts/font = ExtResource("1_wna08")
 theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxFlat_2y53f")
@@ -94,4 +94,3 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_ad5bu")
 theme_override_styles/focus = SubResource("StyleBoxFlat_o4evi")
 text = "Save"
 script = ExtResource("2_7f17y")
-save_manager = NodePath("")

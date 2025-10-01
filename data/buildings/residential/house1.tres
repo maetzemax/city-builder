@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_v0wfn")
+citizen_capacity = 2
 construction_cost = 100.0
 display_name = "House"
 metadata/_custom_type_script = "uid://b5pak37pvkolo"

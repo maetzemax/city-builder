@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj5bn4bta88wq"]
+
+[ext_resource type="Script" uid="uid://d2tk25n7emfon" path="res://scripts/npcs/citizen.gd" id="1_4x14l"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4x14l"]
+radius = 0.1
+height = 0.4
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_no6r7"]
+radius = 0.25
+height = 1.0
+radial_segments = 8
+
+[node name="Citizen" type="CharacterBody3D"]
+collision_layer = 0
+script = ExtResource("1_4x14l")
+metadata/_custom_type_script = "uid://dxjoewqy4rxx4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
+shape = SubResource("CapsuleShape3D_4x14l")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_no6r7")
