@@ -78,7 +78,7 @@ func update_current_state(new_state):
 
 		CitizenState.TRAVELING_TO_WORK:
 			if current_state == CitizenState.UNEMPLOYED or current_state == CitizenState.RESTING:
-				global_position= _home_building.npc_spawn_point.global_position
+				global_position = _home_building.npc_spawn_point.global_position
 			
 			visible = true
 			set_target_position(_workplace_building.npc_spawn_point.global_position)
@@ -121,7 +121,7 @@ func update_home_place():
 	
 	for building in buildings:
 		if building.is_preview:
-			break
+			continue
 		
 		if not temp_building:
 			temp_building = building
@@ -180,7 +180,7 @@ func find_building_at_position(target_pos: Vector3, group_name: String) -> Build
 	var buildings = get_tree().get_nodes_in_group(group_name)
 	
 	for building in buildings:
-		if building.global_position.distance_to(target_pos) < 0.3: # Sehr kleine Toleranz
+		if building.global_position.distance_to(target_pos) < 0.3:
 			return building
 	
 	return null

@@ -46,9 +46,8 @@ func start_production():
 	
 	var node = connected_resource_nodes[randi() % connected_resource_nodes.size()]
 	
-	var calcluated_extract = building_data.extraction_rate * (float(current_workers.size()) / float(building_data.max_workers))
-	
-	var extracted = node.extract_resource(round(calcluated_extract))
+	var calculated_extract = building_data.extraction_rate * (float(current_workers.size()) / float(building_data.max_workers))
+	var extracted = node.extract_resource(round(calculated_extract))
 	
 	if extracted > 0:
 		add_resource(building_data.resource_type, int(extracted))
