@@ -6,6 +6,7 @@
 script = ExtResource("1_q5j2e")
 storage_capacity = 2000
 accepted_resources = Array[int]([0])
+detection_radius = 20.0
 building_id = 3
 construction_cost = 100.0
 display_name = "Lumber Storage"
