@@ -114,7 +114,7 @@ func update_working_place():
 
 
 func update_home_place():
-	var buildings = get_tree().get_nodes_in_group("residental_buildings")
+	var buildings = get_tree().get_nodes_in_group("residential_buildings")
 	
 	var shortest_distance: float
 	var temp_building: Building = null
@@ -171,7 +171,7 @@ func restore_building_references(data: Dictionary):
 			_workplace_building.add_assigned_worker(self)
 	
 	if home_pos != Vector3.ZERO:
-		_home_building = find_building_at_position(home_pos, "residental_buildings")
+		_home_building = find_building_at_position(home_pos, "residential_buildings")
 		if _home_building:
 			_home_building.add_assigned_citizen(self)
 

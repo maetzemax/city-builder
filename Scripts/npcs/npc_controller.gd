@@ -10,7 +10,6 @@ var nav_agent: NavigationAgent3D
 func _ready():
 	nav_agent = NavigationAgent3D.new()
 	add_child(nav_agent)
-	nav_agent.debug_enabled = true
 	add_to_group("npc")
 
 

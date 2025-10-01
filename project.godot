@@ -43,8 +43,8 @@ storage_buildings=""
 resource_buildings=""
 ui_category_buildings=""
 npc=""
-residental_buildings=""
 citizens=""
+residential_buildings=""
 
 [input]
 

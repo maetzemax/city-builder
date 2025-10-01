@@ -9,7 +9,7 @@ var _current_time = 0
 
 func _ready():
 	super._ready()
-	add_to_group("residental_buildings")
+	add_to_group("residential_buildings")
 
 
 func _process(_delta):

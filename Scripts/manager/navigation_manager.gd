@@ -44,12 +44,3 @@ func bake_navigation_async():
 			source_geometry
 		)
 		print("Async navigation mesh baked")
-
-
-func get_navigatoion_path(start: Vector3, end: Vector3) -> PackedVector3Array:
-	return NavigationServer3D.map_get_path(
-		navigation_region.get_navigation_map(),
-		start,
-		end,
-		true
-	)

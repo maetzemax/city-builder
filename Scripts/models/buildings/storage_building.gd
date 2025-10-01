@@ -41,7 +41,7 @@ func _get_total_stored_resources(resources: Dictionary) -> int:
 	var amount = 0
 	
 	for key in resources.keys():
-		amount += resources[0]
+		amount += resources[key]
 		
 	return amount
 
