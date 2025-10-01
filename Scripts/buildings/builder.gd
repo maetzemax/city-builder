@@ -25,7 +25,7 @@ func _process(_delta: float):
 		
 	if selected_building and EconomyManager.money < selected_building.construction_cost:
 		_can_place = false
-		
+	
 	# Rotation
 	if Input.is_action_just_pressed("rotate_precise_right"):
 		_rotation += deg_to_rad(5)

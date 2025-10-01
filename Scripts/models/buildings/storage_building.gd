@@ -30,7 +30,10 @@ func _process(_delta):
 				for key in building_data.accepted_resources:
 					var stored = _get_total_stored_resources(building.get_parent().stored_resources)
 					building.get_parent().remove_resource(key, stored)
-					add_resource(key, stored)
+					var remaining = stored - add_resource(key, stored)
+					
+					if remaining > 0:
+						building.get_parent().add_resource(key, remaining)
 					
 				
 
@@ -71,4 +74,5 @@ func get_save_data() -> Dictionary:
 
 
 func load_from_data(data: Dictionary):
+	super.load_from_data(data)
 	stored_resources = data.get("stored_resources", {})
