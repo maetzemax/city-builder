@@ -195,15 +195,16 @@ shadow_mesh = SubResource("ArrayMesh_brmqo")
 size = Vector3(2.3515625, 3.1148682, 2.6552734)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xoao0"]
-shading_mode = 0
-albedo_color = Color(1, 0.9626667, 0.44, 1)
+transparency = 1
+shading_mode = 2
+albedo_color = Color(0.8411562, 0.97317165, 0.9356246, 0.79607844)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jl12f"]
 material = SubResource("StandardMaterial3D_xoao0")
 size = Vector3(0.2, 0.2, 0.2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jl12f"]
-shading_mode = 0
+diffuse_mode = 2
 albedo_color = Color(0.41, 0.246, 0.1025, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_kb6u8"]
@@ -274,7 +275,7 @@ omni_range = 2.0
 script = ExtResource("1_jl12f")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5215864, 0.624142, 1.238267)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5215864, 0.6133866, 1.238267)
 mesh = SubResource("BoxMesh_kb6u8")
 skeleton = NodePath("")
 

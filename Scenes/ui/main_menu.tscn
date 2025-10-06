@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://ble25xwm6dllu"]
+[gd_scene load_steps=40 format=4 uid="uid://ble25xwm6dllu"]
 
 [ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/models/environment/terrain.tscn" id="1_fe2o3"]
 [ext_resource type="PackedScene" uid="uid://djkhxkdyic626" path="res://scenes/ui/navigation_button.tscn" id="1_uhagc"]
@@ -10,10 +10,8 @@
 [ext_resource type="Script" uid="uid://kolqah11th63" path="res://addons/day_and_night_cycle/scripts/cycle_data.gd" id="6_n4uci"]
 [ext_resource type="Resource" uid="uid://b0mbm2nb4pntn" path="res://assets/game_night_cycle.tres" id="11_otr3d"]
 [ext_resource type="Script" uid="uid://x402pio1wkde" path="res://scripts/buildings/resource_node.gd" id="12_877pj"]
-[ext_resource type="Script" uid="uid://c85ddrpo5m0rc" path="res://scripts/environment/world_environment.gd" id="12_n4uci"]
 [ext_resource type="Texture2D" uid="uid://bpoucta1iqcrr" path="res://assets/day_sky_cover.jpg" id="13_877pj"]
 [ext_resource type="Resource" uid="uid://o1nmy41ve7lk" path="res://data/buildings/resources/tree.tres" id="13_ayp64"]
-[ext_resource type="Texture2D" uid="uid://dhevk6s213jhd" path="res://assets/night_sky_cover.jpg" id="14_ayp64"]
 [ext_resource type="Texture2D" uid="uid://lb4hnvuake4s" path="res://assets/forest/color_1024x1024.jpg" id="14_y2j7i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8g5eo"]
@@ -112,8 +110,9 @@ point_count = 3
 [sub_resource type="Resource" id="Resource_877pj"]
 script = ExtResource("6_n4uci")
 colors = SubResource("GradientTexture2D_jji54")
-length = 150.0
+length = 300.0
 light_energy = SubResource("Curve_5mae3")
+sky_cover = ExtResource("13_877pj")
 metadata/_custom_type_script = "uid://kolqah11th63"
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n4uci"]
@@ -376,12 +375,12 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_otr3d")
 text = "Exit"
 script = ExtResource("4_q85j6")
 
-[node name="CycleController" type="Node3D" parent="." node_paths=PackedStringArray("sun_light", "world_environment")]
+[node name="CycleController" type="Node3D" parent="." node_paths=PackedStringArray("world_environment", "sun_light")]
 script = ExtResource("5_otr3d")
 day_data = SubResource("Resource_877pj")
 night_data = ExtResource("11_otr3d")
-sun_light = NodePath("Sun")
 world_environment = NodePath("WorldEnvironment")
+sun_light = NodePath("Sun")
 metadata/_custom_type_script = "uid://sqer1ykwxtg5"
 
 [node name="Sun" type="DirectionalLight3D" parent="CycleController"]
@@ -393,9 +392,6 @@ shadow_blur = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="CycleController"]
 environment = SubResource("Environment_877pj")
-script = ExtResource("12_n4uci")
-day_cover = ExtResource("13_877pj")
-night_cover = ExtResource("14_ayp64")
 
 [node name="Environment" type="Node3D" parent="."]
 

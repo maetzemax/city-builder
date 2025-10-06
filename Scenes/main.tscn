@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dvd53runfr5vs"]
+[gd_scene load_steps=43 format=3 uid="uid://dvd53runfr5vs"]
 
 [ext_resource type="Script" uid="uid://sqer1ykwxtg5" path="res://addons/day_and_night_cycle/scripts/cycle_controller.gd" id="1_2wyq8"]
 [ext_resource type="Script" uid="uid://l8a4rxtmphwk" path="res://scripts/manager/save_manager.gd" id="1_eb6dy"]
@@ -10,8 +10,6 @@
 [ext_resource type="Resource" uid="uid://b0mbm2nb4pntn" path="res://assets/game_night_cycle.tres" id="3_2f3dj"]
 [ext_resource type="Script" uid="uid://bhncwhwwcrmdm" path="res://scripts/buildings/builder.gd" id="3_8gbba"]
 [ext_resource type="Texture2D" uid="uid://bpoucta1iqcrr" path="res://assets/day_sky_cover.jpg" id="4_vxglm"]
-[ext_resource type="Script" uid="uid://c85ddrpo5m0rc" path="res://scripts/environment/world_environment.gd" id="5_2f3dj"]
-[ext_resource type="Texture2D" uid="uid://dhevk6s213jhd" path="res://assets/night_sky_cover.jpg" id="6_yq6so"]
 [ext_resource type="Script" uid="uid://b828i03wrkpyy" path="res://scripts/manager/navigation_manager.gd" id="8_fv21b"]
 [ext_resource type="PackedScene" uid="uid://bwpgnlw0kaoa4" path="res://scenes/ui/building_selection_ui.tscn" id="9_a8y0u"]
 [ext_resource type="Script" uid="uid://v2ueybxvska3" path="res://scripts/ui/resume_button.gd" id="10_0ld40"]
@@ -212,12 +210,13 @@ corner_radius_bottom_left = 12
 
 [node name="Main" type="Node3D"]
 
-[node name="CycleController" type="Node3D" parent="." node_paths=PackedStringArray("sun_light", "world_environment")]
+[node name="CycleController" type="Node3D" parent="." node_paths=PackedStringArray("world_environment", "sun_light")]
 script = ExtResource("1_2wyq8")
 day_data = ExtResource("1_fv21b")
 night_data = ExtResource("3_2f3dj")
-sun_light = NodePath("Sun")
 world_environment = NodePath("WorldEnvironment")
+sun_light = NodePath("Sun")
+ambient_light_color = Color(0.38928655, 0.38928664, 0.38928658, 1)
 metadata/_custom_type_script = "uid://sqer1ykwxtg5"
 
 [node name="Sun" type="DirectionalLight3D" parent="CycleController"]
@@ -229,9 +228,6 @@ shadow_blur = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="CycleController"]
 environment = SubResource("Environment_jjvhh")
-script = ExtResource("5_2f3dj")
-day_cover = ExtResource("4_vxglm")
-night_cover = ExtResource("6_yq6so")
 
 [node name="EconomyManager" type="Node" parent="."]
 script = ExtResource("12_jkv2x")

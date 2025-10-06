@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="CycleData" load_steps=5 format=3 uid="uid://b0mbm2nb4pntn"]
+[gd_resource type="Resource" script_class="CycleData" load_steps=6 format=3 uid="uid://b0mbm2nb4pntn"]
 
 [ext_resource type="Script" uid="uid://kolqah11th63" path="res://addons/day_and_night_cycle/scripts/cycle_data.gd" id="1_tuwij"]
+[ext_resource type="Texture2D" uid="uid://dhevk6s213jhd" path="res://assets/night_sky_cover.jpg" id="2_f3dgf"]
 
 [sub_resource type="Gradient" id="Gradient_f3dgf"]
 offsets = PackedFloat32Array(0, 0.1, 0.2, 0.8, 0.9, 1)
@@ -20,4 +21,5 @@ script = ExtResource("1_tuwij")
 colors = SubResource("GradientTexture2D_n53gh")
 length = 60.0
 light_energy = SubResource("Curve_1872g")
+sky_cover = ExtResource("2_f3dgf")
 metadata/_custom_type_script = "uid://kolqah11th63"
