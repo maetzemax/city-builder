@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://yell3nujc8uo"
-path="res://.godot/imported/mouse_scroll_vertical.svg-f59f6ddbde73e71b3e6ffe98c95316d1.ctex"
+path="res://.godot/imported/mouse_scroll_vertical.svg-0f796021427fb46678c75feaf4c7a08f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/Keyboard & Mouse/Vector/mouse_scroll_vertical.svg"
-dest_files=["res://.godot/imported/mouse_scroll_vertical.svg-f59f6ddbde73e71b3e6ffe98c95316d1.ctex"]
+source_file="res://Assets/icons/Keyboard & Mouse/Vector/mouse_scroll_vertical.svg"
+dest_files=["res://.godot/imported/mouse_scroll_vertical.svg-0f796021427fb46678c75feaf4c7a08f.ctex"]
 
 [params]
 

@@ -36,9 +36,8 @@ func _process(delta):
 	var is_working_time = time > shift.start_hour and time < shift.end_hour
 	
 	if not is_working_time and not current_workers.is_empty():
-		for worker in current_workers:
+		for worker in current_workers.duplicate():
 			remove_current_worker(worker)
-			return
 
 
 func can_produce() -> bool:

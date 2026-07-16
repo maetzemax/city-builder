@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cloabra4cltmh"
-path="res://.godot/imported/keyboard_numlock_outline.svg-75da02ce1c79ce98b42686c65e0ea1ca.ctex"
+path="res://.godot/imported/keyboard_numlock_outline.svg-d5bb0fcb0e9079c080cb34e001efa705.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/Keyboard & Mouse/Vector/keyboard_numlock_outline.svg"
-dest_files=["res://.godot/imported/keyboard_numlock_outline.svg-75da02ce1c79ce98b42686c65e0ea1ca.ctex"]
+source_file="res://Assets/icons/Keyboard & Mouse/Vector/keyboard_numlock_outline.svg"
+dest_files=["res://.godot/imported/keyboard_numlock_outline.svg-d5bb0fcb0e9079c080cb34e001efa705.ctex"]
 
 [params]
 

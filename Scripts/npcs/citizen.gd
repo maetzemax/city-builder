@@ -69,24 +69,28 @@ func _physics_process(_delta):
 func update_current_state(new_state):
 	match new_state:
 		CitizenState.UNEMPLOYED, CitizenState.RESTING:
-			global_position = _home_building.global_position
+			if _home_building:
+				global_position = _home_building.global_position
 			visible = false
 
 		CitizenState.WORKING:
-			global_position = _workplace_building.global_position
+			if _workplace_building:
+				global_position = _workplace_building.global_position
 			visible = false
 
 		CitizenState.TRAVELING_TO_WORK:
-			if current_state == CitizenState.UNEMPLOYED or current_state == CitizenState.RESTING:
+			if (current_state == CitizenState.UNEMPLOYED or current_state == CitizenState.RESTING) and _home_building:
 				global_position = _home_building.npc_spawn_point.global_position
-			
+
 			visible = true
-			set_target_position(_workplace_building.npc_spawn_point.global_position)
+			if _workplace_building:
+				set_target_position(_workplace_building.npc_spawn_point.global_position)
 
 		CitizenState.TRAVELING_TO_HOME:
 			visible = true
-			set_target_position(_home_building.npc_spawn_point.global_position)
-	
+			if _home_building:
+				set_target_position(_home_building.npc_spawn_point.global_position)
+
 	current_state = new_state
 
 
@@ -141,7 +145,9 @@ func get_save_data() -> Dictionary:
 		"full_name": full_name,
 		"age": age,
 		"current_state": current_state,
+		"has_workplace": _workplace_building != null,
 		"workplace_position": _workplace_building.global_position if _workplace_building else Vector3.ZERO,
+		"has_home": _home_building != null,
 		"home_position": _home_building.global_position if _home_building else Vector3.ZERO,
 	})
 	return data
@@ -164,13 +170,18 @@ func restore_current_state(data: Dictionary):
 func restore_building_references(data: Dictionary):
 	var workplace_pos = data.get("workplace_position", Vector3.ZERO)
 	var home_pos = data.get("home_position", Vector3.ZERO)
-	
-	if workplace_pos != Vector3.ZERO:
+	var has_workplace = data.get("has_workplace", workplace_pos != Vector3.ZERO)
+	var has_home = data.get("has_home", home_pos != Vector3.ZERO)
+	var saved_state = data.get("current_state", CitizenState.UNEMPLOYED)
+
+	if has_workplace:
 		_workplace_building = find_building_at_position(workplace_pos, "production_buildings")
 		if _workplace_building:
 			_workplace_building.add_assigned_worker(self)
-	
-	if home_pos != Vector3.ZERO:
+			if saved_state == CitizenState.WORKING:
+				_workplace_building.add_current_worker(self)
+
+	if has_home:
 		_home_building = find_building_at_position(home_pos, "residential_buildings")
 		if _home_building:
 			_home_building.add_assigned_citizen(self)

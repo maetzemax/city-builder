@@ -4,18 +4,20 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dtq31glbvy08p"
-path="res://.godot/imported/uploads_files_3304599_LowPoly_Tree_Collection_01_fbx.FBX-0e9c2b1e1c4f1283bfec7509010ce26e.scn"
+path="res://.godot/imported/uploads_files_3304599_LowPoly_Tree_Collection_01_fbx.FBX-2042486b7d1dd784d60679793fc7c858.scn"
 
 [deps]
 
-source_file="res://assets/forest/uploads_files_3304599_LowPoly_Tree_Collection_01_fbx.FBX"
-dest_files=["res://.godot/imported/uploads_files_3304599_LowPoly_Tree_Collection_01_fbx.FBX-0e9c2b1e1c4f1283bfec7509010ce26e.scn"]
+source_file="res://Assets/forest/uploads_files_3304599_LowPoly_Tree_Collection_01_fbx.FBX"
+dest_files=["res://.godot/imported/uploads_files_3304599_LowPoly_Tree_Collection_01_fbx.FBX-2042486b7d1dd784d60679793fc7c858.scn"]
 
 [params]
 
 nodes/root_type=""
 nodes/root_name=""
 nodes/root_script=null
+mesh_library/use_node_names_as_mesh_names=false
+array_mesh/deduplicate_surfaces=true
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b0vie6pfxcn6w"
-path="res://.godot/imported/keyboard_numpad_enter.svg-c3e71407a8389fa18dd11db0fd8593fb.ctex"
+path="res://.godot/imported/keyboard_numpad_enter.svg-a91f1282c42f40cc846c68dd9dc105be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/Keyboard & Mouse/Vector/keyboard_numpad_enter.svg"
-dest_files=["res://.godot/imported/keyboard_numpad_enter.svg-c3e71407a8389fa18dd11db0fd8593fb.ctex"]
+source_file="res://Assets/icons/Keyboard & Mouse/Vector/keyboard_numpad_enter.svg"
+dest_files=["res://.godot/imported/keyboard_numpad_enter.svg-a91f1282c42f40cc846c68dd9dc105be.ctex"]
 
 [params]
 

@@ -56,6 +56,6 @@ func get_save_data() -> Dictionary:
 
 func load_from_data(data: Dictionary):
 	super.load_from_data(data)
-	current_amount = data.get("current_amount")
+	current_amount = data.get("current_amount", building_data.max_amount)
 	respawn_timer = data.get("respawn_timer", 0.0)
 	is_depleted = data.get("is_depleted", false)

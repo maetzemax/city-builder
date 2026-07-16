@@ -11,5 +11,7 @@ func _on_pressed():
 	
 	if not should_load_save_file:
 		EconomyManager.reset_money()
+		GameManager.day_count = 0
+		GameManager.is_day = true
 	
 	get_tree().change_scene_to_packed(scene)

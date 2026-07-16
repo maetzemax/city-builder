@@ -4,18 +4,20 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ctkmsa3cpy45s"
-path="res://.godot/imported/cabin1.fbx-92400d76ccce29d47563496d75ea3c3d.scn"
+path="res://.godot/imported/cabin1.fbx-7fcf1e919b0bc0e13e5470fd1ec7626b.scn"
 
 [deps]
 
-source_file="res://assets/models/cabin1.fbx"
-dest_files=["res://.godot/imported/cabin1.fbx-92400d76ccce29d47563496d75ea3c3d.scn"]
+source_file="res://Assets/Models/cabin1.fbx"
+dest_files=["res://.godot/imported/cabin1.fbx-7fcf1e919b0bc0e13e5470fd1ec7626b.scn"]
 
 [params]
 
 nodes/root_type=""
 nodes/root_name=""
 nodes/root_script=null
+mesh_library/use_node_names_as_mesh_names=false
+array_mesh/deduplicate_surfaces=true
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false

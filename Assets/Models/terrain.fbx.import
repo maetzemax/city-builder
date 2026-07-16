@@ -4,18 +4,20 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dluv0dsbkadp2"
-path="res://.godot/imported/terrain.fbx-2b40c2b17b4fcc1ba05a9d54a40937d9.scn"
+path="res://.godot/imported/terrain.fbx-18dca317086376e5ca70541f747191a2.scn"
 
 [deps]
 
-source_file="res://assets/models/terrain.fbx"
-dest_files=["res://.godot/imported/terrain.fbx-2b40c2b17b4fcc1ba05a9d54a40937d9.scn"]
+source_file="res://Assets/Models/terrain.fbx"
+dest_files=["res://.godot/imported/terrain.fbx-18dca317086376e5ca70541f747191a2.scn"]
 
 [params]
 
 nodes/root_type=""
 nodes/root_name=""
 nodes/root_script=null
+mesh_library/use_node_names_as_mesh_names=false
+array_mesh/deduplicate_surfaces=true
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
