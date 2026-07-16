@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bupay4s6hpdui"
-path="res://.godot/imported/lumber_storage.glb-b028dc327ae693dc69c2e34b38bdbba3.scn"
+path="res://.godot/imported/lumber_storage.glb-4c9da2b216d55bce4744efee6e19abf2.scn"
 
 [deps]
 
-source_file="res://Assets/Models/lumber_storage.glb"
-dest_files=["res://.godot/imported/lumber_storage.glb-b028dc327ae693dc69c2e34b38bdbba3.scn"]
+source_file="res://assets/Models/lumber_storage.glb"
+dest_files=["res://.godot/imported/lumber_storage.glb-4c9da2b216d55bce4744efee6e19abf2.scn"]
 
 [params]
 

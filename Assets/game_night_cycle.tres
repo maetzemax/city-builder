@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CycleData" load_steps=6 format=3 uid="uid://b0mbm2nb4pntn"]
+[gd_resource type="Resource" script_class="CycleData" format=3 uid="uid://b0mbm2nb4pntn"]
 
 [ext_resource type="Script" uid="uid://kolqah11th63" path="res://addons/day_and_night_cycle/scripts/cycle_data.gd" id="1_tuwij"]
 [ext_resource type="Texture2D" uid="uid://dhevk6s213jhd" path="res://assets/night_sky_cover.jpg" id="2_f3dgf"]

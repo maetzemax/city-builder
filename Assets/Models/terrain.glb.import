@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dqpklajbvarxg"
-path="res://.godot/imported/terrain.glb-49a3a02fff1a25e955c724f71cf49a41.scn"
+path="res://.godot/imported/terrain.glb-772c70665b3984b8fb7b6941c211a8a9.scn"
 
 [deps]
 
-source_file="res://Assets/Models/terrain.glb"
-dest_files=["res://.godot/imported/terrain.glb-49a3a02fff1a25e955c724f71cf49a41.scn"]
+source_file="res://assets/Models/terrain.glb"
+dest_files=["res://.godot/imported/terrain.glb-772c70665b3984b8fb7b6941c211a8a9.scn"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cjk4i3twgbyp0"
-path="res://.godot/imported/keyboard_arrows_horizontal_outline.svg-e726883c9800d2e5a2fdb6eba4d2cdad.ctex"
+path="res://.godot/imported/keyboard_arrows_horizontal_outline.svg-f61876937267857aaabb8c15748ca722.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/icons/Keyboard & Mouse/Vector/keyboard_arrows_horizontal_outline.svg"
-dest_files=["res://.godot/imported/keyboard_arrows_horizontal_outline.svg-e726883c9800d2e5a2fdb6eba4d2cdad.ctex"]
+source_file="res://assets/icons/Keyboard & Mouse/Vector/keyboard_arrows_horizontal_outline.svg"
+dest_files=["res://.godot/imported/keyboard_arrows_horizontal_outline.svg-f61876937267857aaabb8c15748ca722.ctex"]
 
 [params]
 

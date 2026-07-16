@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BuildingCategoryData" load_steps=5 format=3 uid="uid://x624lnhh1dgc"]
+[gd_resource type="Resource" script_class="BuildingCategoryData" format=3 uid="uid://x624lnhh1dgc"]
 
 [ext_resource type="Script" uid="uid://cxvyq11fluruq" path="res://scripts/models/buildings/building_data.gd" id="1_2don2"]
 [ext_resource type="Resource" uid="uid://d4jgl7e67eqah" path="res://data/buildings/residential/house1.tres" id="2_8b7jr"]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://camfebemsb8lh"
-path="res://.godot/imported/keyboard_e_outline.svg-5047a0f0ba072b207dc37316c376dfb9.ctex"
+path="res://.godot/imported/keyboard_e_outline.svg-fade13eee79fa6d38cd440e30f4eec27.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/icons/Keyboard & Mouse/Vector/keyboard_e_outline.svg"
-dest_files=["res://.godot/imported/keyboard_e_outline.svg-5047a0f0ba072b207dc37316c376dfb9.ctex"]
+source_file="res://assets/icons/Keyboard & Mouse/Vector/keyboard_e_outline.svg"
+dest_files=["res://.godot/imported/keyboard_e_outline.svg-fade13eee79fa6d38cd440e30f4eec27.ctex"]
 
 [params]
 

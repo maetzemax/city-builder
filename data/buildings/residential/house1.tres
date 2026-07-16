@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ResidentialBuildingData" load_steps=2 format=3 uid="uid://d4jgl7e67eqah"]
+[gd_resource type="Resource" script_class="ResidentialBuildingData" format=3 uid="uid://d4jgl7e67eqah"]
 
 [ext_resource type="Script" uid="uid://b5pak37pvkolo" path="res://scripts/models/buildings/residential_building_data.gd" id="1_v0wfn"]
 

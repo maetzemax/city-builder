@@ -1,7 +1,7 @@
-[gd_scene load_steps=40 format=4 uid="uid://ble25xwm6dllu"]
+[gd_scene format=4 uid="uid://ble25xwm6dllu"]
 
 [ext_resource type="PackedScene" uid="uid://df0b08mdpd7kn" path="res://scenes/models/environment/terrain.tscn" id="1_fe2o3"]
-[ext_resource type="PackedScene" uid="uid://djkhxkdyic626" path="res://scenes/ui/navigation_button.tscn" id="1_uhagc"]
+[ext_resource type="PackedScene" uid="uid://djkhxkdyic626" path="res://scenes/ui/buttons/navigation_button.tscn" id="1_uhagc"]
 [ext_resource type="PackedScene" uid="uid://dvd53runfr5vs" path="res://scenes/main.tscn" id="2_wb0q5"]
 [ext_resource type="PackedScene" uid="uid://bn2j568mwjyxb" path="res://scenes/models/buildings/residential_placeholder.tscn" id="3_m1kxf"]
 [ext_resource type="FontFile" uid="uid://chv1w8s37w8t7" path="res://assets/fonts/Jersey15-Regular.ttf" id="3_q85j6"]

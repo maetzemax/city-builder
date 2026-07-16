@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StorageBuildingData" load_steps=2 format=3 uid="uid://b3gdbs3s78vp3"]
+[gd_resource type="Resource" script_class="StorageBuildingData" format=3 uid="uid://b3gdbs3s78vp3"]
 
 [ext_resource type="Script" uid="uid://cq7xp0m27bxmm" path="res://scripts/models/buildings/storage_building_data.gd" id="1_q5j2e"]
 

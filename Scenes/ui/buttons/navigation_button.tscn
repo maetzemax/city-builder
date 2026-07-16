@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://djkhxkdyic626"]
+[gd_scene format=3 uid="uid://djkhxkdyic626"]
 
 [ext_resource type="FontFile" uid="uid://chv1w8s37w8t7" path="res://assets/fonts/Jersey15-Regular.ttf" id="1_2y53f"]
 [ext_resource type="StyleBox" uid="uid://dsi6jel10bb44" path="res://data/ui/button_normal.tres" id="2_bwc62"]

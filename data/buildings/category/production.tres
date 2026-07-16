@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BuildingCategoryData" load_steps=6 format=3 uid="uid://tymtjm2b832g"]
+[gd_resource type="Resource" script_class="BuildingCategoryData" format=3 uid="uid://tymtjm2b832g"]
 
 [ext_resource type="Script" uid="uid://cxvyq11fluruq" path="res://scripts/models/buildings/building_data.gd" id="1_ugwcc"]
 [ext_resource type="Resource" uid="uid://cpowfg6sqlul2" path="res://data/buildings/production/lumber_hut.tres" id="2_sj4kw"]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cy8pk4tdjuwx3"
-path="res://.godot/imported/keyboard_numpad_plus_outline.svg-a3fafa1f4fffd697eb4ba79318960675.ctex"
+path="res://.godot/imported/keyboard_numpad_plus_outline.svg-ae97897ecf0be9e12cb028020a4631ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/icons/Keyboard & Mouse/Vector/keyboard_numpad_plus_outline.svg"
-dest_files=["res://.godot/imported/keyboard_numpad_plus_outline.svg-a3fafa1f4fffd697eb4ba79318960675.ctex"]
+source_file="res://assets/icons/Keyboard & Mouse/Vector/keyboard_numpad_plus_outline.svg"
+dest_files=["res://.godot/imported/keyboard_numpad_plus_outline.svg-ae97897ecf0be9e12cb028020a4631ec.ctex"]
 
 [params]
 

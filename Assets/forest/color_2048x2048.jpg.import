@@ -3,16 +3,17 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b612gjcwtrj0u"
-path.s3tc="res://.godot/imported/color_2048x2048.jpg-fe4bf48732feff497ebf72eca31158e4.s3tc.ctex"
+path.s3tc="res://.godot/imported/color_2048x2048.jpg-5035251b9a3464f44938a3382d4aaa24.s3tc.ctex"
+path.etc2="res://.godot/imported/color_2048x2048.jpg-5035251b9a3464f44938a3382d4aaa24.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
-source_file="res://Assets/forest/color_2048x2048.jpg"
-dest_files=["res://.godot/imported/color_2048x2048.jpg-fe4bf48732feff497ebf72eca31158e4.s3tc.ctex"]
+source_file="res://assets/forest/color_2048x2048.jpg"
+dest_files=["res://.godot/imported/color_2048x2048.jpg-5035251b9a3464f44938a3382d4aaa24.s3tc.ctex", "res://.godot/imported/color_2048x2048.jpg-5035251b9a3464f44938a3382d4aaa24.etc2.ctex"]
 
 [params]
 

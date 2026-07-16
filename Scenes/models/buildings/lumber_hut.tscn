@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cdw4atnef81ew"]
+[gd_scene format=4 uid="uid://cdw4atnef81ew"]
 
 [ext_resource type="Script" uid="uid://dpkjvnhpycei2" path="res://scripts/buildings/resource_production_building.gd" id="1_7wyx2"]
 [ext_resource type="Script" uid="uid://nh15mtdn0ypj" path="res://scripts/models/buildings/working_shift.gd" id="2_73a7g"]

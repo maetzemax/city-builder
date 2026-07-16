@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d1apnqo5v3d6m"
-path="res://.godot/imported/keyboard_delete.svg-663a5732709a587258a23132ec277b63.ctex"
+path="res://.godot/imported/keyboard_delete.svg-cebefed622d978feef31a553540d681e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/icons/Keyboard & Mouse/Vector/keyboard_delete.svg"
-dest_files=["res://.godot/imported/keyboard_delete.svg-663a5732709a587258a23132ec277b63.ctex"]
+source_file="res://assets/icons/Keyboard & Mouse/Vector/keyboard_delete.svg"
+dest_files=["res://.godot/imported/keyboard_delete.svg-cebefed622d978feef31a553540d681e.ctex"]
 
 [params]
 
