@@ -1,5 +1,5 @@
 class_name NavigationManager
-extends Node3D
+extends Node
 
 var navigation_region: NavigationRegion3D
 var navigation_mesh: NavigationMesh

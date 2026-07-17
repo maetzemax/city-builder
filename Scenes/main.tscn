@@ -233,7 +233,7 @@ environment = SubResource("Environment_jjvhh")
 script = ExtResource("5_yq6so")
 metadata/_custom_type_script = "uid://cyu4clyieh3ni"
 
-[node name="NavigationManager" type="Node3D" parent="." unique_id=1229118890]
+[node name="NavigationManager" type="Node" parent="." unique_id=495103781]
 script = ExtResource("6_fv21b")
 
 [node name="Terrain" parent="." unique_id=1400747912 instance=ExtResource("7_j8jky")]
@@ -304,7 +304,7 @@ layout_mode = 2
 text = "Load"
 action_type = 1
 save_manager = NodePath("../../../../../SaveManager")
-nav_manager = NodePath("../../../../../NavigationManager")
+nav_manager = NodePath("")
 
 [node name="Exit" type="MarginContainer" parent="User Interface/Pause UI/VBoxContainer" unique_id=230163859]
 layout_mode = 2
